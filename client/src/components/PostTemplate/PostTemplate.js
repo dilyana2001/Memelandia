@@ -8,7 +8,7 @@ const PostTemplate = ({ data }) => {
             <h3>{data.title}</h3>
             <p className="img"><img src={data.img} /></p>
             <div className="post-info">
-                <NavLink to="/"><button className="button">Details</button></NavLink>
+                <NavLink to={`/details/${data._id}`}><button className="button">Details</button></NavLink>
             </div>
         </div>
     );

@@ -7,7 +7,9 @@ const Header = () => {
             <nav className="navbar">
                 <section className="navbar-logged-user">
                     <div className="first-bar">
-                        <NavLink className="button" to='/'>Home</NavLink>
+                    <NavLink className="button" to='/'>Home</NavLink>
+                        <NavLink className="button" to="/create-post">Create Post</NavLink>
+                        <NavLink className="button" to="#">Profile</NavLink>
                     </div>
                     <div className="second-bar">
                         <ul>
