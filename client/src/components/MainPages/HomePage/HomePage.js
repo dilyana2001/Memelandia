@@ -4,6 +4,7 @@ import postService from "../../../Service/postService";
 import PostTemplate from "../../ComponentTemplates/PostTemplate/PostTemplate";
 
 import './HomePage.css';
+import '../MainPage.css';
 
 const HomePage = () => {
 
@@ -15,10 +16,8 @@ const HomePage = () => {
     }, []);
 
     return (
-        <main className="container">
-            <section>
-                <h1>POSTS</h1>
-                <ul>
+        <div className="main-container">
+                <ul className="homePage-list">
                     {posts?.map(x =>
                         <PostTemplate
                             key={x._id}
@@ -26,9 +25,7 @@ const HomePage = () => {
                         />
                     )}
                 </ul>
-            </section>
-
-        </main>
+        </div>
     );
 }
 
