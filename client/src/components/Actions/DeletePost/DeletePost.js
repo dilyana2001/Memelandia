@@ -1,19 +1,22 @@
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
-import postService from "../../Service/postService";
+import { useEffect } from "react";
+
+import postService from "../../../Service/postService";
+
+import './DeletePost.css';
+
 
 const DeletePost = ({ match }) => {
 
-    const [post, setPost] = useState({});
-
     useEffect(() => {
         postService.deletePost(match.params.postId)
-    }, [match])
+    }, [match]);
 
     return (
-        <div>npm 
+        <div>
             <h3>You Deleted The Post!</h3>
             <NavLink to='/'>Go back to Home</NavLink>
+            <NavLink to='/profile'>Go back to Profile</NavLink>
         </div>
     );
 }

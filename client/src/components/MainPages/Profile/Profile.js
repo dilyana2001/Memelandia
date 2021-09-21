@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
-import postService from "../../Service/postService";
-import PostTemplate from "../PostTemplate/PostTemplate";
-import './Profile.css'
+
+import postService from "../../../Service/postService";
+import PostTemplate from '../../ComponentTemplates/PostTemplate/PostTemplate';
+
+import './Profile.css';
 
 const Profile = () => {
     const username = localStorage.getItem('username');
@@ -11,7 +13,7 @@ const Profile = () => {
     useEffect(() => {
         postService.getMyMemes(ownerId)
             .then(setPosts)
-    }, [])
+    }, []);
 
     return (
         <main className="container personInfo">
@@ -31,10 +33,7 @@ const Profile = () => {
                     )}
                 </ul>
             </section>
-
         </main>
-
-
     );
 }
 export default Profile;

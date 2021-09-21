@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 
+import './PostTemplate.css';
+
 const PostTemplate = ({ data }) => {
 
     return (

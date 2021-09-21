@@ -2,8 +2,9 @@ import { NavLink } from 'react-router-dom';
 
 import auth from '../../Service/auth';
 
+import './Header.css'
 
-const Header = ({ history }) => {
+const Header = () => {
     const username = localStorage.getItem('username');
     return (
         <header id="site-header">
@@ -19,7 +20,6 @@ const Header = ({ history }) => {
                             <li>Welcome, {username || 'guest'}</li>
                             <li><NavLink to="#" onClick={() => {
                                 auth.logout();
-                                history.push('/')
                             }}> Logout</NavLink></li>
                         </ul>
                     </div>

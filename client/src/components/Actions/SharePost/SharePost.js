@@ -1,6 +1,8 @@
-import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
-import postService from "../../Service/postService";
+
+import postService from "../../../Service/postService"
+
+import './SharePost.css';
 
 const SharePost = ({ match }) => {
 

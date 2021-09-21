@@ -1,15 +1,15 @@
 import { Route, Switch } from 'react-router';
 
 import Header from './components/Header/Header';
-import Login from './components/Login/Login';
-import Register from './components/Register/Register';
-import HomePage from './components/HomePage/HomePage';
-import CreatePost from './components/CreatePost/CreatePost';
-import Profile from './components/Profile/Profile';
-import PostDetails from './components/PostDetails/PostDetails';
-import SharePost from './components/SharePost/SharePost';
-import EditPost from './components/EditPost/EditPost';
-import DeletePost from './components/DeletePost/DeletePost'
+import Login from './components/AuthPages/Login/Login';
+import Register from './components/AuthPages/Register/Register';
+import HomePage from './components/MainPages/HomePage/HomePage';
+import CreatePost from './components/MainPages/CreatePost/CreatePost';
+import Profile from './components/MainPages/Profile/Profile';
+import PostDetails from './components/MainPages/PostDetails/PostDetails';
+import SharePost from './components/Actions/SharePost/SharePost';
+import EditPost from './components/MainPages/EditPost/EditPost';
+import DeletePost from './components/Actions/DeletePost/DeletePost';
 import Footer from './components/Footer/Footer';
 
 import './App.css';

@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
-import postService from "../../Service/postService";
 
-import './PostDetails.css'
+import postService from "../../../Service/postService";
+
+import './PostDetails.css';
 
 const PostDetails = ({ match }) => {
 
@@ -12,8 +13,6 @@ const PostDetails = ({ match }) => {
         postService.getPost(match.params.postId)
             .then(setPost)
     }, [match])
-
-    let username = localStorage.getItem('username');
 
     return (
         <div className="postTemplate container">

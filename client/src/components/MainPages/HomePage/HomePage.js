@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
-import postService from "../../Service/postService";
-import PostTemplate from '../PostTemplate/PostTemplate'
 
-const HomePage = ({ match }) => {
+import postService from "../../../Service/postService";
+import PostTemplate from "../../ComponentTemplates/PostTemplate/PostTemplate";
 
-    const [posts, setPost] = useState([])
+import './HomePage.css';
+
+const HomePage = () => {
+
+    const [posts, setPost] = useState([]);
 
     useEffect(() => {
         postService.getAllPost()
             .then(setPost)
-    }, [])
+    }, []);
 
     return (
         <main className="container">

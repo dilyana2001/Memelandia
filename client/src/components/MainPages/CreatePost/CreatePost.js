@@ -1,20 +1,22 @@
-import postService from "../../Service/postService";
+import postService from "../../../Service/postService";
 
-const EditPost = ({ match, history }) => {
+import './CreatePost.css';
+
+const CreatePost = ({history }) => {
     const username = localStorage.getItem('username')
 
     const createPostHandler = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-        postService.editPost(match.params.postId, formData, username)
-            .then(() => {
-                history.push(`/details/${match.params.postId}`)
+        postService.postPost(formData, username)
+            .then((meme) => {
+                history.push(`/details/${meme._id}`)
             })
     }
 
     return (
         <div>
-            <h2>Edit Post</h2>
+            <h2>Create Post</h2>
             <form onSubmit={createPostHandler}>
                 <input type="text" placeholder="Title" name="title" />
                 <input type="text" placeholder="imageURL" name="img" />
@@ -25,4 +27,4 @@ const EditPost = ({ match, history }) => {
     );
 }
 
-export default EditPost;
+export default CreatePost;
