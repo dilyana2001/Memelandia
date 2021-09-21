@@ -5,14 +5,22 @@ import './PostTemplate.css';
 const PostTemplate = ({ data }) => {
 
     return (
-        <div className="postTemplate">
-            <p className="description">{data._ownerName} post:</p>
-            <h3>{data.title}</h3>
-            <p className="img"><img src={data.img} /></p>
-            <div className="post-info">
-                <NavLink to={`/details/${data._id}`}><button className="button">Details</button></NavLink>
+        <li className="postTemplate">
+            <div className="postTemplate-container">
+                <div className="user-info">
+                    <img className="profile-image" src="https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg" />
+                    <p className="username-paragraph">{data._ownerName} post:</p>
+                </div>
+                <div className="meme-info">
+                    <p>{data.title}</p>
+                    <p className="img"><img src={data.img} /></p>
+                    <div className="post-info">
+                        <NavLink to={`/details/${data._id}`}>Details</NavLink>
+                    </div>
+                </div>
+
             </div>
-        </div>
+        </li>
     );
 }
 export default PostTemplate;

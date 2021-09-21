@@ -1,0 +1,33 @@
+.site-header {
+    background-color: rgb(14, 2, 15);
+    height: 12vh;
+    display: flex;
+}
+
+.site-header ul {
+    display: flex;
+}
+
+.navbar {
+    width: 100%;
+}
+
+.navbar-logged-user {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    color: rgb(93, 45, 93);
+    text-decoration: none;
+    margin: 10px;
+    background-color: rgb(235, 37, 235);
+    padding: 8px 12px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
+.welcome-header {
+    font-style: oblique;
+}

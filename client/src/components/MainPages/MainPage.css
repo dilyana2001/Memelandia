@@ -1,0 +1,5 @@
+.main-container {
+    /* text-align-last: center; */
+    display: flex;
+    justify-content: center;
+}

@@ -1,6 +1,7 @@
 import postService from "../../../Service/postService";
 
 import './EditPost.css';
+import '../MainPage.css';
 
 const EditPost = ({ match, history }) => {
     const username = localStorage.getItem('username');
@@ -15,7 +16,7 @@ const EditPost = ({ match, history }) => {
     }
 
     return (
-        <div>
+        <div className="main-container">
             <h2>Edit Post</h2>
             <form onSubmit={createPostHandler}>
                 <input type="text" placeholder="Title" name="title" />

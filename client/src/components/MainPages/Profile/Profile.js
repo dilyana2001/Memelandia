@@ -4,6 +4,7 @@ import postService from "../../../Service/postService";
 import PostTemplate from '../../ComponentTemplates/PostTemplate/PostTemplate';
 
 import './Profile.css';
+import '../MainPage.css';
 
 const Profile = () => {
     const username = localStorage.getItem('username');
@@ -16,7 +17,7 @@ const Profile = () => {
     }, []);
 
     return (
-        <main className="container personInfo">
+        <div className="main-container">
             <section> <img className="profile-image" src="https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg" alt={username} /></section>
             <section>
                 <h2> {username}</h2>
@@ -33,7 +34,7 @@ const Profile = () => {
                     )}
                 </ul>
             </section>
-        </main>
+        </div>
     );
 }
 export default Profile;

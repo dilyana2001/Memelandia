@@ -1,6 +1,7 @@
 import postService from "../../../Service/postService";
 
 import './CreatePost.css';
+import '../MainPage.css';
 
 const CreatePost = ({history }) => {
     const username = localStorage.getItem('username')
@@ -15,7 +16,7 @@ const CreatePost = ({history }) => {
     }
 
     return (
-        <div>
+        <div className="main-container">
             <h2>Create Post</h2>
             <form onSubmit={createPostHandler}>
                 <input type="text" placeholder="Title" name="title" />

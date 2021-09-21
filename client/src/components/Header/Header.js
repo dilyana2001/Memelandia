@@ -2,34 +2,34 @@ import { NavLink } from 'react-router-dom';
 
 import auth from '../../Service/auth';
 
-import './Header.css'
+import './Header.css';
 
 const Header = () => {
     const username = localStorage.getItem('username');
     return (
-        <header id="site-header">
+        <header className="site-header">
             <nav className="navbar">
-                <section className="navbar-logged-user">
-                    <div className="first-bar">
+                <ul className="navbar-logged-user">
+                    <li className="first-bar">
                         <NavLink className="button" to='/'>Home</NavLink>
                         <NavLink className="button" to="/create-post">Create Post</NavLink>
                         <NavLink className="button" to={`/profile`}>Profile</NavLink>
-                    </div>
-                    <div className="second-bar">
+                    </li>
+                    <li className="second-bar">
                         <ul>
-                            <li>Welcome, {username || 'guest'}</li>
+                            <li className="welcome-header">Welcome, {username}</li>
                             <li><NavLink to="#" onClick={() => {
                                 auth.logout();
                             }}> Logout</NavLink></li>
                         </ul>
-                    </div>
-                </section>
-                <section className="navbar-anonymous">
-                    <ul>
-                        <li><NavLink to="/register">Register</NavLink></li>
-                        <li><NavLink to="/login">Login</NavLink></li>
-                    </ul>
-                </section>
+                    </li>
+                </ul>
+                <ul className="navbar-anonymous">
+                    <li>
+                        <NavLink to="/register">Register</NavLink>
+                        <NavLink to="/login">Login</NavLink>
+                    </li>
+                </ul>
             </nav>
         </header>
     );

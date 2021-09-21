@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import postService from "../../../Service/postService";
 
 import './PostDetails.css';
+import '../MainPage.css';
 
 const PostDetails = ({ match }) => {
 
@@ -15,7 +16,7 @@ const PostDetails = ({ match }) => {
     }, [match])
 
     return (
-        <div className="postTemplate container">
+        <div className="main-container">
             <p className="description">{post._ownerName} post:</p>
             <nav className="postDetails-header-nav">
                 <ul>
