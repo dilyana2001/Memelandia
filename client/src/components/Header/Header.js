@@ -18,8 +18,8 @@ const Header = () => {
                 </section>
                 <section className="navbar-anonymous">
                     <ul>
-                        <li><NavLink to="#">Register</NavLink></li>
-                        <li><NavLink to="#">Login</NavLink></li>
+                        <li><NavLink to="/register">Register</NavLink></li>
+                        <li><NavLink to="/login">Login</NavLink></li>
                     </ul>
                 </section>
             </nav>
