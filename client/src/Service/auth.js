@@ -33,9 +33,25 @@ function register(data) {
         .catch((err) => console.log(err.message));
 }
 
+function logout() {
+    return fetch(`${baseUrl}/users/logout`, {
+        method: 'GET',
+        headers: {
+            'X-Authorization': localStorage.getItem('auth_token')
+        }
+    })
+        .then(() => {
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('username');
+            localStorage.removeItem('email');
+            localStorage.removeItem('ownerId');
+        })
+        .catch((err) => console.log(err.message));
+}
 
 
 export default {
     login,
-    register
+    register,
+    logout
 }

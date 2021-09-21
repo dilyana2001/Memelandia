@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import postService from "../../Service/postService";
 import PostTemplate from '../PostTemplate/PostTemplate'
 
-const HomePage = () => {
+const HomePage = ({ match }) => {
 
     const [posts, setPost] = useState([])
 
@@ -10,7 +10,7 @@ const HomePage = () => {
         postService.getAllPost()
             .then(setPost)
     }, [])
-    
+
     return (
         <main className="container">
             <section>

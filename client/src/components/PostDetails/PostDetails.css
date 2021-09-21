@@ -1,0 +1,8 @@
+.postDetails-header-nav ul {
+    display: flex;
+    place-content: center;
+}
+
+.postDetails-header-nav ul li {
+    margin: 0 120px;
+}
