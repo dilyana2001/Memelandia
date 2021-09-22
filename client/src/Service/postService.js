@@ -78,6 +78,41 @@ function getMyMemes(id) {
         .catch((err) => console.log(err.message));
 }
 
+function getLikes(movieId) {
+    return fetch(`${baseUrl}/data/likes?where=movieId%3D%22${movieId}%22&distinct=_ownerId&count`)
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
+
+function checkCurrentUserLikeTheCurrentMovie(movieId, userId) {
+    return fetch(`${baseUrl}/data/likes?where=movieId%3D%22${movieId}%22%20and%20_ownerId%3D%22${userId}%22`)
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
+
+function putLike(movieId) {
+    return fetch(`${baseUrl}/data/likes`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('auth_token')
+        },
+        body: JSON.stringify({ movieId })
+    })
+    .then(res => res.json())
+    .catch((err) => console.log(err.message));
+}
+
+function removeLike(id) {
+    return fetch(`${baseUrl}/data/likes/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('auth_token')
+        }
+    })
+    .catch((err) => console.log(err.message));
+}
 
 export default {
     getAllPost,
@@ -87,4 +122,8 @@ export default {
     deletePost,
     editPost,
     getMyMemes,
+    getLikes,
+    checkCurrentUserLikeTheCurrentMovie,
+    putLike,
+    removeLike,
 }

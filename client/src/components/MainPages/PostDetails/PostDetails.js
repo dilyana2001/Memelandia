@@ -10,10 +10,34 @@ const PostDetails = ({ match }) => {
 
     const [post, setPost] = useState({});
 
+    const [likes, setLikes] = useState([]);
+
+    let [myLike, setMyLikes] = useState({});
+
+    const userId = localStorage.getItem('ownerId');
+
     useEffect(() => {
         postService.getPost(match.params.postId)
             .then(setPost)
     }, [match])
+
+    useEffect(() => {
+        postService.getLikes(match.params.postId)
+            .then(setLikes)
+    }, [match])
+
+    useEffect(() => {
+        postService.checkCurrentUserLikeTheCurrentMovie(match.params.postId, userId)
+            .then(setMyLikes)
+    }, [match])
+
+    const putLike = () => {
+        postService.putLike(post._id)
+    }
+
+    const revokeLike = () => {
+            postService.removeLike(myLike[0]._id)
+    }
 
     return (
         <div className="main-container">
@@ -38,9 +62,9 @@ const PostDetails = ({ match }) => {
                     <section>
                         <p className="description">{post.description || 'Description...'}</p>
                         <div className="post-info">
-                            <span> 10 people likes that.</span>
-                            <NavLink to='/'>Like</NavLink>
-                            <NavLink to='/'>Unlike</NavLink>
+                            <span> {likes} people likes that.</span>
+                            <NavLink onClick={putLike} to='#'>Like</NavLink>
+                            <NavLink onClick={revokeLike} to='#'>Unlike</NavLink>
                             <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
                         </div>
                     </section>
