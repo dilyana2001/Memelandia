@@ -19,18 +19,22 @@ const Login = ({ history }) => {
     }
 
     return (
-        <form onSubmit={onSubmitHandler}>
-            <div className="mb-3">
-                <label htmlFor="email" className="form-label">Email address</label>
-                <input type="email" className="form-control" id="email" aria-describedby="emailHelp" name='email' />
-                <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+        <div className="main-container">
+            <div className="editForm">
+                <h2>Login</h2>
+                <form onSubmit={onSubmitHandler}>
+                    <div className="mb-3">
+                        <label htmlFor="email" className="form-label">Email address</label>
+                        <input type="email" className="form-control" id="email" aria-describedby="emailHelp" name='email' />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="password" className="form-label">Password</label>
+                        <input type="password" className="form-control" id="password" name='password' />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </form>
             </div>
-            <div className="mb-3">
-                <label htmlFor="password" className="form-label">Password</label>
-                <input type="password" className="form-control" id="password" name='password' />
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
+        </div>
     )
 }
 export default Login;

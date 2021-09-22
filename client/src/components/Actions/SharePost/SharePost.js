@@ -19,9 +19,14 @@ const SharePost = ({ match, history }) => {
             })
     }, [match])
     return (
-        <div>
-            <h3>You Shared the Post!</h3>
-            <NavLink to='/'>Go back to Home</NavLink>
+        <div className="main-container">
+            <div className="you-shared-delete-section">
+                <h3>You Shared the Post!</h3>
+                <div className="go-back">
+                    <NavLink to='/'>Go to Home</NavLink>
+                    <NavLink to='/profile'>Go to Profile</NavLink>
+                </div>
+            </div>
         </div>
     );
 }

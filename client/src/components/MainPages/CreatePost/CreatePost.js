@@ -1,9 +1,9 @@
 import postService from "../../../Service/postService";
 
-import './CreatePost.css';
+import '../EditPost/EditPost.css';
 import '../MainPage.css';
 
-const CreatePost = ({history }) => {
+const CreatePost = ({ history }) => {
     const username = localStorage.getItem('username')
 
     const createPostHandler = (e) => {
@@ -17,13 +17,18 @@ const CreatePost = ({history }) => {
 
     return (
         <div className="main-container">
-            <h2>Create Post</h2>
-            <form onSubmit={createPostHandler}>
-                <input type="text" placeholder="Title" name="title" />
-                <input type="text" placeholder="imageURL" name="img" />
-                <textarea type="text" placeholder="Description" name="description" />
-                <button>Post!</button>
-            </form>
+            <div className="editForm">
+                <h2>Create Post</h2>
+                <form onSubmit={createPostHandler}>
+                    <label htmlFor="title-input-create">Title:</label>
+                    <input type="text" placeholder="Title" name="title" id="title-input-create" />
+                    <label htmlFor="img-input-create">Image URL:</label>
+                    <input type="text" placeholder="imageURL" name="img" id="img-input-create" />
+                    <label htmlFor="description-textarea-create">Description:</label>
+                    <textarea type="text" placeholder="Description" name="description" id="description-textarea-create" />
+                    <button>Post!</button>
+                </form>
+            </div>
         </div>
     );
 }

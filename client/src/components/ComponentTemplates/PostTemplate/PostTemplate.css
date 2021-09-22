@@ -6,6 +6,16 @@
     margin: 50px;
 }
 
+.postTemplate a {
+    color: rgb(93, 45, 93);
+    text-decoration: none;
+    margin: 10px;
+    background-color: rgb(235, 37, 235);
+    padding: 8px 12px;
+    border-radius: 30px;
+    font-weight: bold;
+}
+
 .postTemplate .username-paragraph {
     font-size: 1.4em;
     align-self: center;
@@ -37,4 +47,26 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.meme-info {
+    text-align-last: center
+}
+
+.meme-info p {
+    text-align-last: start;
+    margin-left: 50px;
+}
+
+.meme-info img {
+    margin-bottom: 50px;
+}
+
+.post-info {
+    text-align-last: start;
+    margin: 15px 0 30px 20px;
+}
+
+.post-info a {
+    margin: 20px;
 }

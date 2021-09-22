@@ -17,26 +17,37 @@ const PostDetails = ({ match }) => {
 
     return (
         <div className="main-container">
-            <p className="description">{post._ownerName} post:</p>
-            <nav className="postDetails-header-nav">
-                <ul>
-                    <li>
-                        <h3>{post.title}</h3>
-                    </li>
-                    <li>
-                        <NavLink to={`/edit/${post._id}`}><button className="button">Edit</button></NavLink>
-                        <NavLink to={`/delete/${post._id}`}><button className="button">Delete</button></NavLink>
-                    </li>
-                </ul>
-            </nav>
-            <p className="img"><img src={post.img} /></p>
-            <p className="description">{post.description}</p>
-            <div className="post-info">
-                <span> 10 people likes that.</span>
-                <NavLink to='/'><button className="button">Like</button></NavLink>
-                <NavLink to='/'><button className="button">Unlike</button></NavLink>
-                <NavLink to={`/share-post/${post._id}`}><button className="button">Share</button></NavLink>
+            <div className="postDetails">
+                <div className="user-info">
+                    <img className="profile-image" src="https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg" />
+                    <p className="username-paragraph">{post._ownerName} post:</p>
+                </div>
+                <nav className="postDetails-header-nav">
+                    <ul>
+                        <li>
+                            <h3>{post.title}</h3>
+                        </li>
+                        <li>
+                            <NavLink to={`/edit/${post._id}`}>Edit</NavLink>
+                            <NavLink to={`/delete/${post._id}`}>Delete</NavLink>
+                        </li>
+                    </ul>
+                </nav>
+                <div className="description-post-info">
+                    <p className="img"><img src={post.img} /></p>
+                    <section>
+                        <p className="description">{post.description || 'Description...'}</p>
+                        <div className="post-info">
+                            <span> 10 people likes that.</span>
+                            <NavLink to='/'>Like</NavLink>
+                            <NavLink to='/'>Unlike</NavLink>
+                            <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
+                        </div>
+                    </section>
+                </div>
+
             </div>
+
         </div>
     );
 }

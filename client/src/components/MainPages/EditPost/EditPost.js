@@ -17,13 +17,18 @@ const EditPost = ({ match, history }) => {
 
     return (
         <div className="main-container">
-            <h2>Edit Post</h2>
-            <form onSubmit={createPostHandler}>
-                <input type="text" placeholder="Title" name="title" />
-                <input type="text" placeholder="imageURL" name="img" />
-                <textarea type="text" placeholder="Description" name="description" />
-                <button>Post!</button>
-            </form>
+            <div className="editForm">
+                <h2>Edit Post</h2>
+                <form onSubmit={createPostHandler}>
+                    <label htmlFor="title-input">Title:</label>
+                    <input type="text" placeholder="Title" name="title" id="title-input" />
+                    <label htmlFor="img-input">Image URL:</label>
+                    <input type="text" placeholder="imageURL" name="img" id="img-input" />
+                    <label htmlFor="description-textarea">Description:</label>
+                    <textarea type="text" placeholder="Description" name="description" id="description-textarea"/>
+                    <button>Post!</button>
+                </form>
+            </div>
         </div>
     );
 }

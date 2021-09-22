@@ -1,9 +1,30 @@
 .profile-image {
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 150px;
+    max-height: 150px;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 10px solid #393a3a;
+    border: 10px solid rgb(24, 3, 18);
     object-fit: cover;
+}
+
+.profile-section {
+    margin-top: 20px;
+}
+
+.profile-section .info-section {
+    display: flex;
+}
+
+.profile-section .info-section section {
+    margin: 30px;
+}
+
+.profile-section .info-section section h2 {
+    margin: 10px 0;
+}
+
+.profile-section .info-section section p {
+    margin: 0;
+    width: 650px;
 }

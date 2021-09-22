@@ -1,11 +1,9 @@
-import { Link } from 'react-router-dom';
-
 import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer>
-            <Link to='#'><p>footer</p></Link>
+        <footer className="footer">
+            <a href='https://github.com/dilyana2001/Memelandia-React-Project/tree/master/client'><p>GitHub Memelandia</p></a>
         </footer>
     );
 }

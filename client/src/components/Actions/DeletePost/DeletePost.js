@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 import postService from "../../../Service/postService";
 
-import './DeletePost.css';
+import "../SharePost/SharePost"
 
 
 const DeletePost = ({ match }) => {
@@ -13,10 +13,14 @@ const DeletePost = ({ match }) => {
     }, [match]);
 
     return (
-        <div>
-            <h3>You Deleted The Post!</h3>
-            <NavLink to='/'>Go back to Home</NavLink>
-            <NavLink to='/profile'>Go back to Profile</NavLink>
+        <div className="main-container">
+            <div className="you-shared-delete-section">
+                <h3>You Deleted The Post!</h3>
+                <div className="go-back">
+                    <NavLink to='/'>Go back to Home</NavLink>
+                    <NavLink to='/profile'>Go back to Profile</NavLink>
+                </div>
+            </div>
         </div>
     );
 }

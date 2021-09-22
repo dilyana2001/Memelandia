@@ -18,7 +18,7 @@
     justify-content: space-between;
 }
 
-a {
+.navbar a {
     color: rgb(93, 45, 93);
     text-decoration: none;
     margin: 10px;
