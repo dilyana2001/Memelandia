@@ -12,19 +12,24 @@ const HomePage = () => {
 
     useEffect(() => {
         postService.getAllPost()
-            .then(setPost)
+            .then(res => {
+                // if(Math.random()>0.7){
+                //     throw new Error('Something went wrong. Please try again!')
+                // }
+                setPost(res)
+            })
     }, []);
 
     return (
         <div className="main-container">
-                <ul className="homePage-list">
-                    {posts?.map(x =>
-                        <PostTemplate
-                            key={x._id}
-                            data={x}
-                        />
-                    )}
-                </ul>
+            <ul className="homePage-list">
+                {posts?.map(x =>
+                    <PostTemplate
+                        key={x._id}
+                        data={x}
+                    />
+                )}
+            </ul>
         </div>
     );
 }
