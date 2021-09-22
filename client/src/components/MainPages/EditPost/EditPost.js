@@ -23,8 +23,7 @@ const EditPost = ({ match, history }) => {
                 history.push(`/details/${match.params.postId}`)
             })
     }
-
-    console.log(post);
+    
     return (
         <div className="main-container">
             <div className="editForm">

@@ -49,9 +49,16 @@ function logout() {
         .catch((err) => console.log(err.message));
 }
 
+function isAuthenticated() {
+    if (!localStorage.getItem) {
+        return;
+    }
+}
+
 
 export default {
     login,
     register,
-    logout
+    logout,
+    isAuthenticated
 }

@@ -9,9 +9,7 @@ import '../MainPage.css';
 const PostDetails = ({ match }) => {
 
     const [post, setPost] = useState({});
-
     const [likes, setLikes] = useState([]);
-
     let [myLike, setMyLikes] = useState({});
 
     const userId = localStorage.getItem('ownerId');
@@ -19,25 +17,22 @@ const PostDetails = ({ match }) => {
     useEffect(() => {
         postService.getPost(match.params.postId)
             .then(setPost)
-    }, [match])
+    }, [match]);
 
     useEffect(() => {
         postService.getLikes(match.params.postId)
             .then(setLikes)
-    }, [match])
+    }, [match]);
 
     useEffect(() => {
         postService.checkCurrentUserLikeTheCurrentMovie(match.params.postId, userId)
             .then(setMyLikes)
-    }, [match])
+    }, [match]);
 
-    const putLike = () => {
-        postService.putLike(post._id)
-    }
-
-    const revokeLike = () => {
-            postService.removeLike(myLike[0]._id)
-    }
+    const ownerEditDeleteBtns = <li>
+        <NavLink to={`/edit/${post._id}`}>Edit</NavLink>
+        <NavLink to={`/delete/${post._id}`}>Delete</NavLink>
+    </li>;
 
     return (
         <div className="main-container">
@@ -51,10 +46,7 @@ const PostDetails = ({ match }) => {
                         <li>
                             <h3>{post.title}</h3>
                         </li>
-                        <li>
-                            <NavLink to={`/edit/${post._id}`}>Edit</NavLink>
-                            <NavLink to={`/delete/${post._id}`}>Delete</NavLink>
-                        </li>
+                        {(userId != null && userId == post._ownerId) ? ownerEditDeleteBtns : ''}
                     </ul>
                 </nav>
                 <div className="description-post-info">
@@ -63,15 +55,13 @@ const PostDetails = ({ match }) => {
                         <p className="description">{post.description || 'Description...'}</p>
                         <div className="post-info">
                             <span> {likes} people likes that.</span>
-                            <NavLink onClick={putLike} to='#'>Like</NavLink>
-                            <NavLink onClick={revokeLike} to='#'>Unlike</NavLink>
+                            <NavLink onClick={() => postService.putLike(post._id)} to='#'>Like</NavLink>
+                            <NavLink onClick={() => postService.removeLike(myLike[0]._id)} to='#'>Unlike</NavLink>
                             <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
                         </div>
                     </section>
                 </div>
-
             </div>
-
         </div>
     );
 }
