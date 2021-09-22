@@ -29,6 +29,14 @@ const PostDetails = ({ match }) => {
             .then(setMyLikes)
     }, [match]);
 
+    const putLike = () => {
+        postService.putLike(post._id)
+    }
+
+    const revokeLike = () => {
+        postService.removeLike(myLike[0]._id)
+    }
+
     const ownerEditDeleteBtns = <li>
         <NavLink to={`/edit/${post._id}`}>Edit</NavLink>
         <NavLink to={`/delete/${post._id}`}>Delete</NavLink>
@@ -55,13 +63,15 @@ const PostDetails = ({ match }) => {
                         <p className="description">{post.description || 'Description...'}</p>
                         <div className="post-info">
                             <span> {likes} people likes that.</span>
-                            <NavLink onClick={() => postService.putLike(post._id)} to='#'>Like</NavLink>
-                            <NavLink onClick={() => postService.removeLike(myLike[0]._id)} to='#'>Unlike</NavLink>
+                            <NavLink onClick={putLike} to='#'>Like</NavLink>
+                            <NavLink onClick={revokeLike} to='#'>Unlike</NavLink>
                             <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
                         </div>
                     </section>
                 </div>
+
             </div>
+
         </div>
     );
 }
