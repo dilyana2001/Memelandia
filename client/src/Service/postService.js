@@ -12,7 +12,7 @@ function getPost(id) {
         .catch((err) => console.log(err.message));
 }
 
-function postPost(data, username) {
+function postPost(data, username, userId) {
     return fetch(`${baseUrl}/posts`, {
             method: 'POST',
             headers: {
@@ -21,9 +21,10 @@ function postPost(data, username) {
             },
             body: JSON.stringify({
                 title: data.get('title'),
-                img: data.get('imageUrl'),
+                imageUrl: data.get('imageUrl'),
                 description: data.get('description'),
-                _ownerName: username
+                username: username,
+                userId:userId
             })
         })
         .then(res => res.json())

@@ -3,7 +3,7 @@ const authController = require('./controllers/authController');
 const postController = require('./controllers/postController');
 
 router.use('/auth', authController);
-router.use('/posts', postController)
+router.use('/posts', postController);
 
 
 module.exports = router;

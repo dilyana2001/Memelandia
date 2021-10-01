@@ -4,13 +4,15 @@ import '../EditPost/EditPost.css';
 import '../MainPage.css';
 
 const CreatePost = ({ history }) => {
-    const username = localStorage.getItem('username')
+    const username = localStorage.getItem('username');
+    const userId = localStorage.getItem('userId');
 
     const createPostHandler = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-        postService.postPost(formData, username)
+        postService.postPost(formData, username, userId)
             .then((meme) => {
+                console.log(meme)
                 // history.push(`/details/${meme._id}`)
             })
     }

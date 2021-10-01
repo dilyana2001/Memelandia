@@ -9,25 +9,28 @@ import '../MainPage.css';
 const PostDetails = ({ match }) => {
 
     const [post, setPost] = useState({});
-    const [likes, setLikes] = useState([]);
-    let [myLike, setMyLikes] = useState({});
+    // const [likes, setLikes] = useState([]);
+    // let [myLike, setMyLikes] = useState({});
 
-    const userId = localStorage.getItem('ownerId');
+    // const userId = localStorage.getItem('userId');
 
     useEffect(() => {
         postService.getPost(match.params.postId)
-            .then(setPost)
+            .then(post => {
+                console.log(post);
+                setPost(post)
+            })
     }, [match]);
 
-    useEffect(() => {
-        postService.getLikes(match.params.postId)
-            .then(setLikes)
-    }, [match]);
+    // useEffect(() => {
+    //     postService.getLikes(match.params.postId)
+    //         .then(setLikes)
+    // }, [match]);
 
-    useEffect(() => {
-        postService.checkCurrentUserLikeTheCurrentMovie(match.params.postId, userId)
-            .then(setMyLikes)
-    }, [match]);
+    // useEffect(() => {
+    //     postService.checkCurrentUserLikeTheCurrentMovie(match.params.postId, userId)
+    //         .then(setMyLikes)
+    // }, [match]);
 
     // const putLike = () => {
     //     postService.putLike(post._id)
@@ -62,16 +65,14 @@ const PostDetails = ({ match }) => {
                     <section>
                         <p className="description">{post.description || 'Description...'}</p>
                         <div className="post-info">
-                            <span> {likes} people likes that.</span>
+                            <span>people likes that.</span>
                             {/* <NavLink onClick={putLike} to='#'>Like</NavLink>
                             <NavLink onClick={revokeLike} to='#'>Unlike</NavLink> */}
                             <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
                         </div>
                     </section>
                 </div>
-
             </div>
-
         </div>
     );
 }
