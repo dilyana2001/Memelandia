@@ -29,42 +29,42 @@ const PostDetails = ({ match }) => {
             .then(setMyLikes)
     }, [match]);
 
-    const putLike = () => {
-        postService.putLike(post._id)
-    }
+    // const putLike = () => {
+    //     postService.putLike(post._id)
+    // }
 
-    const revokeLike = () => {
-        postService.removeLike(myLike[0]._id)
-    }
+    // const revokeLike = () => {
+    //     postService.removeLike(myLike[0]._id)
+    // }
 
-    const ownerEditDeleteBtns = <li>
-        <NavLink to={`/edit/${post._id}`}>Edit</NavLink>
-        <NavLink to={`/delete/${post._id}`}>Delete</NavLink>
-    </li>;
+    // const ownerEditDeleteBtns = <li>
+    //     <NavLink to={`/edit/${post._id}`}>Edit</NavLink>
+    //     <NavLink to={`/delete/${post._id}`}>Delete</NavLink>
+    // </li>;
 
     return (
         <div className="main-container">
             <div className="postDetails">
                 <div className="user-info">
                     <img className="profile-image" src="https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg" />
-                    <p className="username-paragraph">{post._ownerName} post:</p>
+                    <p className="username-paragraph">someone post:</p>
                 </div>
                 <nav className="postDetails-header-nav">
                     <ul>
                         <li>
                             <h3>{post.title}</h3>
                         </li>
-                        {(userId != null && userId == post._ownerId) ? ownerEditDeleteBtns : ''}
+                        {/* {(userId != null && userId == post._ownerId) ? ownerEditDeleteBtns : ''} */}
                     </ul>
                 </nav>
                 <div className="description-post-info">
-                    <p className="img"><img src={post.img} /></p>
+                    <p className="img"><img src={post.imageUrl} /></p>
                     <section>
                         <p className="description">{post.description || 'Description...'}</p>
                         <div className="post-info">
                             <span> {likes} people likes that.</span>
-                            <NavLink onClick={putLike} to='#'>Like</NavLink>
-                            <NavLink onClick={revokeLike} to='#'>Unlike</NavLink>
+                            {/* <NavLink onClick={putLike} to='#'>Like</NavLink>
+                            <NavLink onClick={revokeLike} to='#'>Unlike</NavLink> */}
                             <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
                         </div>
                     </section>
