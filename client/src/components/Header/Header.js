@@ -7,7 +7,7 @@ import './Header.css';
 const Header = () => {
 
     const username = localStorage.getItem('username');
-    const token = localStorage.getItem('auth_token')
+    const token = localStorage.getItem('token')
 
     const navbarLoggedUser =
         <ul className="navbar-logged-user">
@@ -38,7 +38,7 @@ const Header = () => {
     return (
         <header className="site-header">
             <nav className="navbar">
-                {(token != null) ? navbarLoggedUser : navbarAnonymous}
+                {token != null ? navbarLoggedUser : navbarAnonymous}
             </nav>
         </header>
     );

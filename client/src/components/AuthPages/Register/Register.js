@@ -10,11 +10,10 @@ const Register = ({ history }) => {
         if (formData.get('password') == formData.get('rePass')) {
             auth.register(formData)
                 .then(() => history.push('/login'))
-        }else{
-           history.push('/')
+        } else {
+            alert(`Try Again!`)
         }
     }
-
 
     return (
         <div className="main-container">
@@ -32,6 +31,7 @@ const Register = ({ history }) => {
                     <div className="mb-3">
                         <label htmlFor="rePass" className="form-label">Password</label>
                         <input type="password" className="form-control" id="rePass" name='rePass' />
+                        <span>Please don't forget your password!</span>
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>

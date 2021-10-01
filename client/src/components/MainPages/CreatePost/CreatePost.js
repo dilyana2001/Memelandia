@@ -11,7 +11,7 @@ const CreatePost = ({ history }) => {
         const formData = new FormData(e.target);
         postService.postPost(formData, username)
             .then((meme) => {
-                history.push(`/details/${meme._id}`)
+                // history.push(`/details/${meme._id}`)
             })
     }
 
@@ -23,7 +23,7 @@ const CreatePost = ({ history }) => {
                     <label htmlFor="title-input-create">Title:</label>
                     <input type="text" placeholder="Title" name="title" id="title-input-create" />
                     <label htmlFor="img-input-create">Image URL:</label>
-                    <input type="text" placeholder="imageURL" name="img" id="img-input-create" />
+                    <input type="text" placeholder="imageURL" name="imageUrl" id="img-input-create" />
                     <label htmlFor="description-textarea-create">Description:</label>
                     <textarea type="text" placeholder="Description" name="description" id="description-textarea-create" />
                     <button>Post!</button>

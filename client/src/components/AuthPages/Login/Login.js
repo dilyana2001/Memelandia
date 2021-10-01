@@ -11,7 +11,7 @@ const Login = ({ history }) => {
         auth.login(formData)
             .then(data => {
                 console.log(data)
-                localStorage.setItem('user-token', data['user-token']);
+                localStorage.setItem('token', data.token);
                 localStorage.setItem('username', data.username);
                 localStorage.setItem('userId', data._id);
                 history.push('/')
