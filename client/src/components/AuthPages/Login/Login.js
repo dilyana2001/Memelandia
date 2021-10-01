@@ -10,10 +10,10 @@ const Login = ({ history }) => {
         const formData = new FormData(e.currentTarget);
         auth.login(formData)
             .then(data => {
-                localStorage.setItem('auth_token', data.accessToken);
-                localStorage.setItem('email', data.email);
+                console.log(data)
+                localStorage.setItem('user-token', data['user-token']);
                 localStorage.setItem('username', data.username);
-                localStorage.setItem('ownerId', data._id);
+                localStorage.setItem('userId', data._id);
                 history.push('/')
             })
     }
@@ -24,8 +24,8 @@ const Login = ({ history }) => {
                 <h2>Login</h2>
                 <form onSubmit={onSubmitHandler}>
                     <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Email address</label>
-                        <input type="email" className="form-control" id="email" aria-describedby="emailHelp" name='email' />
+                        <label htmlFor="username" className="form-label">Username</label>
+                        <input type="text" className="form-control" id="username" name="username" />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="password" className="form-label">Password</label>

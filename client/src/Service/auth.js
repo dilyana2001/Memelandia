@@ -1,13 +1,13 @@
-const baseUrl = 'http://localhost:3030';
+const baseUrl = 'http://localhost:5000/api';
 
 function login(data) {
-    return fetch(`${baseUrl}/users/login`, {
+    return fetch(`${baseUrl}/auth/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            email: data.get('email'),
+            username: data.get('username'),
             password: data.get('password')
         })
     })
@@ -16,17 +16,15 @@ function login(data) {
 }
 
 function register(data) {
-    return fetch(`${baseUrl}/users/register`, {
+    return fetch(`${baseUrl}/auth/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            email: data.get('email'),
             password: data.get('password'),
             rePass: data.get('rePass'),
             username: data.get('username'),
-
         })
     })
         .then(res => res.json())
@@ -34,7 +32,7 @@ function register(data) {
 }
 
 function logout() {
-    return fetch(`${baseUrl}/users/logout`, {
+    return fetch(`${baseUrl}/auth/logout`, {
         method: 'GET',
         headers: {
             'X-Authorization': localStorage.getItem('auth_token')

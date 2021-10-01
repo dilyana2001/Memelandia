@@ -31,3 +31,7 @@
 .welcome-header {
     font-style: oblique;
 }
+
+.first-bar .active {
+    background: yellow;
+}

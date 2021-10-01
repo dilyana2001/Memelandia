@@ -12,7 +12,7 @@ const Header = () => {
     const navbarLoggedUser =
         <ul className="navbar-logged-user">
             <li className="first-bar">
-                <NavLink className="button" to='/'>Home</NavLink>
+                <NavLink className="button" to='/' exact >Home</NavLink>
                 <NavLink className="button" to="/create-post">Create Post</NavLink>
                 <NavLink className="button" to={`/profile`}>Profile</NavLink>
             </li>
@@ -29,6 +29,7 @@ const Header = () => {
     const navbarAnonymous =
         <ul className="navbar-anonymous">
             <li>
+            <NavLink className="button" to='/' exact >Home</NavLink>
                 <NavLink to="/register">Register</NavLink>
                 <NavLink to="/login">Login</NavLink>
             </li>
