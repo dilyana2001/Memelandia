@@ -2,9 +2,9 @@ const router = require('express').Router();
 const Comment = require('../models/Comment');
 const { isAuth } = require('../middlewares/auth');
 
-router.get('/', (req, res) => {
-    Comment.find()
-        .then(comments => res.json(comments))
+router.get('/postId/:id', (req, res) => {
+    Comment.find({ postId: req.params.id })
+        .then(comment => res.json(comment))
 });
 
 router.post('/', (req, res) => {

@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import postService from "../../../Service/postService";
+import CommentTemplate from '../../ComponentTemplates/CommentTemplate/CommentTemplate'
 
 import './PostDetails.css';
 import '../MainPage.css';
@@ -9,15 +10,26 @@ import '../MainPage.css';
 const PostDetails = ({ match }) => {
 
     const [post, setPost] = useState({});
+    const [comments, setComments] = useState([]);
+
     // const [likes, setLikes] = useState([]);
     // let [myLike, setMyLikes] = useState({});
 
     const userId = localStorage.getItem('userId');
+    const username = localStorage.getItem('username');
+
 
     useEffect(() => {
         postService.getPost(match.params.postId)
             .then(setPost)
     }, [match]);
+
+
+    useEffect(() => {
+        postService.getAllComments(match.params.postId)
+            .then(setComments)
+    }, [match]);
+
 
     // useEffect(() => {
     //     postService.getLikes(match.params.postId)
@@ -54,16 +66,27 @@ const PostDetails = ({ match }) => {
                         <li>
                             <h3></h3>
                         </li>
-                        { userId == post.userId ? ownerEditDeleteBtns : ''}
+                        {userId == post.userId ? ownerEditDeleteBtns : ''}
                     </ul>
                 </nav>
                 <div className="description-post-info">
                     <p className="img"><img src={post.imageUrl} /></p>
                     <section>
-                        <h2 className="description">{post.description}</h2>
-
+                        <p className="description">{post.description}</p>
+                        <section>
+                            <div className="comment-container">
+                                <ul className="comment-list">
+                                    {comments?.map(x =>
+                                        <CommentTemplate
+                                            key={x._id}
+                                            data={x}
+                                        />
+                                    )}
+                                </ul>
+                            </div>
+                        </section>
                         <div className="post-info">
-                         <p><span>people likes that.</span></p>   
+                            <p><span>people likes that.</span></p>
                             {/* <NavLink onClick={putLike} to='#'>Like</NavLink> */}
                             {/* <NavLink onClick={revokeLike} to='#'>Unlike</NavLink> */}
                             <NavLink to={`/comments/${post._id}`}>Comment</NavLink>

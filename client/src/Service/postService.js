@@ -77,7 +77,13 @@ function getMyPosts(id) {
         .catch((err) => console.log(err.message));
 }
 
-function commentPost(postId, comment, username, userId){
+function getAllComments(postId) {
+    return fetch(`${baseUrl}/comments/postId/${postId}`)
+    .then(res => res.json())
+    .catch((err) => console.log(err.message));
+}
+
+function commentPost(postId, comment, username, userId) {
     return fetch(`${baseUrl}/comments`, {
         method: 'POST',
         headers: {
@@ -159,6 +165,7 @@ export default {
     editPost,
     getMyPosts,
     commentPost,
+    getAllComments,
     // getLikes,
     // checkCurrentUserLikeTheCurrentMovie,
     // putLike,
