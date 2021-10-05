@@ -1,33 +1,35 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import postService from "../../../Service/postService";
+import auth from '../../../Service/auth'
 import PostTemplate from '../../ComponentTemplates/PostTemplate/PostTemplate';
 
 import './Profile.css';
 import '../MainPage.css';
 
-const Profile = () => {
-    const username = localStorage.getItem('username');
-    const userId = localStorage.getItem('userId');
+const Profile = ({match}) => {
     const [posts, setPosts] = useState([]);
+    const [profile, setProfile] = useState({})
 
     useEffect(() => {
-        postService.getMyPosts(userId)
-            .then(posts=>{
-                setPosts(posts)
-                console.log(posts);
-            })
+        postService.getMyPosts(match.params.userId)
+            .then(posts=>  setPosts(posts))
     }, []);
-
+    
+    useEffect(() => {
+        auth.getProfileInfo(match.params.userId)
+            .then(setProfile)
+    }, [])
+console.log('profile', profile);
     return (
         <div className="main-container">
             <div className="profile-section">
                 <div className="info-section">
-                    <img className="profile-image" src="https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg" alt={username} />
+                   <Link to="#"> <img className="profile-image" src="https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg"  /></Link>
                     <section>
-                        <h2> {username}</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nemo cum eaque illum molestias vitae beatae odit nam. Sunt quibusdam labore magnam architecto laudantium velit repudiandae vel, id voluptas minus?
-                        </p>
+                        {/* <h2> {profile.username}</h2>
+                        <p>  {profile.info}</p> */}
                     </section>
                 </div>
                 <section>

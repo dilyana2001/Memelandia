@@ -137,25 +137,6 @@ function commentPost(postId, comment, username, userId) {
 //         .catch((err) => console.log(err.message));
 // }
 
-
-// function postProfileInfo(data, username, userId) {
-//     return fetch(`${baseUrl}/profile-edit`, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'X-Authorization': localStorage.getItem('token')
-//         },
-//         body: JSON.stringify({
-//             picture: data.get('picture'),
-//             info: data.get('info'),
-//             username: username,
-//             userId: userId
-//         })
-//     })
-//         .then(res => res.json())
-//         .catch((err) => console.log(err.message));
-// }
-
 export default {
     getAllPost,
     postExistingPost,
@@ -170,5 +151,4 @@ export default {
     // checkCurrentUserLikeTheCurrentMovie,
     // putLike,
     // removeLike,
-    // postProfileInfo,
 }

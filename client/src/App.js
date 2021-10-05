@@ -27,7 +27,7 @@ function App() {
           <Route path='/' exact component={HomePage} />
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
-          <Route path='/profile' exact component={Profile} />
+          <Route path='/profile/:userId' exact component={Profile} />
           <Route path='/create-post' component={CreatePost} />
           <Route path='/details/:postId' component={PostDetails} />
           <Route path='/share-post/:postId' component={SharePost} />

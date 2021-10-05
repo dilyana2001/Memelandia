@@ -52,10 +52,37 @@ function isAuthenticated() {
     }
 }
 
+function getProfileInfo(userId) {
+    return fetch(`${baseUrl}/profile/${userId}`)
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
+
+
+function postProfileInfo(data, username, userId) {
+    return fetch(`${baseUrl}/profile/${userId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('token')
+        },
+        body: JSON.stringify({
+            picture: data.get('picture'),
+            info: data.get('info'),
+            username: username,
+            userId: userId
+        })
+    })
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
+
 
 export default {
     login,
     register,
     logout,
-    isAuthenticated
+    isAuthenticated,
+    postProfileInfo,
+    getProfileInfo,
 }

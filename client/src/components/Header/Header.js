@@ -7,14 +7,16 @@ import './Header.css';
 const Header = () => {
 
     const username = localStorage.getItem('username');
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
+    const userId = localStorage.getItem('userId');
+
 
     const navbarLoggedUser =
         <ul className="navbar-logged-user">
             <li className="first-bar">
                 <NavLink className="button" to='/' exact >Home</NavLink>
                 <NavLink className="button" to="/create-post">Create Post</NavLink>
-                <NavLink className="button" to={`/profile`}>Profile</NavLink>
+                <NavLink className="button" to={`/profile/${userId}`}>Profile</NavLink>
             </li>
             <li className="second-bar">
                 <ul>
