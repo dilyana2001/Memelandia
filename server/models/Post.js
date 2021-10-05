@@ -14,6 +14,10 @@ const postSchema = new mongoose.Schema({
         type: String,
         maxlength: 100
     },
+    username:{
+        type: String,
+        ref: 'User'
+    },
     userId: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
