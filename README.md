@@ -1,2 +1,2 @@
 # Memelandia-React-Project
-SoftUni homework using React.js
+React project using React.js and rest api
