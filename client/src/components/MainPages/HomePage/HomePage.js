@@ -12,12 +12,7 @@ const HomePage = () => {
 
     useEffect(() => {
         postService.getAllPost()
-            .then(res => {
-                // if(Math.random()>0.7){
-                //     throw new Error('Something went wrong. Please try again!')
-                // }
-                setPost(res)
-            })
+            .then(setPost)
     }, []);
 
 

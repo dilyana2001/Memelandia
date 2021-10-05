@@ -11,7 +11,7 @@ const PostTemplate = ({ data }) => {
                     <p className="username-paragraph">{data.username} post:</p>
                 </div>
                 <div className="meme-info">
-                    <p>{data.title}</p>
+                    <p>{data.description}</p>
                     <img src={data.imageUrl} />
                     <div className="post-info">
                         <NavLink to={`/details/${data._id}`}>Details</NavLink>

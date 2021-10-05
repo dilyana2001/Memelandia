@@ -21,12 +21,10 @@ const CreatePost = ({ history }) => {
             <div className="editForm">
                 <h2>Create Post</h2>
                 <form onSubmit={createPostHandler}>
-                    <label htmlFor="title-input-create">Title:</label>
-                    <input type="text" placeholder="Title" name="title" id="title-input-create" />
-                    <label htmlFor="img-input-create">Image URL:</label>
-                    <input type="text" placeholder="imageURL" name="imageUrl" id="img-input-create" />
-                    <label htmlFor="description-textarea-create">Description:</label>
-                    <textarea type="text" placeholder="Description" name="description" id="description-textarea-create" />
+                    <label htmlFor="description">Description:</label>
+                    <input type="text" placeholder="Description" name="description" id="description" />
+                    <label htmlFor="imageURL">Image URL:</label>
+                    <input type="text" placeholder="imageURL" name="imageUrl" id="imageURL" />
                     <button>Post!</button>
                 </form>
             </div>

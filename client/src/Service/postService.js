@@ -20,7 +20,6 @@ function postPost(data, username, userId) {
             'X-Authorization': localStorage.getItem('token')
         },
         body: JSON.stringify({
-            title: data.get('title'),
             imageUrl: data.get('imageUrl'),
             description: data.get('description'),
             username: username,
@@ -35,7 +34,6 @@ function postExistingPost(id, userId, username) {
     return getPost(id)
         .then(data => {
             let formData = new FormData();
-            formData.append('title', data.title);
             formData.append('imageUrl', data.imageUrl);
             formData.append('description', data.description);
             formData.append('userId', userId)
@@ -63,7 +61,6 @@ function editPost(id, data, username, userId) {
             'X-Authorization': localStorage.getItem('token')
         },
         body: JSON.stringify({
-            title: data.get('title'),
             imageUrl: data.get('imageUrl'),
             description: data.get('description'),
             username: username,
@@ -74,9 +71,8 @@ function editPost(id, data, username, userId) {
         .catch((err) => console.log(err.message));
 }
 
-function getMyMemes(id) {
-    // return fetch(`${baseUrl}/posts?where=userId%3D%22${id}%22`)
-    return fetch(`${baseUrl}/posts/userId=${id}`)
+function getMyPosts(id) {
+    return fetch(`${baseUrl}/posts/userId/${id}`)
         .then(res => res.json())
         .catch((err) => console.log(err.message));
 }
@@ -143,7 +139,7 @@ export default {
     postPost,
     deletePost,
     editPost,
-    getMyMemes,
+    getMyPosts,
     // getLikes,
     // checkCurrentUserLikeTheCurrentMovie,
     // putLike,

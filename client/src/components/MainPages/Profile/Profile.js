@@ -12,8 +12,11 @@ const Profile = () => {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        postService.getMyMemes(userId)
-            .then(setPosts)
+        postService.getMyPosts(userId)
+            .then(posts=>{
+                setPosts(posts)
+                console.log(posts);
+            })
     }, []);
 
     return (
@@ -27,7 +30,6 @@ const Profile = () => {
                         </p>
                     </section>
                 </div>
-
                 <section>
                     <ul>
                         {posts?.map(x =>
@@ -39,7 +41,6 @@ const Profile = () => {
                     </ul>
                 </section>
             </div>
-
         </div>
     );
 }

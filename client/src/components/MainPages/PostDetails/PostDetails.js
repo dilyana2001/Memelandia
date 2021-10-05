@@ -16,9 +16,7 @@ const PostDetails = ({ match }) => {
 
     useEffect(() => {
         postService.getPost(match.params.postId)
-            .then(post => {
-                setPost(post)
-            })
+            .then(setPost)
     }, [match]);
 
     // useEffect(() => {
@@ -54,7 +52,7 @@ const PostDetails = ({ match }) => {
                 <nav className="postDetails-header-nav">
                     <ul>
                         <li>
-                            <h3>{post.title}</h3>
+                            <h3></h3>
                         </li>
                         { userId == post.userId ? ownerEditDeleteBtns : ''}
                     </ul>
@@ -62,7 +60,7 @@ const PostDetails = ({ match }) => {
                 <div className="description-post-info">
                     <p className="img"><img src={post.imageUrl} /></p>
                     <section>
-                        <p className="description">{post.description || 'Description...'}</p>
+                        <h2 className="description">{post.description || 'Description...'}</h2>
                         <div className="post-info">
                             <span>people likes that.</span>
                             {/* <NavLink onClick={putLike} to='#'>Like</NavLink>
