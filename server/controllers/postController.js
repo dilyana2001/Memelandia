@@ -21,6 +21,7 @@ router.get('/:postId', (req, res) => {
 router.delete('/:postId', (req, res) => {
     Post.findByIdAndRemove(req.params.postId)
         .then(deleted => res.status(200).json({ _id: deleted._id }))
+
 });
 
 router.put('/:postId', (req, res) => {
@@ -29,9 +30,9 @@ router.put('/:postId', (req, res) => {
         .then(updated => res.status(201).json({ _id: updated._id }))
 });
 
-router.get('/userId=:id', (req, res) => {
+router.get('/userId/:id', (req, res) => {
     Post.find({ userId: req.params.id })
-        .then(posts => { res.json(posts) })
+        .then(posts => res.json(posts))
 });
 
 module.exports = router;
