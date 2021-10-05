@@ -8,7 +8,6 @@ router.post('/register', (req, res, next) => {
     let user = new User(req.body);
     user.save()
         .then(createdUser => {
-            // console.log(createdUser);
             res.status(201).json({
                 _id: createdUser._id
             });
@@ -19,10 +18,8 @@ router.post('/register', (req, res, next) => {
 });
 
 router.post('/login', (req, res, next) => {
-    console.log(req.body);
     User.findOne({ username: req.body.username, password: req.body.password })
         .then(user => {
-            console.log(user);
             let token = jwt.sign({
                 _id: user._id,
                 username: user.username

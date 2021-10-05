@@ -39,10 +39,9 @@ function logout() {
         }
     })
         .then(() => {
-            localStorage.removeItem('auth_token');
+            localStorage.removeItem('token');
             localStorage.removeItem('username');
-            localStorage.removeItem('email');
-            localStorage.removeItem('ownerId');
+            localStorage.removeItem('userId');
         })
         .catch((err) => console.log(err.message));
 }

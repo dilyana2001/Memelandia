@@ -10,7 +10,6 @@ const Login = ({ history }) => {
         const formData = new FormData(e.currentTarget);
         auth.login(formData)
             .then(data => {
-                console.log(data)
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('username', data.username);
                 localStorage.setItem('userId', data._id);

@@ -13,10 +13,7 @@ const SharePost = ({ match, history }) => {
 
     useEffect(() => {
         postService.postExistingPost(match.params.postId, username)
-            .then(res => {
-                console.log(res);
-                setPost(res)
-            })
+            .then(setPost)
     }, [match])
     return (
         <div className="main-container">

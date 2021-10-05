@@ -20,6 +20,7 @@ const HomePage = () => {
             })
     }, []);
 
+
     return (
         <div className="main-container">
             <ul className="homePage-list">
@@ -30,6 +31,7 @@ const HomePage = () => {
                     />
                 )}
             </ul>
+
         </div>
     );
 }

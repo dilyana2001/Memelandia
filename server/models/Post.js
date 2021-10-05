@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const postSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
+        maxlength: 50
     },
     imageUrl: {
         type: String,
@@ -12,9 +12,9 @@ const postSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        maxlength: 50
+        maxlength: 100
     },
-    creator: {
+    userId: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
     }

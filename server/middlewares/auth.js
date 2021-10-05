@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const config = require('../devConfig')
+const config = require('../devConfig');
 
 function auth(req, res, next) {
     let authorizationHeader = req.get('Authorization');
@@ -18,9 +18,8 @@ function auth(req, res, next) {
 };
 
 function isAuth(req, res, next) {
-    console.log(req.user);
     if (!req.user) {
-        res.status(401).end({ errorData: { message: 'not authorozated' } });
+        res.status(401).end({ errorData: { message: 'You cannot perform this action!' } });
     }
     next();
 }

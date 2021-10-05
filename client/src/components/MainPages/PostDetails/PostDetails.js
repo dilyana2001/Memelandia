@@ -17,7 +17,6 @@ const PostDetails = ({ match }) => {
     useEffect(() => {
         postService.getPost(match.params.postId)
             .then(post => {
-                console.log(post);
                 setPost(post)
             })
     }, [match]);
