@@ -20,7 +20,15 @@ router.post('/',(req, res) => {
 
 router.get(('/:postId'), (req, res) => {
     Post.findById(req.params.postId)
+        .then(post => {
+            res.json(post)
+        })
+});
+
+router.get(('/userId=:id'),(req, res) => {
+    Post.find({userId:req.params.id})
         .then(posts => {
+            console.log(posts)
             res.json(posts)
         })
 });

@@ -8,7 +8,7 @@ const PostTemplate = ({ data }) => {
             <div className="postTemplate-container">
                 <div className="user-info">
                     <img className="profile-image" src="https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg" />
-                    <p className="username-paragraph">{data.userId} post:</p>
+                    <p className="username-paragraph">{data.username} post:</p>
                 </div>
                 <div className="meme-info">
                     <p>{data.title}</p>

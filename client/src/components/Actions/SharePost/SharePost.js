@@ -9,10 +9,11 @@ const SharePost = ({ match, history }) => {
 
     const [post, setPost] = useState({});
 
+    let userId = localStorage.getItem('userId');
     let username = localStorage.getItem('username');
 
     useEffect(() => {
-        postService.postExistingPost(match.params.postId, username)
+        postService.postExistingPost(match.params.postId, userId, username)
             .then(setPost)
     }, [match])
     return (

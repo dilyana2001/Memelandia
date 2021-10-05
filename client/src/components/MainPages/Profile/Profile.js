@@ -8,11 +8,11 @@ import '../MainPage.css';
 
 const Profile = () => {
     const username = localStorage.getItem('username');
-    const ownerId = localStorage.getItem('ownerId');
+    const userId = localStorage.getItem('userId');
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        postService.getMyMemes(ownerId)
+        postService.getMyMemes(userId)
             .then(setPosts)
     }, []);
 

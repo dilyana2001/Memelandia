@@ -12,7 +12,7 @@ const PostDetails = ({ match }) => {
     // const [likes, setLikes] = useState([]);
     // let [myLike, setMyLikes] = useState({});
 
-    // const userId = localStorage.getItem('userId');
+    const userId = localStorage.getItem('userId');
 
     useEffect(() => {
         postService.getPost(match.params.postId)
@@ -39,24 +39,24 @@ const PostDetails = ({ match }) => {
     //     postService.removeLike(myLike[0]._id)
     // }
 
-    // const ownerEditDeleteBtns = <li>
-    //     <NavLink to={`/edit/${post._id}`}>Edit</NavLink>
-    //     <NavLink to={`/delete/${post._id}`}>Delete</NavLink>
-    // </li>;
+    const ownerEditDeleteBtns = <li>
+        <NavLink to={`/edit/${post._id}`}>Edit</NavLink>
+        <NavLink to={`/delete/${post._id}`}>Delete</NavLink>
+    </li>;
 
     return (
         <div className="main-container">
             <div className="postDetails">
                 <div className="user-info">
                     <img className="profile-image" src="https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg" />
-                    <p className="username-paragraph">someone post:</p>
+                    <p className="username-paragraph">{post.username} post:</p>
                 </div>
                 <nav className="postDetails-header-nav">
                     <ul>
                         <li>
                             <h3>{post.title}</h3>
                         </li>
-                        {/* {(userId != null && userId == post._ownerId) ? ownerEditDeleteBtns : ''} */}
+                        { userId == post.userId ? ownerEditDeleteBtns : ''}
                     </ul>
                 </nav>
                 <div className="description-post-info">
