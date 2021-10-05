@@ -20,7 +20,6 @@ const EditPost = ({ match, history }) => {
     const editPostHandler = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-        console.log(formData)
         postService.editPost(match.params.postId, formData, username, userId)
             .then(() => {
                 history.push(`/details/${match.params.postId}`)
@@ -32,12 +31,12 @@ const EditPost = ({ match, history }) => {
             <div className="editForm">
                 <h2>Edit Post</h2>
                 <form onSubmit={editPostHandler}>
-                    <label htmlFor="title-input">Title:</label>
-                    <input type="text" defaultValue={post.title} name="title" id="title-input" />
-                    <label htmlFor="img-input">Image URL:</label>
-                    <input type="text" defaultValue={post.imageUrl} name="img" id="img-input" />
-                    <label htmlFor="description-textarea">Description:</label>
-                    <textarea type="text" defaultValue={post.description} name="description" id="description-textarea" />
+                    <label htmlFor="title">Title:</label>
+                    <input type="text" defaultValue={post.title} name="title" id="title" />
+                    <label htmlFor="imageUrl">Image URL:</label>
+                    <input type="text" defaultValue={post.imageUrl} name="imageUrl" id="imageUrl" />
+                    <label htmlFor="description">Description:</label>
+                    <textarea type="text" defaultValue={post.description} name="description" id="description" />
                     <button>Post!</button>
                 </form>
             </div>
