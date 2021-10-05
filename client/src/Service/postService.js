@@ -31,25 +31,6 @@ function postPost(data, username, userId) {
         .catch((err) => console.log(err.message));
 }
 
-// function postProfileInfo(data, username, userId) {
-//     return fetch(`${baseUrl}/profile-edit`, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'X-Authorization': localStorage.getItem('token')
-//         },
-//         body: JSON.stringify({
-//             picture: data.get('picture'),
-//             info: data.get('info'),
-//             username: username,
-//             userId: userId
-//         })
-//     })
-//         .then(res => res.json())
-//         .catch((err) => console.log(err.message));
-// }
-
-
 function postExistingPost(id, userId, username) {
     return getPost(id)
         .then(data => {
@@ -71,11 +52,10 @@ function deletePost(id) {
             'X-Authorization': localStorage.getItem('token')
         }
     })
-        .then(res => res.json())
         .catch((err) => console.log(err.message));
 }
 
-function editPost(id, data) {
+function editPost(id, data, username, userId) {
     return fetch(`${baseUrl}/posts/${id}`, {
         method: 'PUT',
         headers: {
@@ -85,7 +65,9 @@ function editPost(id, data) {
         body: JSON.stringify({
             title: data.get('title'),
             imageUrl: data.get('imageUrl'),
-            description: data.get('description')
+            description: data.get('description'),
+            username: username,
+            userId: userId
         })
     })
         .then(res => res.json())
@@ -132,6 +114,25 @@ function getMyMemes(id) {
 //                 'X-Authorization': localStorage.getItem('token')
 //             }
 //         })
+//         .catch((err) => console.log(err.message));
+// }
+
+
+// function postProfileInfo(data, username, userId) {
+//     return fetch(`${baseUrl}/profile-edit`, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'X-Authorization': localStorage.getItem('token')
+//         },
+//         body: JSON.stringify({
+//             picture: data.get('picture'),
+//             info: data.get('info'),
+//             username: username,
+//             userId: userId
+//         })
+//     })
+//         .then(res => res.json())
 //         .catch((err) => console.log(err.message));
 // }
 
