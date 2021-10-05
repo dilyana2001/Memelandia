@@ -6,7 +6,8 @@
     margin: 50px;
 }
 
-.postTemplate a {
+
+/* .postTemplate a {
     color: rgb(93, 45, 93);
     text-decoration: none;
     margin: 10px;
@@ -14,7 +15,7 @@
     padding: 8px 12px;
     border-radius: 30px;
     font-weight: bold;
-}
+} */
 
 .postTemplate .username-paragraph {
     font-size: 1.4em;

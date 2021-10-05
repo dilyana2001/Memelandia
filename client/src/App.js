@@ -9,6 +9,7 @@ import CreatePost from './components/MainPages/CreatePost/CreatePost';
 import Profile from './components/MainPages/Profile/Profile';
 import PostDetails from './components/MainPages/PostDetails/PostDetails';
 import SharePost from './components/Actions/SharePost/SharePost';
+import CommentPost from './components/MainPages/PostDetails/CommentPost/CommentPost';
 import EditPost from './components/MainPages/EditPost/EditPost';
 import DeletePost from './components/Actions/DeletePost/DeletePost';
 import Footer from './components/Footer/Footer';
@@ -30,6 +31,7 @@ function App() {
           <Route path='/create-post' component={CreatePost} />
           <Route path='/details/:postId' component={PostDetails} />
           <Route path='/share-post/:postId' component={SharePost} />
+          <Route path='/comments/:postId' component={CommentPost} />
           <Route path='/edit/:postId' exact component={EditPost} />
           <Route path='/delete/:postId' component={DeletePost} />
         </Switch>

@@ -9,7 +9,6 @@ const EditPost = ({ match, history }) => {
     const username = localStorage.getItem('username');
     const userId = localStorage.getItem('userId');
 
-
     const [post, setPost] = useState({})
 
     useEffect(() => {

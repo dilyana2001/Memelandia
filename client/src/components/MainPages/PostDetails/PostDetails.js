@@ -60,11 +60,13 @@ const PostDetails = ({ match }) => {
                 <div className="description-post-info">
                     <p className="img"><img src={post.imageUrl} /></p>
                     <section>
-                        <h2 className="description">{post.description || 'Description...'}</h2>
+                        <h2 className="description">{post.description}</h2>
+
                         <div className="post-info">
-                            <span>people likes that.</span>
-                            {/* <NavLink onClick={putLike} to='#'>Like</NavLink>
-                            <NavLink onClick={revokeLike} to='#'>Unlike</NavLink> */}
+                         <p><span>people likes that.</span></p>   
+                            {/* <NavLink onClick={putLike} to='#'>Like</NavLink> */}
+                            {/* <NavLink onClick={revokeLike} to='#'>Unlike</NavLink> */}
+                            <NavLink to={`/comments/${post._id}`}>Comment</NavLink>
                             <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
                         </div>
                     </section>

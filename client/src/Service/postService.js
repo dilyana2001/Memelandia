@@ -22,8 +22,8 @@ function postPost(data, username, userId) {
         body: JSON.stringify({
             imageUrl: data.get('imageUrl'),
             description: data.get('description'),
-            username: username,
-            userId: userId
+            username,
+            userId
         })
     })
         .then(res => res.json())
@@ -63,8 +63,8 @@ function editPost(id, data, username, userId) {
         body: JSON.stringify({
             imageUrl: data.get('imageUrl'),
             description: data.get('description'),
-            username: username,
-            userId: userId
+            username,
+            userId
         })
     })
         .then(res => res.json())
@@ -73,6 +73,24 @@ function editPost(id, data, username, userId) {
 
 function getMyPosts(id) {
     return fetch(`${baseUrl}/posts/userId/${id}`)
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
+
+function commentPost(postId, comment, username, userId){
+    return fetch(`${baseUrl}/comments`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('token')
+        },
+        body: JSON.stringify({
+            postId,
+            comment: comment.get('comment'),
+            username,
+            userId,
+        })
+    })
         .then(res => res.json())
         .catch((err) => console.log(err.message));
 }
@@ -140,6 +158,7 @@ export default {
     deletePost,
     editPost,
     getMyPosts,
+    commentPost,
     // getLikes,
     // checkCurrentUserLikeTheCurrentMovie,
     // putLike,
