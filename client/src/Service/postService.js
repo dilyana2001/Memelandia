@@ -30,6 +30,7 @@ function postPost(data, username, userId) {
         .then(res => res.json())
         .catch((err) => console.log(err.message));
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////////
 // function postExistingPost(id, username) {
 //     return getPost(id)
@@ -73,11 +74,11 @@ function postPost(data, username, userId) {
 //         .catch((err) => console.log(err.message));
 // }
 
-// function getMyMemes(id) {
-//     return fetch(`${baseUrl}/movies?where=_ownerId%3D%22${id}%22`)
-//         .then(res => res.json())
-//         .catch((err) => console.log(err.message));
-// }
+function getMyMemes(id) {
+    return fetch(`${baseUrl}/posts?where=_ownerId%3D%22${id}%22`)
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
 
 // function getLikes(movieId) {
 //     return fetch(`${baseUrl}/likes?where=movieId%3D%22${movieId}%22&distinct=_ownerId&count`)
@@ -122,7 +123,7 @@ export default {
     postPost,
     // deletePost,
     // editPost,
-    // getMyMemes,
+    getMyMemes,
     // getLikes,
     // checkCurrentUserLikeTheCurrentMovie,
     // putLike,
