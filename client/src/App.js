@@ -13,6 +13,7 @@ import CommentPost from './components/MainPages/PostDetails/CommentPost/CommentP
 import EditPost from './components/MainPages/EditPost/EditPost';
 import DeletePost from './components/Actions/DeletePost/DeletePost';
 import Footer from './components/Footer/Footer';
+import EditProfile from './components/MainPages/Profile/EditProfile/EditProfile';
 
 import './App.css';
 
@@ -34,6 +35,8 @@ function App() {
           <Route path='/comments/:postId' component={CommentPost} />
           <Route path='/edit/:postId' exact component={EditPost} />
           <Route path='/delete/:postId' component={DeletePost} />
+          <Route path='/profile/:userId/edit' component={EditProfile} />
+
         </Switch>
 
         <Footer />

@@ -59,7 +59,7 @@ function getProfileInfo(userId) {
 }
 
 
-function postProfileInfo(data, username, userId) {
+function editProfileInfo(userId,data, username) {
     return fetch(`${baseUrl}/profile/${userId}`, {
         method: 'POST',
         headers: {
@@ -69,8 +69,8 @@ function postProfileInfo(data, username, userId) {
         body: JSON.stringify({
             picture: data.get('picture'),
             info: data.get('info'),
-            username: username,
-            userId: userId
+            username,
+            userId,
         })
     })
         .then(res => res.json())
@@ -83,6 +83,6 @@ export default {
     register,
     logout,
     isAuthenticated,
-    postProfileInfo,
+    editProfileInfo,
     getProfileInfo,
 }

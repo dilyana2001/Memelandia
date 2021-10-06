@@ -10,7 +10,7 @@ router.get('/postId/:id', (req, res) => {
 router.post('/', (req, res) => {
     let comment = new Comment(req.body);
     comment.save()
-        .then(createComment => res.status(201).json({ _id: createComment._id }))
+        .then(createdComment => res.status(201).json({ _id: createdComment._id }))
 });
 
 module.exports = router;

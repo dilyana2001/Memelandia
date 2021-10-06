@@ -13,8 +13,6 @@ router.post('/register', (req, res, next) => {
             });
         })
         .catch(() => next({ status: 403, message: 'Invalid register!', type: 'ERROR' }));
-
-
 });
 
 router.post('/login', (req, res, next) => {

@@ -16,8 +16,6 @@ const PostDetails = ({ match }) => {
     // let [myLike, setMyLikes] = useState({});
 
     const userId = localStorage.getItem('userId');
-    const username = localStorage.getItem('username');
-
 
     useEffect(() => {
         postService.getPost(match.params.postId)

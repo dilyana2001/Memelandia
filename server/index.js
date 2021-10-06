@@ -15,7 +15,7 @@ mongoose.connection.on('error', console.log.bind(console, `connection error`));
 mongoose.connection.once('open', console.log.bind(console, `DB connected`));
 
 app.use(cors());
-app.use(express.json()); //IMPORTANT FOR REST API parse body to json
+app.use(express.json());
 
 app.use(auth);
 

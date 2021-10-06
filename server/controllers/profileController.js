@@ -4,8 +4,9 @@ const { isAuth } = require('../middlewares/auth');
 
 
 router.get('/:id', (req,res)=>{
-    Profile.find({ userId: req.params.id })
-        .then(profile => res.json(profile))
+    Profile.find({userId:req.params.id })
+        .then(profile => {
+            res.json(profile)})
 })
 
 router.post('/:id',(req, res) => {
@@ -13,6 +14,8 @@ router.post('/:id',(req, res) => {
 
     profile.save()
         .then(createdProfile => {
-            res.status(201).json({ _id: createdProfile ._id });
+            res.status(201).json({ _id: createdProfile._id });
         })
 });
+
+module.exports = router;
