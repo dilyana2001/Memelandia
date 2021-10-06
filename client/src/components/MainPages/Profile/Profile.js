@@ -8,28 +8,29 @@ import PostTemplate from '../../ComponentTemplates/PostTemplate/PostTemplate';
 import './Profile.css';
 import '../MainPage.css';
 
-const Profile = ({match}) => {
+const Profile = ({ match }) => {
+    const [profile, setProfile] = useState({});
     const [posts, setPosts] = useState([]);
-    const [profile, setProfile] = useState({})
 
     useEffect(() => {
         postService.getMyPosts(match.params.userId)
-            .then(posts=>  setPosts(posts))
-    }, []);
-    
+            .then(setPosts)
+    }, [match]);
+
     useEffect(() => {
         auth.getProfileInfo(match.params.userId)
             .then(setProfile)
-    }, [])
-console.log('profile', profile);
+    }, [match]);
+    
+console.log(profile);
     return (
         <div className="main-container">
             <div className="profile-section">
                 <div className="info-section">
-                   <Link to="#"> <img className="profile-image" src="https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg"  /></Link>
+                    <Link to={`/profile/${match.params.userId}/edit`}> <img className="profile-image" src="https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg" /></Link>
                     <section>
-                        {/* <h2> {profile.username}</h2>
-                        <p>  {profile.info}</p> */}
+                        <h2>{profile?.username}</h2>
+                        <p>{profile?.info}</p>
                     </section>
                 </div>
                 <section>
