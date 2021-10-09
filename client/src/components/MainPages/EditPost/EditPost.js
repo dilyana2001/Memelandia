@@ -30,10 +30,10 @@ const EditPost = ({ match, history }) => {
             <div className="editForm">
                 <h2>Edit Post</h2>
                 <form onSubmit={editPostHandler}>
-                    <label htmlFor="description">Description:</label>
-                    <input type="text" defaultValue={post.description} name="description" id="description" />
                     <label htmlFor="imageUrl">Image URL:</label>
                     <input type="text" defaultValue={post.imageUrl} name="imageUrl" id="imageUrl" />
+                    <label htmlFor="description">Description:</label>
+                    <textarea type="text" defaultValue={post.description} name="description" id="description" />
                     <button>Post!</button>
                 </form>
             </div>

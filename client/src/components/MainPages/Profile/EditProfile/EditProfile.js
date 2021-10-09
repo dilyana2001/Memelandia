@@ -15,14 +15,14 @@ const EditProfile = ({ match, history }) => {
     }
 
     return (
-        <div className="profile-container">
-            <div className="profileForm">
+        <div className="main-container">
+            <div className="editForm">
                 <h2>Edit Profile Info</h2>
                 <form onSubmit={editProfileHandler}>
-                    <label htmlFor="info">Info:</label>
-                    <input type="text"  name="info" id="info" />
                     <label htmlFor="imageUrl">Image URL:</label>
                     <input type="text" name="imageUrl" id="imageUrl" />
+                    <label htmlFor="info">Info:</label>
+                    <textarea type="text"  name="info" id="info" />
                     <button>Post!</button>
                 </form>
             </div>
