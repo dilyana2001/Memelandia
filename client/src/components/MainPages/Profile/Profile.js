@@ -23,14 +23,15 @@ const Profile = ({ match }) => {
     }, [match]);
     
 console.log(profile);
+console.log(posts);
     return (
         <div className="main-container">
             <div className="profile-section">
                 <div className="info-section">
-                    <Link to={`/profile/${match.params.userId}/edit`}> <img className="profile-image" src="https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg" /></Link>
+                    <Link to={`/profile/${match.params.userId}/edit`}> <img className="profile-image" src={profile.imageUrl} /></Link>
                     <section>
-                        <h2>{profile?.username}</h2>
-                        <p>{profile?.info}</p>
+                        <h2>{profile.username}</h2>
+                        <p>{profile.info}</p>
                     </section>
                 </div>
                 <section>
