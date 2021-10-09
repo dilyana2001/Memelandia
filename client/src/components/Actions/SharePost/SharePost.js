@@ -22,7 +22,7 @@ const SharePost = ({ match, history }) => {
                 <h3>You Shared the Post!</h3>
                 <div className="go-back">
                     <NavLink to='/'>Go to Home</NavLink>
-                    <NavLink to='/profile'>Go to Profile</NavLink>
+                    <NavLink to={`/profile/${userId}`}>Go to Profile</NavLink>
                 </div>
             </div>
         </div>

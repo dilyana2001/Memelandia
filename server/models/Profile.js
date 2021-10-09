@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const profileSchema = new mongoose.Schema({
+    id: mongoose.Types.ObjectId,
     imageUrl: {
         type: String,
         validate: /^http?/
