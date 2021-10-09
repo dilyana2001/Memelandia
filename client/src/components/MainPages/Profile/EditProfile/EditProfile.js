@@ -22,7 +22,7 @@ const EditProfile = ({ match, history }) => {
                     <label htmlFor="info">Info:</label>
                     <input type="text"  name="info" id="info" />
                     <label htmlFor="imageUrl">Image URL:</label>
-                    <input type="text"name="imageUrl" id="imageUrl" />
+                    <input type="text" name="imageUrl" id="imageUrl" />
                     <button>Post!</button>
                 </form>
             </div>

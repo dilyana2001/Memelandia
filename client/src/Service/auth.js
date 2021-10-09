@@ -59,7 +59,7 @@ function getProfileInfo(userId) {
 }
 
 
-function editProfileInfo(userId,data, username) {
+function editProfileInfo(userId, data, username) {
     return fetch(`${baseUrl}/profile/${userId}`, {
         method: 'POST',
         headers: {
@@ -67,7 +67,7 @@ function editProfileInfo(userId,data, username) {
             'X-Authorization': localStorage.getItem('token')
         },
         body: JSON.stringify({
-            picture: data.get('picture'),
+            imageUrl: data.get('imageUrl'),
             info: data.get('info'),
             username,
             userId,
