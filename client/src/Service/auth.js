@@ -58,10 +58,9 @@ function getProfileInfo(userId) {
         .catch((err) => console.log(err.message));
 }
 
-
-function editProfileInfo(userId, data, username) {
-    return fetch(`${baseUrl}/profile/${userId}`, {
-        method: 'POST',
+function editProfileInfo(userId, profileId, data, username) {
+    return fetch(`${baseUrl}/profile/${profileId}`, {
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
             'X-Authorization': localStorage.getItem('token')
@@ -70,7 +69,23 @@ function editProfileInfo(userId, data, username) {
             imageUrl: data.get('imageUrl'),
             info: data.get('info'),
             username,
-            userId,
+            userId
+        })
+    })
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
+
+function postProfileInfo(username, userId) {
+    return fetch(`${baseUrl}/profile/${userId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('token')
+        },
+        body: JSON.stringify({
+            username,
+            userId
         })
     })
         .then(res => res.json())
@@ -85,4 +100,5 @@ export default {
     isAuthenticated,
     editProfileInfo,
     getProfileInfo,
+    postProfileInfo
 }

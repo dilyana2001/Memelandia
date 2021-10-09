@@ -13,6 +13,9 @@ const Login = ({ history }) => {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('username', data.username);
                 localStorage.setItem('userId', data._id);
+                const username = localStorage.getItem('username');
+                const userId = localStorage.getItem('userId');
+                auth.postProfileInfo(username, userId);
                 history.push('/')
             })
     }
@@ -36,4 +39,5 @@ const Login = ({ history }) => {
         </div>
     )
 }
+
 export default Login;

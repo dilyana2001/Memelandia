@@ -9,20 +9,18 @@ const EditPost = ({ match, history }) => {
     const username = localStorage.getItem('username');
     const userId = localStorage.getItem('userId');
 
-    const [post, setPost] = useState({})
+    const [post, setPost] = useState({});
 
     useEffect(() => {
         postService.getPost(match.params.postId)
-            .then(setPost)
-    }, [])
+            .then(setPost);
+    }, []);
 
     const editPostHandler = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         postService.editPost(match.params.postId, formData, username, userId)
-            .then(() => {
-                history.push(`/details/${match.params.postId}`)
-            })
+            .then(() => history.push(`/details/${match.params.postId}`));
     }
 
     return (
