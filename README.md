@@ -1,2 +1,2 @@
-# Memelandia-React-Project
+# Memelandia
 Project using React.js and rest api
