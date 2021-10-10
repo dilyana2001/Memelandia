@@ -14,7 +14,7 @@ const PostDetails = ({ match }) => {
     const [comments, setComments] = useState([]);
     const [profile, setProfile] = useState({});
     const [likes, setLikes] = useState([]);
-    // let [myLike, setMyLikes] = useState({});
+    let [myLike, setMyLike] = useState({});
 
     const userId = localStorage.getItem('userId');
     const postId = match.params.postId;
@@ -42,18 +42,22 @@ const PostDetails = ({ match }) => {
             .then(setLikes)
     }, [match]);
 
-    // useEffect(() => {
-    //     postService.checkCurrentUserLikeTheCurrentMovie(match.params.postId, userId)
-    //         .then(setMyLikes)
-    // }, [match]);
+    useEffect(() => {
+        postService.isPostLikedByUser(postId, userId)
+            .then(setMyLike)
+    }, [match]);
 
     // const revokeLike = () => {
     //     postService.removeLike(myLike[0]._id)
     // }
-function putLikes(){
-    postService.putLike(postId, userId)
-}
-    
+    console.log(myLike);
+
+    function putLikes() {
+        if (!myLike) {
+            postService.putLike(postId, userId)
+        }
+    }
+
     const ownerEditDeleteBtns = <li>
         <NavLink to={`/edit/${post._id}`}>Edit</NavLink>
         <NavLink to={`/delete/${post._id}`}>Delete</NavLink>
@@ -92,7 +96,7 @@ function putLikes(){
                             </div>
                         </section>
                         <div className="post-info">
-                            <p><span>{likes.length} people likes that.</span></p>
+                            <p><span>{likes.length} people likes this.</span></p>
                             <NavLink onClick={putLikes} to='#'>Like</NavLink>
                             <NavLink to='#'>Unlike</NavLink>
                             <NavLink to={`/comments/${post._id}`}>Comment</NavLink>

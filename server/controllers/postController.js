@@ -47,4 +47,9 @@ router.post('/likes', (req, res) => {
         .then(createdLike => res.status(201).json({ _id: createdLike._id }));
 });
 
+router.get('/likes/postId/:postId/userId/:userId', (req, res) => {
+    Like.findOne({ postId: req.params.postId, userId:req.params.userId })
+        .then(likes => res.json(likes));
+});
+
 module.exports = router;

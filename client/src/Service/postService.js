@@ -79,8 +79,8 @@ function getMyPosts(id) {
 
 function getAllComments(postId) {
     return fetch(`${baseUrl}/comments/postId/${postId}`)
-    .then(res => res.json())
-    .catch((err) => console.log(err.message));
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
 }
 
 function commentPost(postId, comment, username, userId) {
@@ -110,25 +110,26 @@ function getLikes(postId) {
 
 function putLike(postId, userId) {
     return fetch(`${baseUrl}/posts/likes`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Authorization': localStorage.getItem('token')
-            },
-            body: JSON.stringify({ 
-                postId,
-                userId
-             })
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('token')
+        },
+        body: JSON.stringify({
+            postId,
+            userId
         })
+    })
         .then(res => res.json())
         .catch((err) => console.log(err.message));
 }
 
-// function checkCurrentUserLikeTheCurrentMovie(movieId, userId) {
-//     return fetch(`${baseUrl}/likes?where=movieId%3D%22${movieId}%22%20and%20_ownerId%3D%22${userId}%22`)
-//         .then(res => res.json())
-//         .catch((err) => console.log(err.message));
-// }
+function isPostLikedByUser(postId, userId) {
+    return fetch(`${baseUrl}/posts/likes/postId/${postId}/userId/${userId}`)
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
+
 // function removeLike(id) {
 //     return fetch(`${baseUrl}/likes/${id}`, {
 //             method: 'DELETE',
@@ -152,6 +153,6 @@ export default {
     getAllComments,
     getLikes,
     putLike,
-    // checkCurrentUserLikeTheCurrentMovie,
+    isPostLikedByUser,
     // removeLike,
 }
