@@ -16,7 +16,7 @@ const Login = ({ history }) => {
                 const username = localStorage.getItem('username');
                 const userId = localStorage.getItem('userId');
                 auth.postProfileInfo(username, userId);
-                history.push('/')
+                history.push('/');
             })
     }
 

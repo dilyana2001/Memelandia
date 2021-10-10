@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const Post = require('../models/Post');
+const Like = require('../models/Like');
 const { isAuth } = require('../middlewares/auth');
 
 router.get('/', (req, res) => {
     Post.find()
-    .then(posts => res.json(posts));
+        .then(posts => res.json(posts));
 });
 
 router.post('/', (req, res) => {
@@ -33,6 +34,17 @@ router.put('/:postId', (req, res) => {
 router.get('/userId/:id', (req, res) => {
     Post.find({ userId: req.params.id })
         .then(posts => res.json(posts));
+});
+
+router.get('/likes/:id', (req, res) => {
+    Like.find({ postId: req.params.id })
+        .then(likes => res.json(likes));
+});
+
+router.post('/likes', (req, res) => {
+    let like = new Like(req.body);
+    like.save()
+        .then(createdLike => res.status(201).json({ _id: createdLike._id }));
 });
 
 module.exports = router;

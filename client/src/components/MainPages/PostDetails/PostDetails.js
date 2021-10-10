@@ -13,13 +13,14 @@ const PostDetails = ({ match }) => {
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
     const [profile, setProfile] = useState({});
-    // const [likes, setLikes] = useState([]);
+    const [likes, setLikes] = useState([]);
     // let [myLike, setMyLikes] = useState({});
 
     const userId = localStorage.getItem('userId');
+    const postId = match.params.postId;
 
     useEffect(() => {
-        postService.getPost(match.params.postId)
+        postService.getPost(postId)
             .then(post => {
                 getProfileInfo(post.userId);
                 return setPost(post);
@@ -27,7 +28,7 @@ const PostDetails = ({ match }) => {
     }, [match]);
 
     useEffect(() => {
-        postService.getAllComments(match.params.postId)
+        postService.getAllComments(postId)
             .then(setComments)
     }, [match]);
 
@@ -36,24 +37,23 @@ const PostDetails = ({ match }) => {
             .then(setProfile);
     }
 
-    // useEffect(() => {
-    //     postService.getLikes(match.params.postId)
-    //         .then(setLikes)
-    // }, [match]);
+    useEffect(() => {
+        postService.getLikes(postId)
+            .then(setLikes)
+    }, [match]);
 
     // useEffect(() => {
     //     postService.checkCurrentUserLikeTheCurrentMovie(match.params.postId, userId)
     //         .then(setMyLikes)
     // }, [match]);
 
-    // const putLike = () => {
-    //     postService.putLike(post._id)
-    // }
-
     // const revokeLike = () => {
     //     postService.removeLike(myLike[0]._id)
     // }
-
+function putLikes(){
+    postService.putLike(postId, userId)
+}
+    
     const ownerEditDeleteBtns = <li>
         <NavLink to={`/edit/${post._id}`}>Edit</NavLink>
         <NavLink to={`/delete/${post._id}`}>Delete</NavLink>
@@ -92,9 +92,9 @@ const PostDetails = ({ match }) => {
                             </div>
                         </section>
                         <div className="post-info">
-                            <p><span>people likes that.</span></p>
-                            {/* <NavLink onClick={putLike} to='#'>Like</NavLink> */}
-                            {/* <NavLink onClick={revokeLike} to='#'>Unlike</NavLink> */}
+                            <p><span>{likes.length} people likes that.</span></p>
+                            <NavLink onClick={putLikes} to='#'>Like</NavLink>
+                            <NavLink to='#'>Unlike</NavLink>
                             <NavLink to={`/comments/${post._id}`}>Comment</NavLink>
                             <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
                         </div>

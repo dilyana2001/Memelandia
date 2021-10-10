@@ -101,31 +101,34 @@ function commentPost(postId, comment, username, userId) {
         .catch((err) => console.log(err.message));
 }
 
-// function getLikes(movieId) {
-//     return fetch(`${baseUrl}/likes?where=movieId%3D%22${movieId}%22&distinct=_ownerId&count`)
-//         .then(res => res.json())
-//         .catch((err) => console.log(err.message));
-// }
+function getLikes(postId) {
+    return fetch(`${baseUrl}/posts/likes/${postId}`)
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
+
+
+function putLike(postId, userId) {
+    return fetch(`${baseUrl}/posts/likes`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Authorization': localStorage.getItem('token')
+            },
+            body: JSON.stringify({ 
+                postId,
+                userId
+             })
+        })
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
 
 // function checkCurrentUserLikeTheCurrentMovie(movieId, userId) {
 //     return fetch(`${baseUrl}/likes?where=movieId%3D%22${movieId}%22%20and%20_ownerId%3D%22${userId}%22`)
 //         .then(res => res.json())
 //         .catch((err) => console.log(err.message));
 // }
-
-// function putLike(movieId) {
-//     return fetch(`${baseUrl}/likes`, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'X-Authorization': localStorage.getItem('token')
-//             },
-//             body: JSON.stringify({ movieId })
-//         })
-//         .then(res => res.json())
-//         .catch((err) => console.log(err.message));
-// }
-
 // function removeLike(id) {
 //     return fetch(`${baseUrl}/likes/${id}`, {
 //             method: 'DELETE',
@@ -147,8 +150,8 @@ export default {
     getMyPosts,
     commentPost,
     getAllComments,
-    // getLikes,
+    getLikes,
+    putLike,
     // checkCurrentUserLikeTheCurrentMovie,
-    // putLike,
     // removeLike,
 }
