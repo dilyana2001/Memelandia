@@ -130,16 +130,16 @@ function isPostLikedByUser(postId, userId) {
         .catch((err) => console.log(err.message));
 }
 
-// function removeLike(id) {
-//     return fetch(`${baseUrl}/likes/${id}`, {
-//             method: 'DELETE',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'X-Authorization': localStorage.getItem('token')
-//             }
-//         })
-//         .catch((err) => console.log(err.message));
-// }
+function removeLike(postId, userId) {
+    return fetch(`${baseUrl}/posts/likes/postId/${postId}/userId/${userId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Authorization': localStorage.getItem('token')
+            }
+        })
+        .catch((err) => console.log(err.message));
+}
 
 export default {
     getAllPost,
@@ -154,5 +154,5 @@ export default {
     getLikes,
     putLike,
     isPostLikedByUser,
-    // removeLike,
+    removeLike,
 }

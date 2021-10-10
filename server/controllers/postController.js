@@ -48,8 +48,14 @@ router.post('/likes', (req, res) => {
 });
 
 router.get('/likes/postId/:postId/userId/:userId', (req, res) => {
-    Like.findOne({ postId: req.params.postId, userId:req.params.userId })
+    Like.findOne({ postId: req.params.postId, userId: req.params.userId })
         .then(likes => res.json(likes));
+});
+
+router.delete('/likes/postId/:postId/userId/:userId', (req, res) => {
+    Like.findOneAndDelete({ postId: req.params.postId, userId: req.params.userId })
+        .then(deleted => res.status(200).json({ _id: deleted._id }));
+
 });
 
 module.exports = router;

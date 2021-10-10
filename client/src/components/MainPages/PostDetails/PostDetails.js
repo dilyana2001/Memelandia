@@ -47,10 +47,11 @@ const PostDetails = ({ match }) => {
             .then(setMyLike)
     }, [match]);
 
-    // const revokeLike = () => {
-    //     postService.removeLike(myLike[0]._id)
-    // }
-    console.log(myLike);
+    const revokeLike = () => {
+        if (myLike) {
+        postService.removeLike(postId, userId)
+        }
+    }
 
     function putLikes() {
         if (!myLike) {
@@ -98,7 +99,7 @@ const PostDetails = ({ match }) => {
                         <div className="post-info">
                             <p><span>{likes.length} people likes this.</span></p>
                             <NavLink onClick={putLikes} to='#'>Like</NavLink>
-                            <NavLink to='#'>Unlike</NavLink>
+                            <NavLink onClick={revokeLike} to='#'>Unlike</NavLink>
                             <NavLink to={`/comments/${post._id}`}>Comment</NavLink>
                             <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
                         </div>
