@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import postService from "../../../Service/postService";
+import auth from "../../../Service/auth";
 import CommentTemplate from '../../ComponentTemplates/CommentTemplate/CommentTemplate'
 
 import './PostDetails.css';
@@ -11,7 +12,7 @@ const PostDetails = ({ match }) => {
 
     const [post, setPost] = useState({});
     const [comments, setComments] = useState([]);
-
+    const [profile, setProfile] = useState({});
     // const [likes, setLikes] = useState([]);
     // let [myLike, setMyLikes] = useState({});
 
@@ -19,15 +20,21 @@ const PostDetails = ({ match }) => {
 
     useEffect(() => {
         postService.getPost(match.params.postId)
-            .then(setPost)
+            .then(post => {
+                getProfileInfo(post.userId);
+                return setPost(post);
+            })
     }, [match]);
-
 
     useEffect(() => {
         postService.getAllComments(match.params.postId)
             .then(setComments)
     }, [match]);
 
+    function getProfileInfo(userId) {
+        auth.getProfileInfo(userId)
+            .then(setProfile);
+    }
 
     // useEffect(() => {
     //     postService.getLikes(match.params.postId)
@@ -56,8 +63,8 @@ const PostDetails = ({ match }) => {
         <div className="main-container">
             <div className="postDetails">
                 <div className="user-info">
-                <NavLink to={`/profiles/${post.userId}`}>  <img className="profile-image"
-                     src="https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg" /></NavLink>
+                    <NavLink to={`/profiles/${post.userId}`}>  <img className="profile-image"
+                        src={profile?.imageUrl || 'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} /></NavLink>
                     <p className="username-paragraph">{post.username} post:</p>
                 </div>
                 <nav className="postDetails-header-nav">
