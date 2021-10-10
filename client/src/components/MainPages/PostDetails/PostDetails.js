@@ -59,6 +59,8 @@ const PostDetails = ({ match }) => {
         }
     }
 
+    console.log(myLike)
+
     const ownerEditDeleteBtns = <li>
         <NavLink to={`/edit/${post._id}`}>Edit</NavLink>
         <NavLink to={`/delete/${post._id}`}>Delete</NavLink>
@@ -98,8 +100,8 @@ const PostDetails = ({ match }) => {
                         </section>
                         <div className="post-info">
                             <p><span>{likes.length} people likes this.</span></p>
-                            <NavLink onClick={putLikes} to='#'>Like</NavLink>
-                            <NavLink onClick={revokeLike} to='#'>Unlike</NavLink>
+                            <NavLink onClick={putLikes} to='#'><button className="like-unlike-btn" disabled={myLike} >Like</button></NavLink>
+                            <NavLink onClick={revokeLike} to='#'><button className="like-unlike-btn" disabled={!myLike} >Unlike</button></NavLink>
                             <NavLink to={`/comments/${post._id}`}>Comment</NavLink>
                             <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
                         </div>

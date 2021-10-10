@@ -82,3 +82,9 @@
 .post-info {
     align-self: flex-end;
 }
+
+.like-unlike-btn {
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+}
