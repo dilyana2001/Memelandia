@@ -9,7 +9,14 @@ const Register = ({ history }) => {
         const formData = new FormData(e.currentTarget);
         if (formData.get('password') == formData.get('rePass')) {
             auth.register(formData)
-                .then(() => history.push('/login'))
+                .then(data => {
+                    localStorage.setItem('userId', data._id);
+                    const username = localStorage.getItem('username');
+                    const userId = localStorage.getItem('userId');
+                    auth.postProfileInfo(username, userId);
+                    localStorage.removeItem('userId')
+                    history.push('/login');
+                })
         } else {
             alert(`Try Again!`)
         }

@@ -4,6 +4,8 @@ import auth from "../../../../Service/auth";
 
 const EditProfile = ({ match, history }) => {
 
+const username = localStorage.getItem('username')
+
     const [profile, setProfile] = useState({});
 
     useEffect(() => {
@@ -14,7 +16,7 @@ const EditProfile = ({ match, history }) => {
     const editProfileHandler = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-        auth.editProfileInfo(match.params.userId, profile._id, formData, profile.username)
+        auth.editProfileInfo(match.params.userId, profile._id, formData, username)
             .then(() => {
                 history.push(`/profiles/${match.params.userId}`);
             });

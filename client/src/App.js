@@ -7,6 +7,7 @@ import Register from './components/AuthPages/Register/Register';
 import HomePage from './components/MainPages/HomePage/HomePage';
 import CreatePost from './components/MainPages/CreatePost/CreatePost';
 import Profile from './components/MainPages/Profile/Profile';
+import About from './components/MainPages/About/About';
 import PostDetails from './components/MainPages/PostDetails/PostDetails';
 import SharePost from './components/Actions/SharePost/SharePost';
 import CommentPost from './components/MainPages/PostDetails/CommentPost/CommentPost';
@@ -28,6 +29,7 @@ function App() {
           <Route path='/' exact component={HomePage} />
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
+          <Route path='/about' component={About} />
           <Route path='/profiles/:userId' exact component={Profile} />
           <Route path='/create-post' component={CreatePost} />
           <Route path='/details/:postId' component={PostDetails} />
