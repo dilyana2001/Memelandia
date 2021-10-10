@@ -10,7 +10,6 @@ const Header = () => {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
 
-
     const navbarLoggedUser =
         <ul className="navbar-logged-user">
             <li className="first-bar">
