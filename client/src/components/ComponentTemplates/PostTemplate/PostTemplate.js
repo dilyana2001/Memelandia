@@ -1,8 +1,21 @@
 import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import auth from "../../../Service/auth"
 
 import './PostTemplate.css';
 
-const PostTemplate = ({ data, profile }) => {
+const PostTemplate = ({ data }) => {
+
+    const [profile, setProfile] = useState({});
+
+    useEffect(() => {
+        auth.getProfileInfo(data.userId)
+            .then(setProfile)
+    }, []);
+
+console.log(profile);
+
     return (
         <li className="postTemplate">
             <div className="postTemplate-container">
