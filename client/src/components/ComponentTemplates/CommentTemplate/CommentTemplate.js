@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 
 import auth from "../../../Service/auth";
 
+import './CommentTemplate.css'
+
 const CommentTemplate = ({ data }) => {
     const [profile, setProfile] = useState({});
 
