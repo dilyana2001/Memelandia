@@ -87,4 +87,6 @@
     background-color: transparent;
     border: none;
     font-weight: bold;
+    padding: 0;
+    border-radius: 30px;
 }
