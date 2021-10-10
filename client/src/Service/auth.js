@@ -52,14 +52,20 @@ function isAuthenticated() {
     }
 }
 
+function getAllProfiles(){
+    return fetch(`${baseUrl}/profiles`)
+    .then(res => res.json())
+    .catch((err) => console.log(err.message));
+}
+
 function getProfileInfo(userId) {
-    return fetch(`${baseUrl}/profile/${userId}`)
+    return fetch(`${baseUrl}/profiles/${userId}`)
         .then(res => res.json())
         .catch((err) => console.log(err.message));
 }
 
 function editProfileInfo(userId, profileId, data, username) {
-    return fetch(`${baseUrl}/profile/${profileId}`, {
+    return fetch(`${baseUrl}/profiles/${profileId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
@@ -77,7 +83,7 @@ function editProfileInfo(userId, profileId, data, username) {
 }
 
 function postProfileInfo(username, userId) {
-    return fetch(`${baseUrl}/profile/${userId}`, {
+    return fetch(`${baseUrl}/profiles/${userId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -100,5 +106,6 @@ export default {
     isAuthenticated,
     editProfileInfo,
     getProfileInfo,
-    postProfileInfo
+    postProfileInfo,
+    getAllProfiles,
 }

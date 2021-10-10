@@ -16,7 +16,7 @@ const Header = () => {
             <li className="first-bar">
                 <NavLink className="button" to='/' exact >Home</NavLink>
                 <NavLink className="button" to="/create-post">Create Post</NavLink>
-                <NavLink className="button" to={`/profile/${userId}`}>Profile</NavLink>
+                <NavLink className="button" to={`/profiles/${userId}`}>Profile</NavLink>
             </li>
             <li className="second-bar">
                 <ul>

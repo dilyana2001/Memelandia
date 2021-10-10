@@ -9,14 +9,14 @@ const EditProfile = ({ match, history }) => {
     useEffect(() => {
         auth.getProfileInfo(match.params.userId)
             .then(setProfile);
-    }, []);
+    }, [match]);
 
     const editProfileHandler = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         auth.editProfileInfo(match.params.userId, profile._id, formData, profile.username)
             .then(() => {
-                history.push(`/profile/${match.params.userId}`);
+                history.push(`/profiles/${match.params.userId}`);
             });
     }
 

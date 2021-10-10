@@ -18,7 +18,7 @@ const DeletePost = ({ match }) => {
                 <h3>You Deleted The Post!</h3>
                 <div className="go-back">
                     <NavLink to='/'>Go back to Home</NavLink>
-                    <NavLink to='/profile'>Go back to Profile</NavLink>
+                    <NavLink to='/profiles'>Go back to Profile</NavLink>
                 </div>
             </div>
         </div>

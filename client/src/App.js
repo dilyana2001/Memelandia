@@ -28,14 +28,14 @@ function App() {
           <Route path='/' exact component={HomePage} />
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
-          <Route path='/profile/:userId' exact component={Profile} />
+          <Route path='/profiles/:userId' exact component={Profile} />
           <Route path='/create-post' component={CreatePost} />
           <Route path='/details/:postId' component={PostDetails} />
           <Route path='/share-post/:postId' component={SharePost} />
           <Route path='/comments/:postId' component={CommentPost} />
           <Route path='/edit/:postId' exact component={EditPost} />
           <Route path='/delete/:postId' component={DeletePost} />
-          <Route path='/profile/:userId/edit' component={EditProfile} />
+          <Route path='/profiles/:userId/edit' component={EditProfile} />
 
         </Switch>
 

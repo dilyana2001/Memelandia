@@ -4,7 +4,7 @@ const { isAuth } = require('../middlewares/auth');
 
 router.get('/', (req, res) => {
     Post.find()
-        .then(posts => res.json(posts));
+    .then(posts => res.json(posts));
 });
 
 router.post('/', (req, res) => {

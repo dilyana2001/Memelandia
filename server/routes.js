@@ -7,7 +7,7 @@ const profileController = require('./controllers/profileController');
 
 
 router.use('/auth', authController);
-router.use('/profile', profileController);
+router.use('/profiles', profileController);
 router.use('/posts', postController);
 router.use('/comments', commentController);
 

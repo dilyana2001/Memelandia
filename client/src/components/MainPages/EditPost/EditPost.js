@@ -14,7 +14,7 @@ const EditPost = ({ match, history }) => {
     useEffect(() => {
         postService.getPost(match.params.postId)
             .then(setPost);
-    }, []);
+    }, [match]);
 
     const editPostHandler = (e) => {
         e.preventDefault();
