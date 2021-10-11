@@ -1,0 +1,16 @@
+.about-section {
+    color: rgb(93, 45, 93);
+    font-size: 2rem;
+    margin: 30px;
+    text-align-last: center;
+}
+
+.about-section h1 {
+    margin: 100px 0;
+    font-size: 3rem;
+}
+
+.about-section a {
+    color: rgb(93, 45, 93);
+    text-decoration: underline;
+}

@@ -19,10 +19,10 @@
 }
 
 .navbar a {
-    color: rgb(93, 45, 93);
+    color: rgb(235, 37, 235);
     text-decoration: none;
     margin: 10px;
-    background-color: rgb(235, 37, 235);
+    background-color: #2B072E;
     padding: 8px 12px;
     border-radius: 30px;
     font-weight: bold;
@@ -32,6 +32,9 @@
     font-style: oblique;
 }
 
-.first-bar .active {
-    background: yellow;
+.first-bar .active,
+.second-bar .active,
+.logout {
+    background: rgb(235, 37, 235);
+    color: rgb(93, 45, 93);
 }

@@ -14,3 +14,10 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.add-post {
+    position: fixed;
+    font-size: 6rem;
+    bottom: 0;
+    right: 0;
+}

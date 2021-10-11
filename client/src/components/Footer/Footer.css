@@ -6,6 +6,7 @@
 
 .footer a {
     color: rgb(214, 163, 199);
+    text-decoration: underline;
 }
 
 .footer p {

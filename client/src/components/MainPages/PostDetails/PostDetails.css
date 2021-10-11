@@ -12,10 +12,10 @@
 }
 
 .postDetails-header-nav a {
-    color: rgb(93, 45, 93);
+    color: rgb(235, 37, 235);
     text-decoration: none;
     margin: 10px;
-    background-color: rgb(235, 37, 235);
+    background-color: rgb(93, 45, 93);
     padding: 8px 12px;
     border-radius: 30px;
     font-weight: bold;
@@ -57,10 +57,10 @@
 }
 
 .post-info a {
-    color: rgb(93, 45, 93);
+    color: rgb(235, 37, 235);
     text-decoration: none;
     margin: 10px;
-    background-color: rgb(235, 37, 235);
+    background-color: rgb(93, 45, 93);
     padding: 8px 12px;
     border-radius: 30px;
     font-weight: bold;
