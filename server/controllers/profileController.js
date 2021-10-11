@@ -26,7 +26,8 @@ router.get('/', (req, res) => {
 });
 
 router.get('/search/:query', (req, res) => {
-    Profile.find({ username: req.params.query })
+    let name = req.params.query;
+    Profile.find({ username: { $regex: `${name}`, $options: "i" } })
         .then(profiles => res.json(profiles));
 });
 
