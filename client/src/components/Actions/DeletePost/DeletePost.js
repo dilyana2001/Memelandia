@@ -5,6 +5,7 @@ import postService from "../../../Service/postService";
 
 import "../SharePost/SharePost"
 
+const userId = localStorage.getItem('userId')
 
 const DeletePost = ({ match }) => {
 
@@ -18,7 +19,7 @@ const DeletePost = ({ match }) => {
                 <h3>You Deleted The Post!</h3>
                 <div className="go-back">
                     <NavLink to='/'>Go back to Home</NavLink>
-                    <NavLink to='/profiles'>Go back to Profile</NavLink>
+                    <NavLink to={`/profiles/${userId}`}>Go back to Profile</NavLink>
                 </div>
             </div>
         </div>

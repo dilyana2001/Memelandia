@@ -16,6 +16,7 @@ import DeletePost from './components/Actions/DeletePost/DeletePost';
 import Footer from './components/Footer/Footer';
 import EditProfile from './components/MainPages/Profile/EditProfile/EditProfile';
 import FindFriends from './components/MainPages/FindFriends/FindFriends';
+import SendMessage from './components/MainPages/SendMessage/SendMessage';
 
 import './App.css';
 
@@ -32,6 +33,7 @@ function App() {
           <Route path='/register' component={Register} />
           <Route path='/about' component={About} />
           <Route path='/friends' component={FindFriends} />
+          <Route path='/send-message/:userId' component={SendMessage} />
           <Route path='/profiles/:userId' exact component={Profile} />
           <Route path='/create-post' component={CreatePost} />
           <Route path='/details/:postId' component={PostDetails} />

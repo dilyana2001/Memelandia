@@ -1,0 +1,42 @@
+.send-message-btn {
+    color: rgb(93, 45, 93);
+    text-decoration: none;
+    margin: 10px;
+    background-color: rgb(235, 37, 235);
+    padding: 8px 12px;
+    border-radius: 30px;
+    font-weight: bold;
+    border: none;
+}
+
+.profileTemplate .profileTemplate-container .user-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-section {
+    display: flex;
+}
+
+.profileTemplate {
+    padding: 30px;
+    background-color: rgb(24, 3, 18);
+    min-width: 500px;
+    width: 800px;
+    margin: 50px;
+}
+
+.profileTemplate .username-paragraph {
+    font-size: 1.4em;
+    align-self: center;
+    margin: 0;
+    padding: 0 10px;
+}
+
+.profileTemplate .profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 10px solid #393a3a;
+    object-fit: cover;
+}
