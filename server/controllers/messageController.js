@@ -3,7 +3,7 @@ const Message = require('../models/Message');
 const { isAuth } = require('../middlewares/auth');
 
 router.get('/receiverId/:id', (req, res) => {
-    Message.find({ receiverId: req.params.id })
+    Message.find({ receiverId: req.params.id }).sort({'_id':-1})
         .then(message => res.json(message))
 });
 

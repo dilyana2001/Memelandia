@@ -33,7 +33,7 @@ class FindFriends extends Component {
     }
 
     render() {
-        console.log(this.state.profiles)
+   
         return (
             <div className="main-container">
                 <ul className="friends-section" >

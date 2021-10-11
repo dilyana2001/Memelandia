@@ -59,8 +59,6 @@ const PostDetails = ({ match }) => {
         }
     }
 
-    console.log(myLike)
-
     const ownerEditDeleteBtns = <li>
         <NavLink to={`/edit/${post._id}`}>Edit</NavLink>
         <NavLink to={`/delete/${post._id}`}>Delete</NavLink>

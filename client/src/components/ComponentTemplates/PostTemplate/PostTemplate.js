@@ -5,14 +5,14 @@ import auth from "../../../Service/auth";
 
 import './PostTemplate.css';
 
-const PostTemplate = ({ data }) => {
+const PostTemplate = ({ data,match }) => {
 
     const [profile, setProfile] = useState({});
 
     useEffect(() => {
         auth.getProfileInfo(data.userId)
             .then(setProfile)
-    }, []);
+    }, [match]);
 
     return (
         <li className="postTemplate">

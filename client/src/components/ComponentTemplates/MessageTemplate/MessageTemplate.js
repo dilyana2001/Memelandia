@@ -12,7 +12,7 @@ const MessageTemplate = ({ data }) => {
         auth.getProfileInfo(data.senderId)
             .then(setProfile)
     }, []);
-    console.log(data);
+ 
     return (
         <li className="profileTemplate messageTemplate">
             <div className="profileTemplate-container messageTemplate-container">

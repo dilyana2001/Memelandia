@@ -21,13 +21,12 @@ router.put('/:id', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    Profile.find()
+    Profile.find().sort({'username':1})
         .then(profiles => res.json(profiles));
 });
 
 router.get('/search/:query', (req, res) => {
-    let name = req.params.query;
-    Profile.find({ username: { $regex: `${name}`, $options: "i" } })
+    Profile.find({ username: { $regex: `${req.params.query}`, $options: "i" } }).sort({'username':1})
         .then(profiles => res.json(profiles));
 });
 
