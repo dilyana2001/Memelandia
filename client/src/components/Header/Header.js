@@ -18,6 +18,7 @@ const Header = () => {
                 <NavLink className="button" to={`/profiles/${userId}`}>Profile</NavLink>
                 <NavLink className="button" to={`/friends`}>Find Friends</NavLink>
                 <NavLink className="button" to={`/about`}>About</NavLink>
+                <NavLink className="button" to={`/messages/${userId}`}>1</NavLink>
             </li>
             <li className="second-bar">
                 <ul>

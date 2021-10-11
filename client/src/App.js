@@ -17,6 +17,7 @@ import Footer from './components/Footer/Footer';
 import EditProfile from './components/MainPages/Profile/EditProfile/EditProfile';
 import FindFriends from './components/MainPages/FindFriends/FindFriends';
 import SendMessage from './components/MainPages/SendMessage/SendMessage';
+import MessagesPage from './components/MainPages/MessagesPage/MessagesPage';
 
 import './App.css';
 
@@ -42,6 +43,7 @@ function App() {
           <Route path='/edit/:postId' exact component={EditPost} />
           <Route path='/delete/:postId' component={DeletePost} />
           <Route path='/profiles/:userId/edit' component={EditProfile} />
+          <Route path='/messages/:userId' component={MessagesPage} />
 
         </Switch>
 

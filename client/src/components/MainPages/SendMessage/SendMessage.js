@@ -12,7 +12,7 @@ const SendMessage = ({ match, history }) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         auth.sendMessage(formData, receiverId, senderId, senderUsername)
-            .then(() => history.push(`/find-friends`))
+            .then(() => history.push(`/friends`))
     }
 
     return (
