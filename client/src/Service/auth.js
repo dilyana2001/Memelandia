@@ -52,10 +52,10 @@ function isAuthenticated() {
     }
 }
 
-function getAllProfiles(){
+function getAllProfiles() {
     return fetch(`${baseUrl}/profiles`)
-    .then(res => res.json())
-    .catch((err) => console.log(err.message));
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
 }
 
 function getProfileInfo(userId) {
@@ -98,7 +98,7 @@ function postProfileInfo(username, userId) {
         .catch((err) => console.log(err.message));
 }
 
-function sendMessage(data, receiverId, senderId, senderUsername,){
+function sendMessage(data, receiverId, senderId, senderUsername,) {
     return fetch(`${baseUrl}/messages/receiverId/${receiverId}/senderId/${senderId}`, {
         method: 'POST',
         headers: {
@@ -117,12 +117,17 @@ function sendMessage(data, receiverId, senderId, senderUsername,){
         .catch((err) => console.log(err.message));
 }
 
-function getMyMessages(id){
+function getMyMessages(id) {
     return fetch(`${baseUrl}/messages/receiverId/${id}`)
-    .then(res => res.json())
-    .catch((err) => console.log(err.message));
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
 }
 
+function searchFriend(query) {
+    return fetch(`${baseUrl}/profiles/search/${query}`)
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
 
 export default {
     login,
@@ -135,4 +140,5 @@ export default {
     getAllProfiles,
     sendMessage,
     getMyMessages,
+    searchFriend,
 }

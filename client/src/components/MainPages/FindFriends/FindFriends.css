@@ -1,0 +1,26 @@
+.friends-section .search-bar form {
+    color: #757575;
+    display: flex;
+    justify-content: space-between;
+}
+
+.friends-section .search-bar input {
+    width: 80%;
+    background-color: transparent;
+    border: none;
+    color: #757575;
+}
+
+.friends-section .search-bar input:hover {
+    background-color: rgb(93, 45, 93);
+}
+
+.friends-section .search-bar a {
+    color: rgb(235, 37, 235);
+    text-decoration: none;
+    margin: 10px;
+    background-color: rgb(93, 45, 93);
+    padding: 8px 12px;
+    border-radius: 30px;
+    font-weight: bold;
+}

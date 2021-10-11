@@ -25,4 +25,10 @@ router.get('/', (req, res) => {
         .then(profiles => res.json(profiles));
 });
 
+router.get('/search/:query', (req, res) => {
+    Profile.find({ username: req.params.query })
+        .then(profiles => res.json(profiles));
+});
+
+
 module.exports = router;

@@ -22,7 +22,7 @@ const Header = () => {
         <ul className="navbar-logged-user">
             <li className="first-bar">
                 <NavLink className="button" to='/' exact >Home</NavLink>
-                <Link className="button add-post" to="/create-post"><i class="fas fa-plus"></i></Link>
+                <Link className="button add-post" to="/create-post"><i className="fas fa-plus"></i></Link>
                 <NavLink className="button" to={`/friends`}>Find Friends</NavLink>
                 <NavLink className="button" to={`/about`}>About</NavLink>
             </li>
