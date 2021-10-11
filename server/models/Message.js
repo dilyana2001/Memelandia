@@ -1,19 +1,23 @@
 const mongoose = require('mongoose');
 
 const messageSchema = new mongoose.Schema({
-    title:{
+    title: {
         type: String,
         maxlength: 50
     },
-    description:{
+    description: {
         type: String,
         maxlength: 1000
     },
-    username:{
+    senderUsername: {
         type: String,
         ref: 'User'
     },
-    userId: {
+    senderId: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    },
+    receiverId: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
     }
