@@ -16,6 +16,7 @@ const Header = () => {
                 <NavLink className="button" to='/' exact >Home</NavLink>
                 <NavLink className="button" to="/create-post">Create Post</NavLink>
                 <NavLink className="button" to={`/profiles/${userId}`}>Profile</NavLink>
+                <NavLink className="button" to={`/friends`}>Find Friends</NavLink>
                 <NavLink className="button" to={`/about`}>About</NavLink>
             </li>
             <li className="second-bar">

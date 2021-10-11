@@ -15,6 +15,7 @@ import EditPost from './components/MainPages/EditPost/EditPost';
 import DeletePost from './components/Actions/DeletePost/DeletePost';
 import Footer from './components/Footer/Footer';
 import EditProfile from './components/MainPages/Profile/EditProfile/EditProfile';
+import FindFriends from './components/MainPages/FindFriends/FindFriends';
 
 import './App.css';
 
@@ -30,6 +31,7 @@ function App() {
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
           <Route path='/about' component={About} />
+          <Route path='/friends' component={FindFriends} />
           <Route path='/profiles/:userId' exact component={Profile} />
           <Route path='/create-post' component={CreatePost} />
           <Route path='/details/:postId' component={PostDetails} />
