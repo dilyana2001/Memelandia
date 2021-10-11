@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import auth from "../../../Service/auth";
 import MessageTemplate from "../../ComponentTemplates/MessageTemplate/MessageTemplate";
 
+import './MessagesPage.css'
+
 const MessagesPage = ({ match }) => {
 
     const userId = localStorage.getItem('userId');
@@ -14,11 +16,12 @@ const MessagesPage = ({ match }) => {
     }, [match])
 
     return (
-        <section>
-            <h2 className="description">Message Box</h2>
-            <section>
-                <div className="comment-container">
-                    <ul className="comment-list">
+        <div className="main-container">
+                <section className="friends-section">
+           
+            <h2 className="description">Messanger</h2>
+                <div className="friends-section">
+                    <ul>
                         {messages?.map(x =>
                             <MessageTemplate
                                 key={x._id}
@@ -27,9 +30,8 @@ const MessagesPage = ({ match }) => {
                         )}
                     </ul>
                 </div>
-            </section>
         </section>
-
+        </div>
     )
 }
 export default MessagesPage;
