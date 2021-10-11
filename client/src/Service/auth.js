@@ -98,6 +98,31 @@ function postProfileInfo(username, userId) {
         .catch((err) => console.log(err.message));
 }
 
+function sendMessage(data, receiverId, senderId, senderUsername,){
+    return fetch(`${baseUrl}/messages/receiverId/${receiverId}/senderId/${senderId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('token')
+        },
+        body: JSON.stringify({
+            title: data.get('title'),
+            description: data.get('description'),
+            senderUsername,
+            receiverId,
+            senderId
+        })
+    })
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
+
+function getMyMessages(id){
+    return fetch(`${baseUrl}/messages/receiverId/${id}`)
+    .then(res => res.json())
+    .catch((err) => console.log(err.message));
+}
+
 
 export default {
     login,
@@ -108,4 +133,6 @@ export default {
     getProfileInfo,
     postProfileInfo,
     getAllProfiles,
+    sendMessage,
+    getMyMessages,
 }

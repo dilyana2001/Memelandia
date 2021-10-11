@@ -11,9 +11,7 @@ const CreatePost = ({ history }) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         postService.postPost(formData, username, userId)
-            .then((meme) => {
-                history.push(`/details/${meme._id}`)
-            })
+            .then(post => history.push(`/details/${post._id}`))
     }
 
     return (

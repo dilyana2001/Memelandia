@@ -10,7 +10,7 @@ router.use('/auth', authController);
 router.use('/profiles', profileController);
 router.use('/posts', postController);
 router.use('/comments', commentController);
-router.use('/message', messageController);
+router.use('/messages', messageController);
 
 
 module.exports = router;
