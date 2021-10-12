@@ -1,4 +1,5 @@
 const baseUrl = 'http://localhost:5000/api';
+const token = localStorage.getItem('token');
 
 function login(data) {
     return fetch(`${baseUrl}/auth/login`, {
@@ -27,7 +28,11 @@ function register(data) {
             username: data.get('username'),
         })
     })
-        .then(res => res.json())
+        .then(res => {
+            if (res.status != 409) {
+                res.json();
+            }
+        })
         .catch((err) => console.log(err.message));
 }
 
@@ -35,7 +40,7 @@ function logout() {
     return fetch(`${baseUrl}/auth/logout`, {
         method: 'GET',
         headers: {
-            'X-Authorization': localStorage.getItem('token')
+            'Authorization': `Bearer ${token}`
         }
     })
         .then(() => {
@@ -46,14 +51,14 @@ function logout() {
         .catch((err) => console.log(err.message));
 }
 
-function isAuthenticated() {
-    if (!localStorage.getItem) {
-        return;
-    }
-}
-
 function getAllProfiles() {
-    return fetch(`${baseUrl}/profiles`)
+    return fetch(`${baseUrl}/profiles`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
         .then(res => res.json())
         .catch((err) => console.log(err.message));
 }
@@ -69,7 +74,7 @@ function editProfileInfo(userId, profileId, data, username) {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'X-Authorization': localStorage.getItem('token')
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
             imageUrl: data.get('imageUrl'),
@@ -87,7 +92,7 @@ function postProfileInfo(username, userId) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-Authorization': localStorage.getItem('token')
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
             username,
@@ -103,7 +108,7 @@ function sendMessage(data, receiverId, senderId, senderUsername,) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-Authorization': localStorage.getItem('token')
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
             title: data.get('title'),
@@ -118,7 +123,13 @@ function sendMessage(data, receiverId, senderId, senderUsername,) {
 }
 
 function getMyMessages(id) {
-    return fetch(`${baseUrl}/messages/receiverId/${id}`)
+    return fetch(`${baseUrl}/messages/receiverId/${id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
         .then(res => res.json())
         .catch((err) => console.log(err.message));
 }
@@ -128,7 +139,7 @@ function deleteMessage(id) {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            'X-Authorization': localStorage.getItem('token')
+            'Authorization': `Bearer ${token}`
         }
     })
         .catch((err) => console.log(err.message));
@@ -145,7 +156,7 @@ function deleteAccountProfile(userId) {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            'X-Authorization': localStorage.getItem('token')
+            'Authorization': `Bearer ${token}`
         }
     })
         .catch((err) => console.log(err.message));
@@ -156,24 +167,21 @@ function deleteAccoutUser(id) {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            'X-Authorization': localStorage.getItem('token')
+            'Authorization': `Bearer ${token}`
         }
     })
         .catch((err) => console.log(err.message));
 }
 
-function sendFeedback(data, username, userId) {
+function sendFeedback(data,) {
     return fetch(`${baseUrl}/messages/feedback`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'X-Authorization': localStorage.getItem('token')
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             email: data.get('email'),
-            description: data.get('description'),
-            username,
-            userId
+            description: data.get('description')
         })
     })
         .then(res => res.json())
@@ -184,7 +192,6 @@ export default {
     login,
     register,
     logout,
-    isAuthenticated,
     editProfileInfo,
     getProfileInfo,
     postProfileInfo,

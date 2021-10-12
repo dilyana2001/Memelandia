@@ -7,18 +7,22 @@ const Register = ({ history }) => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        if (formData.get('password') == formData.get('rePass')) {
+        if (formData.get('password') == formData.get('rePass') && formData.get('password').length > 4 && formData.get('username').length > 4) {
             auth.register(formData)
                 .then(data => {
-                    localStorage.setItem('userId', data._id);
-                    const username = localStorage.getItem('username');
-                    const userId = localStorage.getItem('userId');
-                    auth.postProfileInfo(username, userId);
-                    localStorage.removeItem('userId')
-                    history.push('/login');
+                    if (data != undefined) {
+                        localStorage.setItem('userId', data._id);
+                        const username = localStorage.getItem('username');
+                        const userId = localStorage.getItem('userId');
+                        auth.postProfileInfo(username, userId);
+                        localStorage.removeItem('userId')
+                        history.push('/login');
+                    } else {
+                        alert('This username is already taken!')
+                    }
                 })
         } else {
-            alert(`Try Again!`)
+            alert(`Username and password need to be at least five symbols!`)
         }
     }
 
@@ -38,7 +42,6 @@ const Register = ({ history }) => {
                     <div className="mb-3">
                         <label htmlFor="rePass" className="form-label">Password</label>
                         <input type="password" className="form-control" id="rePass" name='rePass' />
-                        <span>Please don't forget your password!</span>
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
