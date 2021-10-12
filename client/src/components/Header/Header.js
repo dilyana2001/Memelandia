@@ -1,5 +1,4 @@
 import { NavLink, Link } from 'react-router-dom';
-import { useEffect, useState } from "react";
 
 import auth from '../../Service/auth';
 
@@ -10,13 +9,6 @@ const Header = () => {
     const username = localStorage.getItem('username');
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');
-
-    const [messages, setMessages] = useState([]);
-
-    useEffect(() => {
-        auth.getMyMessages(userId)
-            .then(setMessages)
-    }, [])
 
     const navbarLoggedUser =
         <ul className="navbar-logged-user">
@@ -30,7 +22,7 @@ const Header = () => {
                 <ul>
                     <li className="welcome-header">Welcome,</li>
                     <li><NavLink className="button" to={`/profiles/${userId}`}>{username}</NavLink></li>
-                    <li><NavLink className="button" to={`/messages/${userId}`}>{messages.length}</NavLink></li>
+                    <li><NavLink className="button" to={`/messages/${userId}`}><i className="fas fa-envelope"></i></NavLink></li>
                     <li><Link className="button logout" to="#" onClick={() => {
                         auth.logout();
                     }}> Logout</Link></li>
