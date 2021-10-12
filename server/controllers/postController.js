@@ -4,7 +4,7 @@ const Like = require('../models/Like');
 const { isAuth } = require('../middlewares/auth');
 
 router.get('/', (req, res) => {
-    Post.find().sort({'_id':-1})
+    Post.find().sort({ '_id': -1 })
         .then(posts => res.json(posts));
 });
 
@@ -22,7 +22,6 @@ router.get('/:postId', (req, res) => {
 router.delete('/:postId', (req, res) => {
     Post.findByIdAndRemove(req.params.postId)
         .then(deleted => res.status(200).json({ _id: deleted._id }));
-
 });
 
 router.put('/:postId', (req, res) => {
@@ -32,7 +31,7 @@ router.put('/:postId', (req, res) => {
 });
 
 router.get('/userId/:id', (req, res) => {
-    Post.find({ userId: req.params.id }).sort({'_id':-1})
+    Post.find({ userId: req.params.id }).sort({ '_id': -1 })
         .then(posts => res.json(posts));
 });
 

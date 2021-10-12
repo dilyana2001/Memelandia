@@ -22,7 +22,6 @@ router.post('/login', (req, res, next) => {
                 _id: user._id,
                 username: user.username
             }, config.SECRET, { expiresIn: '3h' });
-
             res.status(200).json({
                 _id: user._id,
                 username: user.username,

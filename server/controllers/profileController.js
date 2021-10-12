@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const Profile = require('../models/Profile');
+const User = require('../models/User');
+
 const { isAuth } = require('../middlewares/auth');
 
 router.get('/:id', (req, res) => {
@@ -21,14 +23,23 @@ router.put('/:id', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    Profile.find().sort({'username':1})
+    Profile.find().sort({ 'username': 1 })
         .then(profiles => res.json(profiles));
 });
 
 router.get('/search/:query', (req, res) => {
-    Profile.find({ username: { $regex: `${req.params.query}`, $options: "i" } }).sort({'username':1})
+    Profile.find({ username: { $regex: `${req.params.query}`, $options: "i" } }).sort({ 'username': 1 })
         .then(profiles => res.json(profiles));
 });
 
+router.delete('/:userId', (req, res) => {
+    Profile.findOneAndRemove({ userId: req.params.userId })
+        .then(deleted => res.status(200).json({ _id: deleted._id }));
+});
+
+router.delete('/users/:id', (req, res) => {
+    User.findOneAndRemove({ _id: req.params.id })
+        .then(deleted => res.status(200).json({ _id: deleted._id }));
+});
 
 module.exports = router;

@@ -26,3 +26,12 @@
     margin: 0;
     width: 650px;
 }
+
+.delete-acc-btn {
+    background-color: red;
+    padding: 10px;
+    border: none;
+    margin-top: 50px;
+    border-radius: 50px;
+    font-weight: bolder;
+}

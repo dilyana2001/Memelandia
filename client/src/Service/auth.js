@@ -35,7 +35,7 @@ function logout() {
     return fetch(`${baseUrl}/auth/logout`, {
         method: 'GET',
         headers: {
-            'X-Authorization': localStorage.getItem('auth_token')
+            'X-Authorization': localStorage.getItem('token')
         }
     })
         .then(() => {
@@ -129,6 +129,28 @@ function searchFriend(query) {
         .catch((err) => console.log(err.message));
 }
 
+function deleteAccountProfile(userId) {
+    return fetch(`${baseUrl}/profiles/${userId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('token')
+        }
+    })
+        .catch((err) => console.log(err.message));
+}
+
+function deleteAccoutUser(id) {
+    return fetch(`${baseUrl}/profiles/users/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('token')
+        }
+    })
+        .catch((err) => console.log(err.message));
+}
+
 export default {
     login,
     register,
@@ -141,4 +163,6 @@ export default {
     sendMessage,
     getMyMessages,
     searchFriend,
+    deleteAccountProfile,
+    deleteAccoutUser,
 }
