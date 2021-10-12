@@ -4,7 +4,7 @@ import MessageTemplate from "../../ComponentTemplates/MessageTemplate/MessageTem
 
 import './MessagesPage.css'
 
-const MessagesPage = ({ match }) => {
+const MessagesPage = ({ match, history }) => {
 
     const userId = localStorage.getItem('userId');
 
@@ -26,6 +26,7 @@ const MessagesPage = ({ match }) => {
                             <MessageTemplate
                                 key={x._id}
                                 data={x}
+                                history={history}
                             />
                         )}
                     </ul>

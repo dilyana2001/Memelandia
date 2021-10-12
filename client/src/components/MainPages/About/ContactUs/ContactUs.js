@@ -8,7 +8,7 @@ const ContactUs = ({ history }) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         auth.sendFeedback(formData, username, userId)
-            .then(() => history.push(`/about`))
+            .then(history.push(`/about`))
     }
 
     return (

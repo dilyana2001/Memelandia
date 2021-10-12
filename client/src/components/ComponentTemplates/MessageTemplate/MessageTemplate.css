@@ -29,3 +29,18 @@
     display: flex;
     flex-direction: column;
 }
+
+.messageTemplate {
+    position: relative;
+}
+
+.delete-message-btn {
+    background: transparent;
+    border: none;
+    color: #74147c;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}

@@ -20,4 +20,10 @@ router.post('/feedback', (req, res) => {
         .then(createdFeedback => res.status(201).json({ _id: createdFeedback._id }))
 });
 
+router.delete('/:id', (req, res) => {
+    Message.findByIdAndRemove(req.params.id)
+        .then(deletedComment => res.status(201).json({ _id: deletedComment._id }))
+
+})
+
 module.exports = router;

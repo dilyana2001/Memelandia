@@ -123,6 +123,17 @@ function getMyMessages(id) {
         .catch((err) => console.log(err.message));
 }
 
+function deleteMessage(id) {
+    return fetch(`${baseUrl}/messages/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('token')
+        }
+    })
+        .catch((err) => console.log(err.message));
+}
+
 function searchFriend(query) {
     return fetch(`${baseUrl}/profiles/search/${query}`)
         .then(res => res.json())
@@ -180,6 +191,7 @@ export default {
     getAllProfiles,
     sendMessage,
     getMyMessages,
+    deleteMessage,
     searchFriend,
     deleteAccountProfile,
     deleteAccoutUser,

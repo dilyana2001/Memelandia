@@ -5,18 +5,26 @@ import auth from "../../../Service/auth";
 
 import './MessageTemplate.css'
 
-const MessageTemplate = ({ data }) => {
+const MessageTemplate = ({ data, history }) => {
     const [profile, setProfile] = useState({});
+    const userId = localStorage.getItem('userid')
 
     useEffect(() => {
         auth.getProfileInfo(data.senderId)
             .then(setProfile)
     }, []);
- 
+
+    const deleteCommentHandler = () => {
+        auth.deleteMessage(data._id);
+        history.push(`/messages/${userId}`);
+    }
+
     return (
         <li className="profileTemplate messageTemplate">
+            <button onClick={deleteCommentHandler} className="delete-message-btn">x</button>
             <div className="profileTemplate-container messageTemplate-container">
                 <section className="user-section">
+
                     <div className="user-info">
                         <NavLink to={`/profiles/${profile?.userId}`}><img className="profile-image"
                             src={profile?.imageUrl || 'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} />
@@ -28,6 +36,7 @@ const MessageTemplate = ({ data }) => {
                         <p> {data?.description}</p>
                     </div>
                 </section>
+
             </div>
         </li>
     );
