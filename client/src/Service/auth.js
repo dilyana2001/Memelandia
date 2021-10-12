@@ -151,6 +151,24 @@ function deleteAccoutUser(id) {
         .catch((err) => console.log(err.message));
 }
 
+function sendFeedback(data, username, userId) {
+    return fetch(`${baseUrl}/messages/feedback`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Authorization': localStorage.getItem('token')
+        },
+        body: JSON.stringify({
+            email: data.get('email'),
+            description: data.get('description'),
+            username,
+            userId
+        })
+    })
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
+
 export default {
     login,
     register,
@@ -165,4 +183,5 @@ export default {
     searchFriend,
     deleteAccountProfile,
     deleteAccoutUser,
+    sendFeedback,
 }

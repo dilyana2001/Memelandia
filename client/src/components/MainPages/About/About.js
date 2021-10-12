@@ -10,9 +10,7 @@ class About extends Component {
                 <section className="about-section">
                     <h1>MEMELANDIA</h1>
                     <p>Inspired by Facebook!</p>
-                    <Link to="#"><p>Contact us!</p></Link>  
-                    <p>You can add post from the big pink plus! </p>
-                        <p>Have fun!</p>
+                    <Link to="/contact-us"><p>Contact us!</p></Link>
                 </section>
             </div>
         )
