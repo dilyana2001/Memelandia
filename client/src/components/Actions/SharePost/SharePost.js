@@ -5,7 +5,7 @@ import postService from "../../../Service/postService"
 
 import './SharePost.css';
 
-const SharePost = ({ match, history }) => {
+const SharePost = ({ match }) => {
 
     const [post, setPost] = useState({});
 
@@ -16,7 +16,7 @@ const SharePost = ({ match, history }) => {
         postService.postExistingPost(match.params.postId, userId, username)
             .then(setPost)
     }, [match]);
-    
+
     return (
         <div className="main-container">
             <div className="you-shared-delete-section">

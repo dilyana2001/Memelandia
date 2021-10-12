@@ -1,13 +1,11 @@
 import auth from "../../../../Service/auth";
 
 const ContactUs = ({ history }) => {
-    const username = localStorage.getItem('username');
-    const userId = localStorage.getItem('userId');
 
     const sendFeedbackHandler = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-        auth.sendFeedback(formData, username, userId)
+        auth.sendFeedback(formData)
             .then(history.push(`/about`))
     }
 

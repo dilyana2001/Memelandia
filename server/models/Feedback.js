@@ -8,14 +8,6 @@ const feedbackSchema = new mongoose.Schema({
     description: {
         type: String,
         maxlength: 50
-    },
-    username: {
-        type: String,
-        ref: 'User'
-    },
-    userId: {
-        type: mongoose.Types.ObjectId,
-        ref: 'User'
     }
 });
 

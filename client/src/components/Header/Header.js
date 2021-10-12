@@ -50,7 +50,7 @@ const Header = () => {
     return (
         <header className="site-header">
             <nav className="navbar">
-                {token != null ? navbarLoggedUser : navbarAnonymous}
+                {token && token != 'undefined' ? navbarLoggedUser : navbarAnonymous}
             </nav>
         </header>
     );

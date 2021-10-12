@@ -1,4 +1,5 @@
 const baseUrl = 'http://localhost:5000/api';
+const token = localStorage.getItem('token');
 
 function getAllPost() {
     return fetch(`${baseUrl}/posts`)
@@ -17,7 +18,7 @@ function postPost(data, username, userId) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-Authorization': localStorage.getItem('token')
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
             imageUrl: data.get('imageUrl'),
@@ -47,7 +48,7 @@ function deletePost(id) {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            'X-Authorization': localStorage.getItem('token')
+            'Authorization': `Bearer ${token}`
         }
     })
         .catch((err) => console.log(err.message));
@@ -58,7 +59,7 @@ function editPost(id, data, username, userId) {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'X-Authorization': localStorage.getItem('token')
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
             imageUrl: data.get('imageUrl'),
@@ -88,7 +89,7 @@ function commentPost(postId, comment, username, userId) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-Authorization': localStorage.getItem('token')
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
             postId,
@@ -113,7 +114,7 @@ function putLike(postId, userId) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-Authorization': localStorage.getItem('token')
+            'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
             postId,
@@ -132,12 +133,12 @@ function isPostLikedByUser(postId, userId) {
 
 function removeLike(postId, userId) {
     return fetch(`${baseUrl}/posts/likes/postId/${postId}/userId/${userId}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Authorization': localStorage.getItem('token')
-            }
-        })
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
         .catch((err) => console.log(err.message));
 }
 

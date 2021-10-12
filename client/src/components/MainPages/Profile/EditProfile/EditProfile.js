@@ -21,7 +21,7 @@ const EditProfile = ({ match, history }) => {
         const formData = new FormData(e.target);
         auth.editProfileInfo(userId, profile._id, formData, username)
             .then(() => {
-                history.push(`/profiles/${match.params.userId}`);
+                history.push(`/profiles/${userId}`);
             });
     }
 

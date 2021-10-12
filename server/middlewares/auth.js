@@ -11,19 +11,16 @@ function auth(req, res, next) {
         } catch (error) {
             console.log('Invalid token!');
         }
-
     }
-
     next();
 };
 
 function isAuth(req, res, next) {
     if (!req.user) {
-        res.status(401).end({ errorData: { message: 'You cannot perform this action!' } });
+        res.status(401).send({ errorData: { message: 'You cannot perform this action!' } }).end();
     }
     next();
 }
-
 
 module.exports = {
     auth,

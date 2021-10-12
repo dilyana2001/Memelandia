@@ -1,4 +1,5 @@
 import auth from "../../../Service/auth";
+import { Link } from 'react-router-dom';
 
 import './Login.css';
 
@@ -13,7 +14,15 @@ const Login = ({ history }) => {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('username', data.username);
                 localStorage.setItem('userId', data._id);
-                history.push('/');
+
+                if (localStorage.getItem('token') != 'undefined') {
+                    history.push('/');
+                } else {
+                    alert(`Invalid username or password!`);
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('username');
+                    localStorage.removeItem('userId');
+                }
             })
     }
 
@@ -32,6 +41,7 @@ const Login = ({ history }) => {
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
+                <Link to={`#`}>Forgot your password? </Link>
             </div>
         </div>
     )

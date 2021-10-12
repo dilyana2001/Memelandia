@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { NavLink } from "react-router-dom";
 
 import ProfileTemplate from '../../ComponentTemplates/ProfileTemplate/ProfileTemplate'
 import auth from '../../../Service/auth';
@@ -13,6 +12,7 @@ class FindFriends extends Component {
             profiles: [],
             query: ''
         };
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -33,7 +33,7 @@ class FindFriends extends Component {
     }
 
     render() {
-   
+
         return (
             <div className="main-container">
                 <ul className="friends-section" >
