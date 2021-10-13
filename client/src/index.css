@@ -21,3 +21,11 @@ code {
     bottom: 0;
     right: 0;
 }
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}

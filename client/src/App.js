@@ -20,8 +20,6 @@ import SendMessage from './components/MainPages/SendMessage/SendMessage';
 import MessagesPage from './components/MainPages/MessagesPage/MessagesPage';
 import ContactUs from './components/MainPages/About/ContactUs/ContactUs';
 
-import './App.css';
-
 function App() {
   return (
     <div className="App">
