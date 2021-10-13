@@ -28,11 +28,7 @@ function register(data) {
             username: data.get('username'),
         })
     })
-        .then(res => {
-            if (res.status != 409) {
-                res.json();
-            }
-        })
+        .then(res => res.json())
         .catch((err) => console.log(err.message));
 }
 

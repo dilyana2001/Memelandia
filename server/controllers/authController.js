@@ -10,7 +10,7 @@ router.post('/register', (req, res, next) => {
             .then(createdUser => res.status(201).json({ _id: createdUser._id }))
             .catch(() => next({ status: 403, message: 'Invalid register!', type: 'ERROR' }));
     }
-    next({ status: 409, message: 'This username already exist!', type: 'ERROR' });
+    next({ status: 409, message: { message: 'This username already exist!', code: 409 }, type: 'ERROR' });
 });
 
 router.post('/login', (req, res, next) => {

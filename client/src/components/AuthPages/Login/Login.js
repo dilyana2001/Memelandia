@@ -18,7 +18,7 @@ const Login = ({ history }) => {
                 if (localStorage.getItem('token') != 'undefined') {
                     history.push('/');
                 } else {
-                    alert(`Invalid username or password!`);
+                    alert(data.message);
                     localStorage.removeItem('token');
                     localStorage.removeItem('username');
                     localStorage.removeItem('userId');

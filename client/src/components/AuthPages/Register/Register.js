@@ -10,7 +10,7 @@ const Register = ({ history }) => {
         if (formData.get('password') == formData.get('rePass') && formData.get('password').length > 4 && formData.get('username').length > 4) {
             auth.register(formData)
                 .then(data => {
-                    if (data != undefined) {
+                    if (data.message.code != 409) {
                         localStorage.setItem('userId', data._id);
                         const username = localStorage.getItem('username');
                         const userId = localStorage.getItem('userId');
@@ -18,7 +18,7 @@ const Register = ({ history }) => {
                         localStorage.removeItem('userId')
                         history.push('/login');
                     } else {
-                        alert('This username is already taken!')
+                        alert(data.message.message)
                     }
                 })
         } else {
