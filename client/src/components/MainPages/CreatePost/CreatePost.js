@@ -9,8 +9,8 @@ const CreatePost = ({ history }) => {
 
     const createPostHandler = (e) => {
         e.preventDefault();
-        const formData = new FormData(e.target);
-        postService.postPost(formData, username, userId)
+        const { imageUrl, description } = e.target;
+        postService.postPost(imageUrl.value, description.value, username, userId)
             .then(post => history.push(`/details/${post._id}`))
     }
 

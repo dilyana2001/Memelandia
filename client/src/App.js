@@ -19,6 +19,7 @@ import FindFriends from './components/MainPages/FindFriends/FindFriends';
 import SendMessage from './components/MainPages/SendMessage/SendMessage';
 import MessagesPage from './components/MainPages/MessagesPage/MessagesPage';
 import ContactUs from './components/MainPages/About/ContactUs/ContactUs';
+import ChatPage from './components/MainPages/MessagesPage/ChatPage/ChatPage';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path='/delete/:postId' component={DeletePost} />
           <Route path='/profiles/:userId/edit' component={EditProfile} />
           <Route path='/messages/:userId' component={MessagesPage} />
+          <Route path='/chat' component={ChatPage} />
         </Switch>
 
         <Footer />

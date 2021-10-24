@@ -13,19 +13,20 @@ function getPost(id) {
         .catch((err) => console.log(err.message));
 }
 
-function postPost(data, username, userId) {
+function postPost(imageUrl, description, username, userId) {
+    const data = {
+        imageUrl,
+        description,
+        username,
+        userId
+    }
     return fetch(`${baseUrl}/posts`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({
-            imageUrl: data.get('imageUrl'),
-            description: data.get('description'),
-            username,
-            userId
-        })
+        body: JSON.stringify(data)
     })
         .then(res => res.json())
         .catch((err) => console.log(err.message));

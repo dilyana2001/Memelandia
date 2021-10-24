@@ -21,13 +21,13 @@ router.get('/:postId', (req, res) => {
 
 router.delete('/:postId', isAuth, (req, res) => {
     Post.findByIdAndRemove(req.params.postId)
-        .then(deleted => res.status(200).json({ _id: deleted._id }));
+        .then(deleted => res.json({ _id: deleted._id }));
 });
 
 router.put('/:postId', isAuth, (req, res) => {
     const post = new Post({ _id: req.params.postId, ...req.body });
     Post.findByIdAndUpdate(req.params.postId, post)
-        .then(updated => res.status(201).json({ _id: updated._id }))
+        .then(updated => res.status(201).json({ _id: updated._id }));
 });
 
 router.get('/userId/:id', (req, res) => {
@@ -53,7 +53,7 @@ router.get('/likes/postId/:postId/userId/:userId', (req, res) => {
 
 router.delete('/likes/postId/:postId/userId/:userId', isAuth, (req, res) => {
     Like.findOneAndDelete({ postId: req.params.postId, userId: req.params.userId })
-        .then(deleted => res.status(200).json({ _id: deleted._id }));
+        .then(deleted => res.json({ _id: deleted._id }));
 
 });
 
