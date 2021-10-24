@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import postService from "../../../Service/postService";
+import InputError from "../../../Shared/InputError/InputError";
 
 import './EditPost.css';
 import '../MainPage.css';
@@ -10,6 +11,7 @@ const EditPost = ({ match, history }) => {
     const userId = localStorage.getItem('userId');
 
     const [post, setPost] = useState({});
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         postService.getPost(match.params.postId)
@@ -18,9 +20,19 @@ const EditPost = ({ match, history }) => {
 
     const editPostHandler = (e) => {
         e.preventDefault();
-        const formData = new FormData(e.target);
-        postService.editPost(match.params.postId, formData, username, userId)
-            .then(() => history.push(`/details/${match.params.postId}`));
+        const { imageUrl, description } = e.target;
+        errorMessageChanger(imageUrl.value, 'ImageUrl is required');
+        if (imageUrl.value.length < 1 || !imageUrl.value.startsWith('http')) {
+            return
+        }
+        postService.editPost(post._id, imageUrl.value, description.value, username, userId)
+            .then(() => history.push(`/details/${post._id}`));
+    }
+
+    const onChangeHandler = (e) => errorMessageChanger(e.target.value, 'ImageUrl is required');
+
+    function errorMessageChanger(element, text) {
+        element.length < 1 ? setErrorMessage(text) : setErrorMessage('');
     }
 
     return (
@@ -29,7 +41,8 @@ const EditPost = ({ match, history }) => {
                 <h2>Edit Post</h2>
                 <form onSubmit={editPostHandler}>
                     <label htmlFor="imageUrl">Image URL:</label>
-                    <input type="text" defaultValue={post.imageUrl} name="imageUrl" id="imageUrl" />
+                    <input type="text" defaultValue={post.imageUrl} name="imageUrl" id="imageUrl" onChange={onChangeHandler} />
+                    <InputError>{errorMessage}</InputError>
                     <label htmlFor="description">Description:</label>
                     <textarea type="text" defaultValue={post.description} name="description" id="description" />
                     <button>Post!</button>

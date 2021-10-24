@@ -55,19 +55,20 @@ function deletePost(id) {
         .catch((err) => console.log(err.message));
 }
 
-function editPost(id, data, username, userId) {
+function editPost(id, imageUrl, description , username, userId) {
+    const data = {
+        imageUrl,
+        description,
+        username,
+        userId
+    }
     return fetch(`${baseUrl}/posts/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({
-            imageUrl: data.get('imageUrl'),
-            description: data.get('description'),
-            username,
-            userId
-        })
+        body: JSON.stringify(data)
     })
         .then(res => res.json())
         .catch((err) => console.log(err.message));

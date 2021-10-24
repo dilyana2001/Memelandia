@@ -12,7 +12,7 @@ const postSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        maxlength: 50
+        maxlength: 500
     },
     username:{
         type: String,

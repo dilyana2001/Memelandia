@@ -15,15 +15,15 @@ const SendMessage = ({ match, history }) => {
 
     const sendMessageHandler = (e) => {
         e.preventDefault();
-        const formData = new FormData(e.target);
-        auth.sendMessage(formData, receiverId, senderId, senderUsername)
+        const { title, description } = e.target;
+        auth.sendMessage(title.value, description.value, receiverId, senderId, senderUsername)
             .then(() => history.push(`/friends`))
     }
 
     const onChangeHandler = (e) => {
-        if (e.target.value.length < 1){
+        if (e.target.value.length < 1) {
             setErrorMessage('Enter message');
-        }else{
+        } else {
             setErrorMessage('');
         }
     }

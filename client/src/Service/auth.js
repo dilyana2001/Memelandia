@@ -99,7 +99,7 @@ function postProfileInfo(username, userId) {
         .catch((err) => console.log(err.message));
 }
 
-function sendMessage(data, receiverId, senderId, senderUsername,) {
+function sendMessage(title, description, receiverId, senderId, senderUsername,) {
     return fetch(`${baseUrl}/messages/receiverId/${receiverId}/senderId/${senderId}`, {
         method: 'POST',
         headers: {
@@ -107,8 +107,8 @@ function sendMessage(data, receiverId, senderId, senderUsername,) {
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            title: data.get('title'),
-            description: data.get('description'),
+            title,
+            description,
             senderUsername,
             receiverId,
             senderId
