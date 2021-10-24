@@ -46,6 +46,7 @@ function App() {
           <Route path='/profiles/:userId/edit' component={EditProfile} />
           <Route path='/messages/:userId' component={MessagesPage} />
           <Route path='/chat' component={ChatPage} />
+         {/* <Route path='/some-path' render={(props)=> <SomeComponent {...props} oshte='props' />} /> */}
         </Switch>
 
         <Footer />
