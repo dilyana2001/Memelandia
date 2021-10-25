@@ -1,15 +1,13 @@
 import { NavLink, Link } from 'react-router-dom';
+import { useContext } from 'react';
 
 import auth from '../../Service/auth';
+import AuthContext from '../../contexts/AuthContext';
 
 import './Header.css';
 
 const Header = () => {
-
-    const username = localStorage.getItem('username');
-    const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('userId');
-
+    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
     const navbarLoggedUser =
         <ul className="navbar-logged-user">
             <li className="first-bar">
@@ -22,7 +20,9 @@ const Header = () => {
                 <ul>
                     <li className="welcome-header">Welcome,</li>
                     <li><NavLink className="button" to={`/profiles/${userId}`}>{username}</NavLink></li>
-                    <li><NavLink className="button" to={`/messages/${userId}`}><i className="fas fa-envelope"></i></NavLink></li>
+                    <li><NavLink className="button" to={`/messages/${userId}`}>
+                        <i className="fas fa-envelope"></i>
+                    </NavLink></li>
                     <li><Link className="button logout" to="#" onClick={() => {
                         auth.logout();
                     }}> Logout</Link></li>
@@ -42,11 +42,10 @@ const Header = () => {
     return (
         <header className="site-header">
             <nav className="navbar">
-                {token && token != 'undefined' ? navbarLoggedUser : navbarAnonymous}
+                {isAuthenticated ? navbarLoggedUser : navbarAnonymous}
             </nav>
         </header>
     );
 }
-
 
 export default Header;

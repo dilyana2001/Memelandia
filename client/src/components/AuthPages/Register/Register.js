@@ -6,24 +6,24 @@ const Register = ({ history }) => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        if (formData.get('password') == formData.get('rePass') && formData.get('password').length > 4 && formData.get('username').length > 4) {
-            auth.register(formData)
-                .then(data => {
-                    if (data.message.code != 409) {
-                        localStorage.setItem('userId', data._id);
-                        const username = localStorage.getItem('username');
-                        const userId = localStorage.getItem('userId');
-                        auth.postProfileInfo(username, userId);
-                        localStorage.removeItem('userId')
-                        history.push('/login');
-                    } else {
-                        alert(data.message.message)
-                    }
-                })
-        } else {
-            alert(`Username and password need to be at least five symbols!`)
+        const { username, password, rePass } = e.target;
+
+        if (password.value.length <= 4 || username.value.length <= 4) {
+            return alert(`Username and password need to be at least five symbols!`);
         }
+        if (password.value != rePass.value) {
+            return alert(`Passwords didn't match!`);
+        }
+
+        auth.register(username.value, password.value)
+            .then(data => {
+                if (data.code) {
+                    return alert(data.message)
+                }
+                auth.postProfileInfo(data.username, data._id);
+                history.push('/login');
+                alert(`Your registeration is successful! Please login.`);
+            })
     }
 
     return (

@@ -14,7 +14,7 @@ const PostDetails = ({ match }) => {
     const [comments, setComments] = useState([]);
     const [profile, setProfile] = useState({});
     const [likes, setLikes] = useState([]);
-    let [myLike, setMyLike] = useState({});
+    const [myLike, setMyLike] = useState({});
 
     const userId = localStorage.getItem('userId');
     const postId = match.params.postId;
@@ -56,6 +56,7 @@ const PostDetails = ({ match }) => {
     function putLikes() {
         if (!myLike) {
             postService.putLike(postId, userId)
+            // setPet(state => ({...state, likes: state.likes + 1}))
         }
     }
 
@@ -69,7 +70,9 @@ const PostDetails = ({ match }) => {
             <div className="postDetails">
                 <div className="user-info">
                     <NavLink to={`/profiles/${post.userId}`}>  <img className="profile-image"
-                        src={profile?.imageUrl || 'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} /></NavLink>
+                        src={profile?.imageUrl ||
+                            'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} />
+                    </NavLink>
                     <p className="username-paragraph">{post.username} post:</p>
                 </div>
                 <nav className="postDetails-header-nav">
@@ -97,8 +100,14 @@ const PostDetails = ({ match }) => {
                             </div>
                         </section>
                         <div className="post-info">
-                            <NavLink onClick={putLikes} to='#'><button className="like-unlike-btn" disabled={myLike} ><i className="fas fa-thumbs-up"><span>{likes.length} likes</span></i></button></NavLink>
-                            <NavLink onClick={revokeLike} to='#'><button className="like-unlike-btn" disabled={!myLike} ><i className="fas fa-thumbs-down"></i></button></NavLink>
+                            <NavLink onClick={putLikes} to='#'>
+                                <button className="like-unlike-btn" disabled={myLike} >
+                                    <i className="fas fa-thumbs-up"><span>{likes.length} likes</span></i>
+                                </button></NavLink>
+                            <NavLink onClick={revokeLike} to='#'>
+                                <button className="like-unlike-btn" disabled={!myLike} >
+                                    <i className="fas fa-thumbs-down"></i>
+                                </button></NavLink>
                             <NavLink to={`/comments/${post._id}`}>Comment</NavLink>
                             <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
                         </div>

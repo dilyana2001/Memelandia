@@ -8,21 +8,17 @@ const Login = ({ history }) => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        auth.login(formData)
+        const { username, password } = e.target;
+        auth.login(username.value, password.value)
             .then(data => {
+                if (data.token == undefined) {
+                    return alert(data.message)
+                }
+
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('username', data.username);
                 localStorage.setItem('userId', data._id);
-
-                if (localStorage.getItem('token') != 'undefined') {
-                    history.push('/');
-                } else {
-                    alert(data.message);
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('username');
-                    localStorage.removeItem('userId');
-                }
+                history.push('/');
             })
     }
 

@@ -1,31 +1,30 @@
 const baseUrl = 'http://localhost:5000/api';
 const token = localStorage.getItem('token');
 
-function login(data) {
+function login(username, password) {
     return fetch(`${baseUrl}/auth/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            username: data.get('username'),
-            password: data.get('password')
+            username,
+            password
         })
     })
         .then(res => res.json())
         .catch((err) => console.log(err.message));
 }
 
-function register(data) {
+function register(username, password) {
     return fetch(`${baseUrl}/auth/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            password: data.get('password'),
-            rePass: data.get('rePass'),
-            username: data.get('username'),
+            username,
+            password
         })
     })
         .then(res => res.json())
