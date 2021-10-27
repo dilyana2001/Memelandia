@@ -38,8 +38,6 @@ const App = () => {
 
   }, []);
 
-  console.log(user)
-
   const authInfoContext = {
     isAuthenticated: Boolean(user?.username),
     username: user?.username,
@@ -49,12 +47,12 @@ const App = () => {
 
   return (
     <div className="App">
-      <ErrorBoundary>
 
-        <AuthContext.Provider value={authInfoContext}>
+      <AuthContext.Provider value={authInfoContext}>
 
-          <Header />
+        <Header />
 
+        <ErrorBoundary>
           <Switch>
             <Route path='/' exact component={HomePage} />
             <Route path='/login' component={Login} />
@@ -73,15 +71,13 @@ const App = () => {
             <Route path='/profiles/:userId/edit' component={EditProfile} />
             <Route path='/messages/:userId' component={MessagesPage} />
             <Route path='/chat' component={ChatPage} />
-            {/* <Route path='/some-path' render={(props)=> <SomeComponent {...props} oshte='props' />} /> */}
-
           </Switch>
+        </ErrorBoundary>
 
-          <Footer />
+        <Footer />
 
-        </AuthContext.Provider>
+      </AuthContext.Provider>
 
-      </ErrorBoundary>
     </div>
   );
 }

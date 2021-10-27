@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import '../MainPages/MainPage.css'
 
-class ErrorBoundary extends React.Component {
+class ErrorBoundary extends React.Component { 
     constructor(props) {
         super(props);
 
@@ -18,8 +18,8 @@ class ErrorBoundary extends React.Component {
         }
     }
 
-    componentDidCatch(error) {
-        console.log(`Error ${error}`);
+    componentDidCatch(error, errorInfo) {
+        console.log(`Error: ${error}`);
     }
 
 

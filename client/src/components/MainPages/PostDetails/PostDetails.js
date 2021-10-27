@@ -56,7 +56,6 @@ const PostDetails = ({ match }) => {
     function putLikes() {
         if (!myLike) {
             postService.putLike(postId, userId)
-            // setPet(state => ({...state, likes: state.likes + 1}))
         }
     }
 

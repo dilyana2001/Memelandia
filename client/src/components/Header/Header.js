@@ -8,6 +8,7 @@ import './Header.css';
 
 const Header = () => {
     const { isAuthenticated, username, token, userId } = useContext(AuthContext);
+    
     const navbarLoggedUser =
         <ul className="navbar-logged-user">
             <li className="first-bar">
