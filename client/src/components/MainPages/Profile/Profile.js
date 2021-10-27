@@ -11,7 +11,7 @@ import '../MainPage.css';
 
 const Profile = ({ match }) => {
 
-    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
 
     const [profile, setProfile] = useState({});
     const [posts, setPosts] = useState([]);

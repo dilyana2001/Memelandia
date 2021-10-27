@@ -17,7 +17,7 @@ const PostDetails = ({ match }) => {
     const [likes, setLikes] = useState([]);
     const [myLike, setMyLike] = useState({});
 
-    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
     const postId = match.params.postId;
 
     useEffect(() => {

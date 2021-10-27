@@ -8,7 +8,7 @@ import './MessageTemplate.css'
 
 const MessageTemplate = ({ data, history }) => {
     const [profile, setProfile] = useState({});
-    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
 
     useEffect(() => {
         auth.getProfileInfo(data.senderId)

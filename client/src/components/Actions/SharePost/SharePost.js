@@ -10,7 +10,7 @@ const SharePost = ({ match }) => {
 
     const [post, setPost] = useState({});
 
-    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
+    const { username, userId } = useContext(AuthContext);
 
     useEffect(() => {
         postService.postExistingPost(match.params.postId, userId, username)

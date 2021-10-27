@@ -8,7 +8,7 @@ import '../MainPage.css';
 
 const SendMessage = ({ match, history }) => {
 
-    const { isAuthenticated, senderUsername, token, senderId } = useContext(AuthContext);
+    const { senderUsername, senderId } = useContext(AuthContext);
 
     const receiverId = match.params.userId;
 

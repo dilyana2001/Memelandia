@@ -8,7 +8,7 @@ import './MessagesPage.css';
 
 const MessagesPage = ({ match, history }) => {
 
-    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
+    const { userId } = useContext(AuthContext);
 
     const [messages, setMessages] = useState([]);
     const [profiles, setProfiles] = useState([]);

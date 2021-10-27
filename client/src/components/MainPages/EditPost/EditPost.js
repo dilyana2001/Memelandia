@@ -9,7 +9,7 @@ import '../MainPage.css';
 
 const EditPost = ({ match, history }) => {
 
-    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
+    const { username, userId } = useContext(AuthContext);
 
     const [post, setPost] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
@@ -26,6 +26,7 @@ const EditPost = ({ match, history }) => {
         if (imageUrl.value.length < 1 || !imageUrl.value.startsWith('http')) {
             return
         }
+
         postService.editPost(post._id, imageUrl.value, description.value, username, userId)
             .then(() => history.push(`/details/${post._id}`));
     }

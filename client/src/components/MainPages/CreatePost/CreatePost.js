@@ -9,7 +9,7 @@ import '../MainPage.css';
 
 const CreatePost = ({ history }) => {
 
-    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
+    const { username, userId } = useContext(AuthContext);
 
     const [errorMessage, setErrorMessage] = useState('');
 
