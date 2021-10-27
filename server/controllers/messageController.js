@@ -14,16 +14,26 @@ router.post('/receiverId/:receiverId/senderId/:senderId', isAuth, (req, res) => 
         .then(createdMessage => res.status(201).json({ _id: createdMessage._id }))
 });
 
-router.post('/feedback', (req, res) => {
-    let feedback = new Feedback(req.body);
-    feedback.save()
-        .then(createdFeedback => res.status(201).json({ _id: createdFeedback._id }))
-});
+router.get('/receiverId/:receiverId/senderId/:senderId', isAuth, (req, res) => {
+    Message.find({ receiverId: req.params.receiverId, senderId: req.params.senderId }).sort({ '_id': -1 })
+        .then(messages => res.json(messages))
+})
+
+router.get('/senderId/:senderId/receiverId/:receiverId', isAuth, (req, res) => {
+    Message.find({ receiverId: req.params.receiverId, senderId: req.params.senderId }).sort({ '_id': -1 })
+        .then(messages => res.json(messages))
+})
 
 router.delete('/:id', isAuth, (req, res) => {
     Message.findByIdAndRemove(req.params.id)
         .then(deletedComment => res.status(201).json({ _id: deletedComment._id }))
 
-})
+});
+
+router.post('/feedback', (req, res) => {
+    let feedback = new Feedback(req.body);
+    feedback.save()
+        .then(createdFeedback => res.status(201).json({ _id: createdFeedback._id }))
+});
 
 module.exports = router;

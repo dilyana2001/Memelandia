@@ -70,7 +70,7 @@ const App = () => {
             <Route path='/delete/:postId' component={DeletePost} />
             <Route path='/profiles/:userId/edit' component={EditProfile} />
             <Route path='/messages/:userId' component={MessagesPage} />
-            <Route path='/chat' component={ChatPage} />
+            <Route path='/chat/:senderId' component={ChatPage} />
           </Switch>
         </ErrorBoundary>
 

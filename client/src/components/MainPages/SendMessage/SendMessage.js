@@ -8,7 +8,7 @@ import '../MainPage.css';
 
 const SendMessage = ({ match, history }) => {
 
-    const { senderUsername, senderId } = useContext(AuthContext);
+    const { username, userId } = useContext(AuthContext);
 
     const receiverId = match.params.userId;
 
@@ -17,7 +17,7 @@ const SendMessage = ({ match, history }) => {
     const sendMessageHandler = (e) => {
         e.preventDefault();
         const { title, description } = e.target;
-        auth.sendMessage(title.value, description.value, receiverId, senderId, senderUsername)
+        auth.sendMessage(title.value, description.value, receiverId, userId, username)
             .then(() => history.push(`/friends`))
     }
 

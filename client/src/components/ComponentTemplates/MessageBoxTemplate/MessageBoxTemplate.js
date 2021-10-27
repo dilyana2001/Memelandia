@@ -1,9 +1,8 @@
 import { NavLink } from "react-router-dom";
-// import ChatPage from "../../MainPages/MessagesPage/ChatPage/ChatPage";
+import ChatPage from "../../MainPages/MessagesPage/ChatPage/ChatPage";
 import DataComponent from "../../MainPages/MessagesPage/DataComponent/DataComponent";
 
 const MessageBoxTemplate = ({ senderId, data, history }) => {
-
     return (
         <li className="profileTemplate">
             <div className="profileTemplate-container">
@@ -15,7 +14,7 @@ const MessageBoxTemplate = ({ senderId, data, history }) => {
                         <p className="username-paragraph">{data?.username}</p>
                     </section>
                     <NavLink to={`/chat/${senderId}`}>
-                        <DataComponent data={data} senderId={senderId} />
+                        <DataComponent senderId={senderId} />
                         <input className="send-message-btn" type="button" defaultValue="Chat" />
                     </NavLink>
                 </div>

@@ -98,7 +98,7 @@ function postProfileInfo(username, userId) {
         .catch((err) => console.log(err.message));
 }
 
-function sendMessage(title, description, receiverId, senderId, senderUsername,) {
+function sendMessage(title, description, receiverId, senderId, senderUsername) {
     return fetch(`${baseUrl}/messages/receiverId/${receiverId}/senderId/${senderId}`, {
         method: 'POST',
         headers: {
@@ -119,6 +119,30 @@ function sendMessage(title, description, receiverId, senderId, senderUsername,) 
 
 function getMyMessages(id) {
     return fetch(`${baseUrl}/messages/receiverId/${id}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
+
+function getMyMessagesFromSender(receiverId, senderId) {
+    return fetch(`${baseUrl}/messages/receiverId/${receiverId}/senderId/${senderId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+        .then(res => res.json())
+        .catch((err) => console.log(err.message));
+}
+
+function getMyMessagesToSender(receiverId, senderId) {
+    return fetch(`${baseUrl}/messages/senderId/${senderId}/receiverId/${receiverId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -193,6 +217,8 @@ export default {
     getAllProfiles,
     sendMessage,
     getMyMessages,
+    getMyMessagesFromSender,
+    getMyMessagesToSender,
     deleteMessage,
     searchFriend,
     deleteAccountProfile,
