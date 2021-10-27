@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 
-import postService from "../../../Service/postService"
+import postService from "../../../Service/postService";
+import AuthContext from '../../../contexts/AuthContext';
 
 import './SharePost.css';
 
@@ -9,8 +10,7 @@ const SharePost = ({ match }) => {
 
     const [post, setPost] = useState({});
 
-    let userId = localStorage.getItem('userId');
-    let username = localStorage.getItem('username');
+    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
 
     useEffect(() => {
         postService.postExistingPost(match.params.postId, userId, username)

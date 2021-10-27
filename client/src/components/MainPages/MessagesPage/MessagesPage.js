@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+
 import auth from "../../../Service/auth";
 import MessageBoxTemplate from "../../ComponentTemplates/MessageBoxTemplate/MessageBoxTemplate";
+import AuthContext from '../../../contexts/AuthContext';
 
 import './MessagesPage.css';
 
-const MessagesPage = ({ match,history }) => {
+const MessagesPage = ({ match, history }) => {
 
-    const userId = localStorage.getItem('userId');
+    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
 
     const [messages, setMessages] = useState([]);
     const [profiles, setProfiles] = useState([]);

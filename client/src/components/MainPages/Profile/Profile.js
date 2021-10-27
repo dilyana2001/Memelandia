@@ -1,15 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import postService from "../../../Service/postService";
 import auth from '../../../Service/auth'
 import PostTemplate from '../../ComponentTemplates/PostTemplate/PostTemplate';
+import AuthContext from '../../../contexts/AuthContext';
 
 import './Profile.css';
 import '../MainPage.css';
 
 const Profile = ({ match }) => {
-    const userId = localStorage.getItem('userId');
+
+    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
 
     const [profile, setProfile] = useState({});
     const [posts, setPosts] = useState([]);

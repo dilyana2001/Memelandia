@@ -1,14 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import postService from "../../../Service/postService";
 import InputError from "../../../Shared/InputError/InputError";
+import AuthContext from '../../../contexts/AuthContext';
 
 import './EditPost.css';
 import '../MainPage.css';
 
 const EditPost = ({ match, history }) => {
-    const username = localStorage.getItem('username');
-    const userId = localStorage.getItem('userId');
+
+    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
 
     const [post, setPost] = useState({});
     const [errorMessage, setErrorMessage] = useState('');

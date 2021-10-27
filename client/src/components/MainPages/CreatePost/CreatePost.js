@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import postService from "../../../Service/postService";
 import InputError from "../../../Shared/InputError/InputError";
+import AuthContext from '../../../contexts/AuthContext';
 
 import '../EditPost/EditPost.css';
 import '../MainPage.css';
 
 const CreatePost = ({ history }) => {
-    const username = localStorage.getItem('username');
-    const userId = localStorage.getItem('userId');
+
+    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
 
     const [errorMessage, setErrorMessage] = useState('');
 
@@ -21,8 +22,8 @@ const CreatePost = ({ history }) => {
     }
     const onChangeHandler = (e) => errorMessageChanger(e.target.value, 'ImageUrl is required');
 
-  function errorMessageChanger (element, text)  {
-       element.length < 1 ? setErrorMessage(text) : setErrorMessage('');
+    function errorMessageChanger(element, text) {
+        element.length < 1 ? setErrorMessage(text) : setErrorMessage('');
     }
 
     return (

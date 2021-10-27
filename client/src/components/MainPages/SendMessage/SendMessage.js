@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import auth from '../../../Service/auth';
 import InputError from '../../../Shared/InputError/InputError';
+import AuthContext from '../../../contexts/AuthContext';
 
 import '../MainPage.css';
 
 const SendMessage = ({ match, history }) => {
 
-    const senderUsername = localStorage.getItem('username');
-    const senderId = localStorage.getItem('userId');
+    const { isAuthenticated, senderUsername, token, senderId } = useContext(AuthContext);
+
     const receiverId = match.params.userId;
 
     const [errorMessage, setErrorMessage] = useState('');

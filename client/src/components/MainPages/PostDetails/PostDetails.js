@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import postService from "../../../Service/postService";
 import auth from "../../../Service/auth";
-import CommentTemplate from '../../ComponentTemplates/CommentTemplate/CommentTemplate'
+import CommentTemplate from '../../ComponentTemplates/CommentTemplate/CommentTemplate';
+import AuthContext from '../../../contexts/AuthContext';
 
 import './PostDetails.css';
 import '../MainPage.css';
@@ -16,7 +17,7 @@ const PostDetails = ({ match }) => {
     const [likes, setLikes] = useState([]);
     const [myLike, setMyLike] = useState({});
 
-    const userId = localStorage.getItem('userId');
+    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
     const postId = match.params.postId;
 
     useEffect(() => {

@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 import auth from "../../../Service/auth";
+import AuthContext from '../../../contexts/AuthContext';
 
 import './MessageTemplate.css'
 
 const MessageTemplate = ({ data, history }) => {
     const [profile, setProfile] = useState({});
-    const userId = localStorage.getItem('userid')
+    const { isAuthenticated, username, token, userId } = useContext(AuthContext);
 
     useEffect(() => {
         auth.getProfileInfo(data.senderId)
