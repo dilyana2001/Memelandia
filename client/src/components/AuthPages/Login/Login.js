@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import './Login.css';
 
-
 const Login = ({ history }) => {
 
     const onSubmitHandler = (e) => {
@@ -12,13 +11,13 @@ const Login = ({ history }) => {
         auth.login(username.value, password.value)
             .then(data => {
                 if (data.token == undefined) {
-                    return alert(data.message)
+                    return alert(data.message);
                 }
 
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('username', data.username);
                 localStorage.setItem('userId', data._id);
-                history.push('/');
+                window.location = "/";
             })
     }
 

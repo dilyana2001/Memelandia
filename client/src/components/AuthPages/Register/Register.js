@@ -40,7 +40,7 @@ const Register = ({ history }) => {
                         <input type="password" className="form-control" id="password" name='password' />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="rePass" className="form-label">Password</label>
+                        <label htmlFor="rePass" className="form-label">Confirm Password</label>
                         <input type="password" className="form-control" id="rePass" name='rePass' />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>

@@ -42,6 +42,7 @@ function logout() {
             localStorage.removeItem('token');
             localStorage.removeItem('username');
             localStorage.removeItem('userId');
+            window.location = "/";
         })
         .catch((err) => console.log(err.message));
 }

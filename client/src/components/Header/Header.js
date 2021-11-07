@@ -1,5 +1,5 @@
 import { NavLink, Link } from 'react-router-dom';
-import { useEffect, useContext, useState } from 'react';
+import { useContext } from 'react';
 
 import auth from '../../Service/auth';
 import AuthContext from '../../contexts/AuthContext';
@@ -24,7 +24,7 @@ const Header = () => {
                     <li><NavLink className="button" to={`/messages/${userId}`}>
                         <i className="fas fa-envelope"></i>
                     </NavLink></li>
-                    <li><Link className="button logout" to="#" onClick={() => {
+                    <li><Link className="button logout" to="/" onClick={() => {
                         auth.logout();
                     }}> Logout</Link></li>
                 </ul>

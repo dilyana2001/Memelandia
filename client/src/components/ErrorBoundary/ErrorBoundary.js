@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-import '../MainPages/MainPage.css'
+import '../MainPages/MainPage.css';
 
 class ErrorBoundary extends React.Component { 
     constructor(props) {

@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-import ProfileTemplate from '../../ComponentTemplates/ProfileTemplate/ProfileTemplate'
+import ProfileTemplate from '../../ComponentTemplates/ProfileTemplate/ProfileTemplate';
 import auth from '../../../Service/auth';
 
 import './FindFriends.css';

@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router';
 import { useEffect, useState } from "react";
 
-import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import Header from './components/Header/Header';
 import Login from './components/AuthPages/Login/Login';
 import Register from './components/AuthPages/Register/Register';
@@ -24,22 +24,19 @@ import ChatPage from './components/MainPages/MessagesPage/ChatPage/ChatPage';
 import AuthContext from './contexts/AuthContext';
 
 const App = () => {
-
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
+  const username = localStorage.getItem('username');
+  const token = localStorage.getItem('token');
+  const userId = localStorage.getItem('userId');
 
   useEffect(() => {
-    const username = localStorage.getItem('username');
-    const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('userId');
-
     if (token) {
       setUser({ username, token, userId })
     }
-
   }, []);
 
   const authInfoContext = {
-    isAuthenticated: Boolean(user?.username),
+    isAuthenticated: username != null ,
     username: user?.username,
     token: user?.token,
     userId: user?.userId

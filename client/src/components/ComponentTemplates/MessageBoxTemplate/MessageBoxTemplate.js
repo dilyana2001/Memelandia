@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import ChatPage from "../../MainPages/MessagesPage/ChatPage/ChatPage";
+
 import DataComponent from "../../MainPages/MessagesPage/DataComponent/DataComponent";
 
-const MessageBoxTemplate = ({ senderId, data, history }) => {
+const MessageBoxTemplate = ({ senderId, data }) => {
     return (
         <li className="profileTemplate">
             <div className="profileTemplate-container">

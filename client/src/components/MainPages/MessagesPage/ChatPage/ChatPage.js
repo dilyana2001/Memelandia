@@ -30,7 +30,7 @@ const ChatPage = ({ match, history }) => {
         auth.getMyMessagesToSender(senderId, userId)
             .then(setMessagesFromMe);
     }, [match]);
-    console.log(profile)
+  
     let allMessages = messages.concat(messagesFromMe).sort((a, b) => a._id.localeCompare(b._id));
 
     const sendMessagehandler = (e) => {
