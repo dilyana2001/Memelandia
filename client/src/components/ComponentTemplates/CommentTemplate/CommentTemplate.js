@@ -11,14 +11,14 @@ const CommentTemplate = ({ data }) => {
     useEffect(() => {
         auth.getProfileInfo(data.userId)
             .then(setProfile)
-    }, []);
+    }, [data.userId]);
 
     return (
         <li className="commentTemplate">
             <div className="commentTemplate-container">
                 <div className="user-info">
                     <NavLink to={`/profiles/${data.userId}`}>  <img className="profile-image"
-                        src={profile?.imageUrl || 'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} /></NavLink>
+                        src={profile?.imageUrl || 'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} alt="avatar"  /></NavLink>
                     <p className="username-paragraph">{data.username} comment:</p>
                 </div>
                 <div className="comment-info">

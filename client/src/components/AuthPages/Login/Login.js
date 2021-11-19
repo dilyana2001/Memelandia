@@ -12,7 +12,7 @@ const Login = ({ history }) => {
         const { username, password } = e.target;
         auth.login(username.value, password.value)
             .then(data => {
-                if (data.token == undefined) {
+                if (data.token === undefined) {
                     return alert(data.message);
                 }
 

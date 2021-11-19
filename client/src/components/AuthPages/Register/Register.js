@@ -11,7 +11,7 @@ const Register = ({ history }) => {
         if (password.value.length <= 4 || username.value.length <= 4) {
             return alert(`Username and password need to be at least five symbols!`);
         }
-        if (password.value != rePass.value) {
+        if (password.value !== rePass.value) {
             return alert(`Passwords didn't match!`);
         }
 

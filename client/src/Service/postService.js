@@ -42,6 +42,7 @@ function postExistingPost(id, userId, username) {
             formData.append('username', username)
             postPost(formData, username, userId);
         })
+        .catch((err) => console.log(err.message));
 }
 
 function deletePost(id) {
@@ -55,7 +56,7 @@ function deletePost(id) {
         .catch((err) => console.log(err.message));
 }
 
-function editPost(id, imageUrl, description , username, userId) {
+function editPost(id, imageUrl, description, username, userId) {
     const data = {
         imageUrl,
         description,
@@ -144,7 +145,7 @@ function removeLike(postId, userId) {
         .catch((err) => console.log(err.message));
 }
 
-export default {
+const fetchFunctions = {
     getAllPost,
     postExistingPost,
     getPost,
@@ -158,4 +159,6 @@ export default {
     putLike,
     isPostLikedByUser,
     removeLike,
-}
+};
+
+export default fetchFunctions;

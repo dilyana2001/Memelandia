@@ -1,7 +1,10 @@
 .site-header {
     background-color: rgb(14, 2, 15);
-    height: 12vh;
+    height: 80px;
     display: flex;
+    font-size: 20px;
+    position: fixed;
+    width: 100vw;
 }
 
 .site-header ul {
@@ -37,4 +40,13 @@
 .logout {
     background: rgb(235, 37, 235);
     color: rgb(93, 45, 93);
+}
+
+.navbar-anonymous,
+.navbar-logged-user {
+    margin-bottom: 0;
+}
+
+a.add-post {
+    background-color: transparent;
 }

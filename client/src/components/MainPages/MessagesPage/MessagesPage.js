@@ -6,7 +6,7 @@ import AuthContext from '../../../contexts/AuthContext';
 
 import './MessagesPage.css';
 
-const MessagesPage = ({ match, history }) => {
+const MessagesPage = ({ history }) => {
 
     const { userId } = useContext(AuthContext);
 
@@ -17,18 +17,18 @@ const MessagesPage = ({ match, history }) => {
     useEffect(() => {
         auth.getAllProfiles(userId)
             .then(setProfiles);
-    }, [match]);
+    }, [userId]);
 
     useEffect(() => {
         auth.getMyMessages(userId)
             .then(setMessages);
-    }, [match]);
+    }, [userId]);
 
     messages.map(x => {
         if (!senders.hasOwnProperty(x.senderId)) {
-            senders[x.senderId] = [];
+            return senders[x.senderId] = [];
         }
-        senders[x.senderId].push({
+        return senders[x.senderId].push({
             _id: x._id,
             title: x.title,
             description: x.description,
@@ -38,11 +38,12 @@ const MessagesPage = ({ match, history }) => {
     });
 
     Object.entries(senders).map(x => {
-        profiles.map(y => {
-            if (x[0] == y.userId) {
+        return profiles.map(y => {
+            if (x[0] === y.userId) {
                 x[1].imageUrl = y.imageUrl;
-                x[1].username = y.username
+                x[1].username = y.username;
             }
+            return x[1].imageUrl && x[1].username;
         });
     });
 
@@ -59,13 +60,14 @@ const MessagesPage = ({ match, history }) => {
                                 <input type="submit" value="Search" />
                             </form>
                         </li>
-                        {Object.entries(senders).map(x =>
-                            <MessageBoxTemplate
+                        {Object.entries(senders).map(x => {
+                            return <MessageBoxTemplate
                                 key={x[1][0]._id}
                                 senderId={x[0]}
                                 data={x[1]}
                                 history={history}
                             />
+                        }
                         )}
                     </ul>
                 </div>

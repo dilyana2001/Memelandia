@@ -209,7 +209,7 @@ function sendFeedback(data,) {
         .catch((err) => console.log(err.message));
 }
 
-export default {
+const fetchFunctions = {
     login,
     register,
     logout,
@@ -226,4 +226,6 @@ export default {
     deleteAccountProfile,
     deleteAccoutUser,
     sendFeedback,
-}
+};
+
+export default fetchFunctions;

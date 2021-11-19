@@ -23,11 +23,8 @@ import ContactUs from './components/MainPages/About/ContactUs/ContactUs';
 import ChatPage from './components/MainPages/MessagesPage/ChatPage/ChatPage';
 import AuthContext from './contexts/AuthContext';
 
-import auth from './Service/auth';
-
 const App = () => {
   const [user, setUser] = useState(null);
-  const [messages, setMessages] = useState([]);
 
   const username = localStorage.getItem('username');
   const token = localStorage.getItem('token');
@@ -51,20 +48,12 @@ const App = () => {
     login
   };
 
-  useEffect(() => {
-    if (userId) {
-      auth.getMyMessages(userId)
-        .then(setMessages);
-    }
-  }, ['0']);
-
-
   return (
     <div className="App">
 
       <AuthContext.Provider value={authInfoContext}>
 
-        <Header messages={messages.length} />
+        <Header />
 
         <ErrorBoundary>
           <Switch>

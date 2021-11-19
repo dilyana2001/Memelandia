@@ -19,17 +19,17 @@ const ChatPage = ({ match, history }) => {
     useEffect(() => {
         auth.getProfileInfo(senderId)
             .then(setProfile);
-    }, [match]);
+    }, [senderId]);
 
     useEffect(() => {
         auth.getMyMessagesFromSender(userId, senderId)
             .then(setMessages);
-    }, [match]);
+    }, [userId, senderId]);
 
     useEffect(() => {
         auth.getMyMessagesToSender(senderId, userId)
             .then(setMessagesFromMe);
-    }, [match]);
+    }, [senderId, userId]);
   
     let allMessages = messages.concat(messagesFromMe).sort((a, b) => a._id.localeCompare(b._id));
 

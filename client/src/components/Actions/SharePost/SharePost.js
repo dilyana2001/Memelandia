@@ -8,14 +8,14 @@ import './SharePost.css';
 
 const SharePost = ({ match }) => {
 
-    const [post, setPost] = useState({});
+    const [, setPost] = useState({});
 
     const { username, userId } = useContext(AuthContext);
 
     useEffect(() => {
         postService.postExistingPost(match.params.postId, userId, username)
             .then(setPost)
-    }, [match]);
+    }, [match.params.postId, userId, username]);
 
     return (
         <div className="main-container">

@@ -24,14 +24,14 @@ const PostDetails = ({ match }) => {
         postService.getPost(postId)
             .then(post => {
                 getProfileInfo(post.userId);
-                return setPost(post);
+                 setPost(post);
             })
-    }, [match]);
+    }, [postId]);
 
     useEffect(() => {
         postService.getAllComments(postId)
             .then(setComments)
-    }, [match]);
+    }, [postId]);
 
     function getProfileInfo(userId) {
         auth.getProfileInfo(userId)
@@ -41,12 +41,12 @@ const PostDetails = ({ match }) => {
     useEffect(() => {
         postService.getLikes(postId)
             .then(setLikes)
-    }, [match]);
+    }, [postId]);
 
     useEffect(() => {
         postService.isPostLikedByUser(postId, userId)
             .then(setMyLike)
-    }, [match]);
+    }, [postId, userId]);
 
     const revokeLike = () => {
         if (myLike) {
@@ -71,20 +71,20 @@ const PostDetails = ({ match }) => {
                 <div className="user-info">
                     <NavLink to={`/profiles/${post.userId}`}>  <img className="profile-image"
                         src={profile?.imageUrl ||
-                            'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} />
+                            'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} alt="avatar" />
                     </NavLink>
                     <p className="username-paragraph">{post.username} post:</p>
                 </div>
                 <nav className="postDetails-header-nav">
                     <ul>
                         <li>
-                            <h3></h3>
+                            <h3> </h3>
                         </li>
-                        {userId == post.userId ? ownerEditDeleteBtns : ''}
+                        {userId === post.userId ? ownerEditDeleteBtns : ''}
                     </ul>
                 </nav>
                 <div className="description-post-info">
-                    <p className="img"><img src={post.imageUrl} /></p>
+                    <p className="img"><img src={post.imageUrl} alt="post" /></p>
                     <section>
                         <p className="description">{post.description}</p>
                         <section>
