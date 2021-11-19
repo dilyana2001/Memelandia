@@ -31,7 +31,7 @@ function register(username, password) {
         .catch((err) => console.log(err.message));
 }
 
-function logout() {
+function logout(history, login) {
     return fetch(`${baseUrl}/auth/logout`, {
         method: 'GET',
         headers: {
@@ -42,7 +42,8 @@ function logout() {
             localStorage.removeItem('token');
             localStorage.removeItem('username');
             localStorage.removeItem('userId');
-            window.location = "/";
+            login(null);
+            history.push('/');
         })
         .catch((err) => console.log(err.message));
 }

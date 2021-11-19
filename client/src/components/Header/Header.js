@@ -6,8 +6,8 @@ import AuthContext from '../../contexts/AuthContext';
 
 import './Header.css';
 
-const Header = () => {
-    const { isAuthenticated, username, userId } = useContext(AuthContext);
+const Header = ({messages, history}) => {
+    const { isAuthenticated, username, userId, login } = useContext(AuthContext);
 
     const navbarLoggedUser =
         <ul className="navbar-logged-user">
@@ -22,10 +22,10 @@ const Header = () => {
                     <li className="welcome-header">Welcome,</li>
                     <li><NavLink className="button" to={`/profiles/${userId}`}>{username}</NavLink></li>
                     <li><NavLink className="button" to={`/messages/${userId}`}>
-                        <i className="fas fa-envelope"></i>
+                      {messages}
                     </NavLink></li>
                     <li><Link className="button logout" to="/" onClick={() => {
-                        auth.logout();
+                        auth.logout(history, login);
                     }}> Logout</Link></li>
                 </ul>
             </li>

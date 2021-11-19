@@ -1,9 +1,11 @@
 import auth from "../../../Service/auth";
-import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import AuthContext from '../../../contexts/AuthContext';
 
 import './Login.css';
 
 const Login = ({ history }) => {
+    const { login } = useContext(AuthContext);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -17,7 +19,8 @@ const Login = ({ history }) => {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('username', data.username);
                 localStorage.setItem('userId', data._id);
-                window.location = "/";
+                login({ token: data.token, username: data.username, userId: data._id });
+                history.push('/');
             })
     }
 
@@ -36,7 +39,6 @@ const Login = ({ history }) => {
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
-                <Link to={`#`}>Forgot your password? </Link>
             </div>
         </div>
     )
