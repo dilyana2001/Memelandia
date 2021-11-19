@@ -50,3 +50,7 @@
 a.add-post {
     background-color: transparent;
 }
+
+ul.navbar-logged-user li.second-bar ul {
+    margin-right: 50px;
+}
