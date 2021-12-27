@@ -27,7 +27,7 @@ const Login = ({ history }) => {
     return (
         <div className="main-container">
             <div className="editForm">
-                <h2>Login</h2>
+                <h2 className="text-4xl font-bold mb-4">Login</h2>
                 <form onSubmit={onSubmitHandler}>
                     <div className="mb-3">
                         <label htmlFor="username" className="form-label">Username</label>

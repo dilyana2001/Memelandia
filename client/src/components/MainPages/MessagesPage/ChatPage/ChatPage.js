@@ -4,8 +4,6 @@ import AuthContext from "../../../../contexts/AuthContext";
 import auth from "../../../../Service/auth";
 import MessageTemplate from "../../../ComponentTemplates/MessageTemplate/MessageTemplate";
 
-import './ChatPage.css';
-
 const ChatPage = ({ match, history }) => {
 
     const { username, userId } = useContext(AuthContext);
@@ -30,7 +28,7 @@ const ChatPage = ({ match, history }) => {
         auth.getMyMessagesToSender(senderId, userId)
             .then(setMessagesFromMe);
     }, [senderId, userId]);
-  
+
     let allMessages = messages.concat(messagesFromMe).sort((a, b) => a._id.localeCompare(b._id));
 
     const sendMessagehandler = (e) => {
@@ -53,9 +51,9 @@ const ChatPage = ({ match, history }) => {
                         data={x}
                     />
                 )}
-                <form onSubmit={sendMessagehandler}>
-                    <textarea type="text" placeholder="Send message" name="description" id="description" />
-                    <button>Send</button>
+                <form onSubmit={sendMessagehandler} className="flex m-12 mb-16">
+                    <textarea className="placeholder-purple-700 text-purple-700 w-full ml-1 rounded px-2" type="text" placeholder="Send message" name="description" id="description" />
+                    <button className="bg-fuchsia-500 mx-4 my-2 px-2 py-1 rounded-xl text-purple-700 items-center">Send</button>
                 </form>
             </ul>
 

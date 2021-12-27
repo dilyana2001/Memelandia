@@ -17,14 +17,14 @@ const PostDetails = ({ match }) => {
     const [likes, setLikes] = useState([]);
     const [myLike, setMyLike] = useState({});
 
-    const { userId } = useContext(AuthContext);
+    const { isAuthenticated, userId } = useContext(AuthContext);
     const postId = match.params.postId;
 
     useEffect(() => {
         postService.getPost(postId)
             .then(post => {
                 getProfileInfo(post.userId);
-                 setPost(post);
+                setPost(post);
             })
     }, [postId]);
 
@@ -65,6 +65,19 @@ const PostDetails = ({ match }) => {
         <NavLink to={`/delete/${post._id}`}>Delete</NavLink>
     </li>;
 
+    const loggedUserBtns = <div className="post-info">
+        <NavLink onClick={putLikes} to='#'>
+            <button className="like-unlike-btn" disabled={myLike} >
+                <i className="fas fa-thumbs-up"><span>{likes.length} likes</span></i>
+            </button></NavLink>
+        <NavLink onClick={revokeLike} to='#'>
+            <button className="like-unlike-btn" disabled={!myLike} >
+                <i className="fas fa-thumbs-down"></i>
+            </button></NavLink>
+        <NavLink to={`/comments/${post._id}`}>Comment</NavLink>
+        <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
+    </div>;
+
     return (
         <div className="main-container">
             <div className="postDetails">
@@ -86,10 +99,11 @@ const PostDetails = ({ match }) => {
                 <div className="description-post-info">
                     <p className="img"><img src={post.imageUrl} alt="post" /></p>
                     <section>
-                        <p className="description">{post.description}</p>
+                        <p className="description">Description: {post.description}</p>
                         <section>
                             <div className="comment-container">
                                 <ul className="comment-list">
+                                    Comments:
                                     {comments?.map(x =>
                                         <CommentTemplate
                                             key={x._id}
@@ -99,18 +113,7 @@ const PostDetails = ({ match }) => {
                                 </ul>
                             </div>
                         </section>
-                        <div className="post-info">
-                            <NavLink onClick={putLikes} to='#'>
-                                <button className="like-unlike-btn" disabled={myLike} >
-                                    <i className="fas fa-thumbs-up"><span>{likes.length} likes</span></i>
-                                </button></NavLink>
-                            <NavLink onClick={revokeLike} to='#'>
-                                <button className="like-unlike-btn" disabled={!myLike} >
-                                    <i className="fas fa-thumbs-down"></i>
-                                </button></NavLink>
-                            <NavLink to={`/comments/${post._id}`}>Comment</NavLink>
-                            <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
-                        </div>
+                        {isAuthenticated ? loggedUserBtns : ''}
                     </section>
                 </div>
             </div>

@@ -29,7 +29,7 @@ const Register = ({ history }) => {
     return (
         <div className="main-container">
             <div className="editForm">
-                <h2>Register</h2>
+                <h2 className="text-4xl font-bold mb-4">Register</h2>
                 <form onSubmit={onSubmitHandler}>
                     <div className="mb-3">
                         <label htmlFor="username" className="form-label">Username</label>

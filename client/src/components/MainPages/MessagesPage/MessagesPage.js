@@ -24,7 +24,7 @@ const MessagesPage = ({ history }) => {
             .then(setMessages);
     }, [userId]);
 
-    messages.map(x => {
+    messages?.map(x => {
         if (!senders.hasOwnProperty(x.senderId)) {
             return senders[x.senderId] = [];
         }
