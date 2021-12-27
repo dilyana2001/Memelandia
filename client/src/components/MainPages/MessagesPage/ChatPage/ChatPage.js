@@ -47,17 +47,17 @@ const ChatPage = ({ match, history }) => {
     }
 
     return (
-        <div className="main-container">
-            <ul className="friends-section message-section" >
+        <div className="main-container text-yellow-700">
+            <ul className="w-full">
                 {allMessages?.map(x =>
                     <MessageTemplate
                         key={x._id + allMessages.lenth}
                         data={x}
                     />
                 )}
-                <form onSubmit={sendMessagehandler} className="flex m-12 mb-16">
-                    <textarea className="placeholder-purple-700 text-purple-700 w-full ml-1 rounded px-2 border border-blue-400" type="text" placeholder="Send message" name="description" id="description" />
-                    <button className="bg-fuchsia-500 mx-4 my-2 px-2 py-1 rounded-xl text-purple-700 items-center">Send</button>
+                <form onSubmit={sendMessagehandler} className="flex mb-16">
+                    <textarea className="placeholder-gray-900 text-gray-900 w-full ml-1 rounded px-2 border border-blue-400" type="text" placeholder="Send message" name="description" id="description" />
+                    <button className="mx-2 bg-gray-900 px-2 rounded" >Send</button>
                 </form>
             </ul>
 

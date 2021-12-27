@@ -6,7 +6,7 @@ const ProfileTemplate = ({ data }) => {
             <div className="">
                 <div className="flex justify-between">
                     <section className="flex mr-10 items-center">
-                        <NavLink to={`/profiles/${data.userId}`}>  <img className="w-10 h-10 object-cover rounded-3xl mr-2"
+                        <NavLink to={`/profiles/${data.userId}`}>  <img className="w-10 h-10 object-cover rounded-full mr-2"
                             src={data?.imageUrl || 'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} alt="avatar" /></NavLink>
                         <p>{data.username}</p>
                     </section>

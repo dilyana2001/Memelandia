@@ -28,7 +28,7 @@ const EditPost = ({ match, history }) => {
             .then(() => history.push(`/details/${post._id}`));
     }
 
-    const onChangeHandler = (e) => errorMessageChanger(e.target.value, 'ImageUrl is required');
+    const onChangeHandler = (e) => errorMessageChanger(e.target.value, 'Image is required');
 
     function errorMessageChanger(element, text) {
         element.length < 1 ? setErrorMessage(text) : setErrorMessage('');

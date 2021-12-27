@@ -38,9 +38,9 @@ function postExistingPost(id, userId, username) {
             let formData = new FormData();
             formData.append('imageUrl', data.imageUrl);
             formData.append('description', data.description);
-            formData.append('userId', userId)
-            formData.append('username', username)
-            postPost(formData, username, userId);
+            formData.append('userId', userId);
+            formData.append('username', username);
+            postPost(data.imageUrl, data.description, username, userId);
         })
         .catch((err) => console.log(err.message));
 }
@@ -99,7 +99,7 @@ function commentPost(postId, comment, username, userId) {
         },
         body: JSON.stringify({
             postId,
-            comment: comment.get('comment'),
+            comment,
             username,
             userId,
         })

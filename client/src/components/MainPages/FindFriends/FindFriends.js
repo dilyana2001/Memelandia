@@ -41,7 +41,7 @@ class FindFriends extends Component {
 
     render() {
         return (
-            <div className="main-container flex flex-col items-center mx-auto">
+            <div className="main-container flex flex-col items-center mx-auto text-yellow-700">
                 <p className="mt-2.5 text-center text-7xl font-bold text-yellow-800 mb-6">Friends</p>
                 <ul className="w-full">
                     <li className="bg-gray-900 my-4 p-4">
@@ -50,7 +50,7 @@ class FindFriends extends Component {
                                 value={this.state.query} onChange={this.handleChange} />
                             <input type="submit" value="Search" className="mx-2 bg-gray-700 px-2 rounded" />
                         </form>
-                        <p className="text-red-500 text-xs italic">{this.state.error}</p>
+                        <p className="text-red-700 text-xs italic">{this.state.error}</p>
                     </li>
                     {this.state.profiles.length > 0 ? this.state.profiles.map(x =>
                         <ProfileTemplate

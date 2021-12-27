@@ -34,8 +34,8 @@ const Header = ({ history }) => {
         <ul className="flex">
             <li className="p-2">
                 <NavLink className="button ml-2" to='/' exact ><i className="fas fa-home"></i></NavLink>
-                <NavLink to="/register"><i className="fas fa-door-closed ml-2"></i></NavLink>
-                <NavLink to="/login"><i className="fas fa-door-open ml-2"></i></NavLink>
+                <NavLink to="/register"><i className="fas fa-door-closed ml-10"></i></NavLink>
+                <NavLink to="/login"><i className="fas fa-door-open ml-10"></i></NavLink>
             </li>
         </ul>;
 

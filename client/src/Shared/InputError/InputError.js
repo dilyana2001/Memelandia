@@ -1,10 +1,8 @@
-import './InputError.css';
-
 const InputError = ({ children }) => {
-    if (!children) { return null }
+    if (!children)  return null;
 
     return (
-        <div className="input-error">{children}</div>
+        <div className="text-red-700 text-sm italic">{children}</div>
     );
 }
 

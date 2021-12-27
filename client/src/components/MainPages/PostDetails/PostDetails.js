@@ -82,7 +82,7 @@ const PostDetails = ({ match }) => {
             <div className="px-7 py-5 bg-gray-900 text-yellow-600 w-full">
                 <div className="flex p-2 items-center pb-3">
                     <NavLink to={`/profiles/${post.userId}`}>
-                        <img className="w-10 rounded-3xl h-10 object-cover mr-2" src={profile?.imageUrl ||
+                        <img className="w-10 rounded-full h-10 object-cover mr-2" src={profile?.imageUrl ||
                             'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} alt="avatar" />
                     </NavLink>
                     <p className="">{post.username} post:</p>

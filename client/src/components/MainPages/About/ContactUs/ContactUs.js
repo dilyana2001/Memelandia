@@ -11,14 +11,14 @@ const ContactUs = ({ history }) => {
 
     return (
         <div className="main-container">
-            <div className="editForm">
-            <p className="text-4xl font-bold mb-4">Send feedback</p>
-                <form onSubmit={sendFeedbackHandler}>
+            <div className="flex flex-col text-center text-yellow-700 bg-gray-900 w-full my-10 p-14">
+                <p className="text-4xl font-bold mb-4">Send feedback</p>
+                <form onSubmit={sendFeedbackHandler} className="flex flex-col">
                     <label htmlFor="email">Your Email:</label>
-                    <input type="email" placeholder="email" name="email" id="email" />
+                    <input type="email" placeholder="email" name="email" id="email" className="rounded" />
                     <label htmlFor="description">Description:</label>
-                    <textarea type="text" placeholder="Description" name="description" id="description" />
-                    <button>Send!</button>
+                    <textarea type="text" placeholder="Description" name="description" id="description" className="rounded" />
+                    <button className="mt-2 bg-gray-700 text-yellow-700 py-1">Send!</button>
                 </form>
             </div>
         </div>

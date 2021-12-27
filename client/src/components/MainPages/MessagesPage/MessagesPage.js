@@ -47,7 +47,7 @@ const MessagesPage = ({ history }) => {
 
 
     return (
-        <div className="main-container flex flex-col items-center mx-auto">
+        <div className="main-container flex flex-col items-center mx-auto text-yellow-700">
             <p className="mt-2.5 text-center text-7xl font-bold text-yellow-800 mb-6">Messanger</p>
             <ul className="w-full">
                 {Object.entries(senders)?.map(x =>

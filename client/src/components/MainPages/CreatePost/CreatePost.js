@@ -13,7 +13,9 @@ const CreatePost = ({ history }) => {
     const createPostHandler = (e) => {
         e.preventDefault();
         const { imageUrl, description } = e.target;
-        errorMessageChanger(imageUrl.value, 'ImageUrl is required');
+        if(!imageUrl.value){
+          return errorMessageChanger(imageUrl.value, 'ImageUrl is required');
+        }
         postService.postPost(imageUrl.value, description.value, username, userId)
             .then(post => history.push(`/details/${post._id}`))
     }
