@@ -12,7 +12,7 @@ const MessagesPage = ({ history }) => {
 
     const [messages, setMessages] = useState([]);
     const [profiles, setProfiles] = useState([]);
-    const [senders] = useState([]);
+    const senders = {};
 
     useEffect(() => {
         auth.getAllProfiles(userId)
@@ -26,7 +26,7 @@ const MessagesPage = ({ history }) => {
 
     messages?.map(x => {
         if (!senders.hasOwnProperty(x.senderId)) {
-            return senders[x.senderId] = [];
+            senders[x.senderId] = [];
         }
         return senders[x.senderId].push({
             _id: x._id,
@@ -38,7 +38,7 @@ const MessagesPage = ({ history }) => {
     });
 
     Object.entries(senders).map(x => {
-        return profiles.map(y => {
+        return profiles?.map(y => {
             if (x[0] === y.userId) {
                 x[1].imageUrl = y.imageUrl;
                 x[1].username = y.username;
@@ -47,31 +47,20 @@ const MessagesPage = ({ history }) => {
         });
     });
 
+
     return (
-        <div className="main-container">
-            <section className="friends-section">
-                <h2 className="description">Messanger</h2>
-                <div className="friends-section">
-                    <ul>
-                        <li className="postTemplate search-bar">
-                            <form >
-                                <input type="text" placeholder="Search friend"
-                                />
-                                <input type="submit" value="Search" />
-                            </form>
-                        </li>
-                        {Object.entries(senders).map(x => {
-                            return <MessageBoxTemplate
-                                key={x[1][0]._id}
-                                senderId={x[0]}
-                                data={x[1]}
-                                history={history}
-                            />
-                        }
-                        )}
-                    </ul>
-                </div>
-            </section>
+        <div className="main-container flex flex-col items-center">
+            <p className="mt-2.5 text-center text-7xl font-bold text-fuchsia-700">Messanger</p>
+            <ul className="friends-section">
+                {Object.entries(senders)?.map(x =>
+                    <MessageBoxTemplate
+                        key={x[1][0]._id}
+                        senderId={x[0]}
+                        data={x[1]}
+                        history={history}
+                    />
+                )}
+            </ul>
         </div>
     );
 }

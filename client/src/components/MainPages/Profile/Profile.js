@@ -6,9 +6,6 @@ import auth from '../../../Service/auth'
 import PostTemplate from '../../ComponentTemplates/PostTemplate/PostTemplate';
 import AuthContext from '../../../contexts/AuthContext';
 
-import './Profile.css';
-import '../MainPage.css';
-
 const Profile = ({ match }) => {
 
     const { userId } = useContext(AuthContext);

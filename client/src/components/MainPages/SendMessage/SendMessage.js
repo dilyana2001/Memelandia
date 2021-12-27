@@ -3,9 +3,6 @@ import { useState, useContext } from 'react';
 import auth from '../../../Service/auth';
 import InputError from '../../../Shared/InputError/InputError';
 import AuthContext from '../../../contexts/AuthContext';
-
-import '../MainPage.css';
-
 const SendMessage = ({ match, history }) => {
 
     const { username, userId } = useContext(AuthContext);
@@ -28,7 +25,7 @@ const SendMessage = ({ match, history }) => {
         if (!e.target.value) {
             return setErrorMessage('Enter message'); // for check  remove that error
         }
-       return setErrorMessage('');
+        return setErrorMessage('');
     }
 
     return (

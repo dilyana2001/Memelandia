@@ -6,9 +6,6 @@ import auth from "../../../Service/auth";
 import CommentTemplate from '../../ComponentTemplates/CommentTemplate/CommentTemplate';
 import AuthContext from '../../../contexts/AuthContext';
 
-import './PostDetails.css';
-import '../MainPage.css';
-
 const PostDetails = ({ match }) => {
 
     const [post, setPost] = useState({});
@@ -60,61 +57,58 @@ const PostDetails = ({ match }) => {
         }
     }
 
-    const ownerEditDeleteBtns = <li>
-        <NavLink to={`/edit/${post._id}`}>Edit</NavLink>
-        <NavLink to={`/delete/${post._id}`}>Delete</NavLink>
-    </li>;
+    const ownerEditDeleteBtns =
+        <div className="mb-5 self-end">
+            <NavLink className="bg-gray-700 ml-5 py-1 px-2 rounded" to={`/edit/${post._id}`}>Edit</NavLink>
+            <NavLink className="bg-gray-700 ml-5 py-1 px-2 rounded" to={`/delete/${post._id}`}>Delete</NavLink>
+        </div>;
 
-    const loggedUserBtns = <div className="post-info">
-        <NavLink onClick={putLikes} to='#'>
-            <button className="like-unlike-btn" disabled={myLike} >
-                <i className="fas fa-thumbs-up"><span>{likes.length} likes</span></i>
-            </button></NavLink>
-        <NavLink onClick={revokeLike} to='#'>
-            <button className="like-unlike-btn" disabled={!myLike} >
-                <i className="fas fa-thumbs-down"></i>
-            </button></NavLink>
-        <NavLink to={`/comments/${post._id}`}>Comment</NavLink>
-        <NavLink to={`/share-post/${post._id}`}>Share</NavLink>
-    </div>;
+    const loggedUserBtns =
+        <div className="post-info">
+            <NavLink onClick={putLikes} to='#'>
+                <button className="bg-gray-700 py-1 px-2 rounded" disabled={myLike} >
+                    <i className="fas fa-thumbs-up"><span>{likes.length} likes</span></i>
+                </button></NavLink>
+            <NavLink onClick={revokeLike} to='#'>
+                <button className="bg-gray-700 py-1 px-2 rounded" disabled={!myLike} >
+                    <i className="fas fa-thumbs-down"></i>
+                </button></NavLink>
+            <NavLink className="bg-gray-700 py-1 px-2 rounded" to={`/comments/${post._id}`}>Comment</NavLink>
+            <NavLink className="bg-gray-700 py-1 px-2 rounded" to={`/share-post/${post._id}`}>Share</NavLink>
+        </div>;
 
     return (
         <div className="main-container">
-            <div className="postDetails">
-                <div className="user-info">
-                    <NavLink to={`/profiles/${post.userId}`}>  <img className="profile-image"
-                        src={profile?.imageUrl ||
+            <div className="px-7 py-5 bg-gray-900 text-yellow-600">
+                <div className="flex p-2 items-center pb-3">
+                    <NavLink to={`/profiles/${post.userId}`}>
+                        <img className="w-10 rounded-3xl h-10 object-cover mr-2" src={profile?.imageUrl ||
                             'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} alt="avatar" />
                     </NavLink>
-                    <p className="username-paragraph">{post.username} post:</p>
+                    <p className="">{post.username} post:</p>
                 </div>
-                <nav className="postDetails-header-nav">
-                    <ul>
-                        <li>
-                            <h3> </h3>
-                        </li>
+                <div className="flex mb-8">
+                    <section className="mr-10"><img src={post.imageUrl} alt="post" /></section>
+                    <div className="flex flex-col">
                         {userId === post.userId ? ownerEditDeleteBtns : ''}
-                    </ul>
-                </nav>
-                <div className="description-post-info">
-                    <p className="img"><img src={post.imageUrl} alt="post" /></p>
-                    <section>
-                        <p className="description">Description: {post.description}</p>
-                        <section>
-                            <div className="comment-container">
-                                <ul className="comment-list">
-                                    Comments:
-                                    {comments?.map(x =>
-                                        <CommentTemplate
-                                            key={x._id}
-                                            data={x}
-                                        />
-                                    )}
-                                </ul>
-                            </div>
+                        <section className="mr-10 flex flex-col justify-between details">
+                            <p className="">Description: {post.description}</p>
+                            <section>
+                                <div className="">
+                                    <ul className="">
+                                        Comments:
+                                        {comments?.map(x =>
+                                            <CommentTemplate
+                                                key={x._id}
+                                                data={x}
+                                            />
+                                        )}
+                                    </ul>
+                                </div>
+                            </section>
+                            {isAuthenticated ? loggedUserBtns : ''}
                         </section>
-                        {isAuthenticated ? loggedUserBtns : ''}
-                    </section>
+                    </div>
                 </div>
             </div>
         </div>

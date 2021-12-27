@@ -4,9 +4,6 @@ import postService from "../../../Service/postService";
 import InputError from "../../../Shared/InputError/InputError";
 import AuthContext from '../../../contexts/AuthContext';
 
-import '../EditPost/EditPost.css';
-import '../MainPage.css';
-
 const CreatePost = ({ history }) => {
 
     const { username, userId } = useContext(AuthContext);

@@ -35,7 +35,11 @@ const ChatPage = ({ match, history }) => {
         e.preventDefault();
         const { description } = e.target;
         const title = '';
-        auth.sendMessage(title, description.value, profile?.userId, userId, username)
+        console.log(description)
+        if (!description.value) {
+            return description.classList.add('border', 'border-red-400');
+        }
+        auth.sendMessage(title, description.value, profile.userId, userId, username)
             .then(() => {
                 description.value = '';
                 history.push(`/chat/${senderId}`);
@@ -47,12 +51,12 @@ const ChatPage = ({ match, history }) => {
             <ul className="friends-section message-section" >
                 {allMessages?.map(x =>
                     <MessageTemplate
-                        key={x._id}
+                        key={x._id + allMessages.lenth}
                         data={x}
                     />
                 )}
                 <form onSubmit={sendMessagehandler} className="flex m-12 mb-16">
-                    <textarea className="placeholder-purple-700 text-purple-700 w-full ml-1 rounded px-2" type="text" placeholder="Send message" name="description" id="description" />
+                    <textarea className="placeholder-purple-700 text-purple-700 w-full ml-1 rounded px-2 border border-blue-400" type="text" placeholder="Send message" name="description" id="description" />
                     <button className="bg-fuchsia-500 mx-4 my-2 px-2 py-1 rounded-xl text-purple-700 items-center">Send</button>
                 </form>
             </ul>

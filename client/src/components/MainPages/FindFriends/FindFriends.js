@@ -3,8 +3,6 @@ import { Component } from "react";
 import ProfileTemplate from '../../ComponentTemplates/ProfileTemplate/ProfileTemplate';
 import auth from '../../../Service/auth';
 
-import './FindFriends.css';
-
 class FindFriends extends Component {
     constructor(props) {
         super(props);
@@ -43,13 +41,14 @@ class FindFriends extends Component {
 
     render() {
         return (
-            <div className="main-container">
-                <ul className="friends-section">
-                    <li className="postTemplate search-bar">
-                        <form onSubmit={this.handleSubmit}>
-                            <input type="text" placeholder="Search friend"
+            <div className="main-container flex flex-col items-center mx-auto">
+                <p className="mt-2.5 text-center text-7xl font-bold text-yellow-800 mb-6">Friends</p>
+                <ul className="w-full">
+                    <li className="bg-gray-900 my-4 p-4">
+                        <form onSubmit={this.handleSubmit} className="flex">
+                            <input type="text" placeholder="Search friend" className="p-1.5 rounded mr-2 w-full text-gray-900"
                                 value={this.state.query} onChange={this.handleChange} />
-                            <input type="submit" value="Search" />
+                            <input type="submit" value="Search" className="mx-2 bg-gray-700 px-2 rounded" />
                         </form>
                         <p className="text-red-500 text-xs italic">{this.state.error}</p>
                     </li>
@@ -58,7 +57,9 @@ class FindFriends extends Component {
                             key={x._id}
                             data={x}
                         />
-                    ) : <li className="profileTemplate text-red-200 text-2xl font-bold text-center">No such user</li>}
+                    ) : <>
+                        <li className="text-red-200 text-2xl font-bold text-center">No such user</li>
+                    </>}
                 </ul>
             </div>
         )
