@@ -22,7 +22,7 @@ const PostTemplate = ({ data }) => {
                 </div>
                 <div className="meme-info">
                     <p>{data.description}</p>
-                    <NavLink to={`/details/${data._id}`}><img src={data.imageUrl} className="" alt="post" /></NavLink>
+                    <NavLink to={`/details/${data._id}`}><img src={data.imageUrl} className="w-140 h-100 object-cover" alt="post" /></NavLink>
                     <div className="post-info">
                     </div>
                 </div>

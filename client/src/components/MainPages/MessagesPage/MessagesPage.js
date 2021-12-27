@@ -49,9 +49,9 @@ const MessagesPage = ({ history }) => {
 
 
     return (
-        <div className="main-container flex flex-col items-center">
-            <p className="mt-2.5 text-center text-7xl font-bold text-fuchsia-700">Messanger</p>
-            <ul className="friends-section">
+        <div className="main-container flex flex-col items-center mx-auto">
+            <p className="mt-2.5 text-center text-7xl font-bold text-yellow-800 mb-6">Messanger</p>
+            <ul className="w-full">
                 {Object.entries(senders)?.map(x =>
                     <MessageBoxTemplate
                         key={x[1][0]._id}

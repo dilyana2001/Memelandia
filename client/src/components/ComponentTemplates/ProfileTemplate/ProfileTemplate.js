@@ -8,7 +8,7 @@ const ProfileTemplate = ({ data }) => {
                     <section className="flex mr-10 items-center">
                         <NavLink to={`/profiles/${data.userId}`}>  <img className="w-10 h-10 object-cover rounded-3xl mr-2"
                             src={data?.imageUrl || 'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} alt="avatar" /></NavLink>
-                        <p className="username-paragraph">{data.username}</p>
+                        <p>{data.username}</p>
                     </section>
                     <NavLink to={`/send-message/${data.userId}`}>  <input className="bg-gray-700 px-2 py-1 rounded self-end" type="button" defaultValue="Send message" /> </NavLink>
                 </div>

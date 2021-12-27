@@ -64,22 +64,22 @@ const PostDetails = ({ match }) => {
         </div>;
 
     const loggedUserBtns =
-        <div className="post-info">
+        <div className="self-end">
             <NavLink onClick={putLikes} to='#'>
-                <button className="bg-gray-700 py-1 px-2 rounded" disabled={myLike} >
+                <button className="bg-gray-700 py-1 px-2 rounded mr-2" disabled={myLike} >
                     <i className="fas fa-thumbs-up"><span>{likes.length} likes</span></i>
                 </button></NavLink>
             <NavLink onClick={revokeLike} to='#'>
-                <button className="bg-gray-700 py-1 px-2 rounded" disabled={!myLike} >
+                <button className="bg-gray-700 py-1 px-2 rounded mr-2" disabled={!myLike} >
                     <i className="fas fa-thumbs-down"></i>
                 </button></NavLink>
-            <NavLink className="bg-gray-700 py-1 px-2 rounded" to={`/comments/${post._id}`}>Comment</NavLink>
-            <NavLink className="bg-gray-700 py-1 px-2 rounded" to={`/share-post/${post._id}`}>Share</NavLink>
+            <NavLink className="bg-gray-700 py-1 px-2 rounded mr-2" to={`/comments/${post._id}`}>Comment</NavLink>
+            <NavLink className="bg-gray-700 py-1 px-2 rounded mr-2" to={`/share-post/${post._id}`}>Share</NavLink>
         </div>;
 
     return (
-        <div className="main-container">
-            <div className="px-7 py-5 bg-gray-900 text-yellow-600">
+        <div className="main-container details-view">
+            <div className="px-7 py-5 bg-gray-900 text-yellow-600 w-full">
                 <div className="flex p-2 items-center pb-3">
                     <NavLink to={`/profiles/${post.userId}`}>
                         <img className="w-10 rounded-3xl h-10 object-cover mr-2" src={profile?.imageUrl ||
@@ -91,7 +91,7 @@ const PostDetails = ({ match }) => {
                     <section className="mr-10"><img src={post.imageUrl} alt="post" /></section>
                     <div className="flex flex-col">
                         {userId === post.userId ? ownerEditDeleteBtns : ''}
-                        <section className="mr-10 flex flex-col justify-between details">
+                        <section className="flex flex-col justify-between details">
                             <p className="">Description: {post.description}</p>
                             <section>
                                 <div className="">

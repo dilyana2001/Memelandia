@@ -13,7 +13,7 @@ const HomePage = ({ match }) => {
     }, [match]);
 
     return (
-        <div className="main-container">
+        <div className="main-container mx-auto">
             <ul className="">
                 {posts?.map(x =>
                     <PostTemplate
