@@ -4,8 +4,6 @@ import { NavLink } from "react-router-dom";
 import auth from "../../../Service/auth";
 import AuthContext from '../../../contexts/AuthContext';
 
-import './MessageTemplate.css';
-
 const MessageTemplate = ({ data, history }) => {
     const [profile, setProfile] = useState({});
     const { userId } = useContext(AuthContext);

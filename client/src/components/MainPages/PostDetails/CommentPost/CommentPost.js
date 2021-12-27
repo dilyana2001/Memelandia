@@ -15,15 +15,16 @@ const CommentPost = ({ match, history }) => {
 
     return (
         <div className="main-container">
-            <div className="editForm">
-                <h2>Comment</h2>
-                <form onSubmit={commentPostHandler}>
-                    <textarea type="text" name="comment" id="comment" />
-                    <button>Comment!</button>
+            <div className="flex flex-col text-center text-yellow-700 bg-gray-900 w-full my-10 p-14">
+                <p className="text-4xl font-bold mb-4">Comment</p>
+                <form onSubmit={commentPostHandler} className="flex flex-col">
+                    <textarea type="text" name="comment" id="comment" className="rounded"/>
+                    <button className="mt-2 bg-gray-700 text-yellow-700 py-1">Comment!</button>
                 </form>
             </div>
         </div>
     );
+    
 }
 
 export default CommentPost;

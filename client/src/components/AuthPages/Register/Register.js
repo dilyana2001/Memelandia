@@ -1,7 +1,5 @@
 import auth from "../../../Service/auth";
 
-import './Register.css';
-
 const Register = ({ history }) => {
 
     const onSubmitHandler = (e) => {

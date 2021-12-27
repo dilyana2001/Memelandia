@@ -4,8 +4,6 @@ import { NavLink } from "react-router-dom";
 import postService from "../../../Service/postService";
 import AuthContext from '../../../contexts/AuthContext';
 
-import './SharePost.css';
-
 const SharePost = ({ match }) => {
 
     const [, setPost] = useState({});
@@ -19,9 +17,9 @@ const SharePost = ({ match }) => {
 
     return (
         <div className="main-container">
-            <div className="you-shared-delete-section">
-                <h3 className="text-4xl font-bold mb-4">You Shared the Post!</h3>
-                <div className="go-back">
+            <div className="flex flex-col text-center text-yellow-700 bg-gray-900 w-full my-10 p-14">
+                <p className="text-4xl font-bold mb-4">You Shared the Post!</p>
+                <div className="flex flex-col underline">
                     <NavLink to='/'>Go to Home</NavLink>
                     <NavLink to={`/profiles/${userId}`}>Go to Profile</NavLink>
                 </div>

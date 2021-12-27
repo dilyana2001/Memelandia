@@ -4,8 +4,6 @@ import auth from "../../../Service/auth";
 import MessageBoxTemplate from "../../ComponentTemplates/MessageBoxTemplate/MessageBoxTemplate";
 import AuthContext from '../../../contexts/AuthContext';
 
-import './MessagesPage.css';
-
 const MessagesPage = ({ history }) => {
 
     const { userId } = useContext(AuthContext);

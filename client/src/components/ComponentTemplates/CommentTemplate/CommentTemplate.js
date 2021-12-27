@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom";
 
 import auth from "../../../Service/auth";
 
-import './CommentTemplate.css'
-
 const CommentTemplate = ({ data }) => {
     const [profile, setProfile] = useState({});
 
@@ -14,14 +12,14 @@ const CommentTemplate = ({ data }) => {
     }, [data.userId]);
 
     return (
-        <li className="commentTemplate">
-            <div className="commentTemplate-container">
-                <div className="user-info">
-                    <NavLink to={`/profiles/${data.userId}`}>  <img className="profile-image"
-                        src={profile?.imageUrl || 'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} alt="avatar"  /></NavLink>
-                    <p className="username-paragraph">{data.username} comment:</p>
+        <li >
+            <div >
+                <div className="flex">
+                    <NavLink to={`/profiles/${data.userId}`} className="mr-2">  <img
+                        src={profile?.imageUrl || 'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} alt="avatar" className="w-10 h-10 rounded-full object-cover" /></NavLink>
+                    <p className="self-center">{data.username} comment:</p>
                 </div>
-                <div className="comment-info">
+                <div>
                     <p>{data.comment}</p>
                 </div>
             </div>

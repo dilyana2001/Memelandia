@@ -36,15 +36,15 @@ const EditPost = ({ match, history }) => {
 
     return (
         <div className="main-container">
-            <div className="editForm">
+            <div className="flex flex-col text-center text-yellow-700 bg-gray-900 w-full my-10 p-14">
                 <p className="text-4xl font-bold mb-4">Edit Post</p>
-                <form onSubmit={editPostHandler}>
+                <form onSubmit={editPostHandler} className="flex flex-col">
                     <label htmlFor="imageUrl">Image URL:</label>
-                    <input type="text" defaultValue={post.imageUrl} name="imageUrl" id="imageUrl" onChange={onChangeHandler} />
+                    <input type="text" defaultValue={post.imageUrl} name="imageUrl" id="imageUrl" onChange={onChangeHandler} className="rounded" />
                     <InputError>{errorMessage}</InputError>
                     <label htmlFor="description">Description:</label>
-                    <textarea type="text" defaultValue={post.description} name="description" id="description" />
-                    <button>Post!</button>
+                    <textarea type="text" defaultValue={post.description} name="description" id="description" className="rounded" />
+                    <button className="mt-2 bg-gray-700 text-yellow-700 py-1">Post!</button>
                 </form>
             </div>
         </div>

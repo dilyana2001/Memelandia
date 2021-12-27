@@ -3,8 +3,6 @@ import { useEffect } from "react";
 
 import postService from "../../../Service/postService";
 
-import "../SharePost/SharePost"
-
 const userId = localStorage.getItem('userId')
 
 const DeletePost = ({ match }) => {
@@ -15,9 +13,9 @@ const DeletePost = ({ match }) => {
 
     return (
         <div className="main-container">
-            <div className="you-shared-delete-section">
-                <h3 className="text-4xl font-bold mb-4">You Deleted The Post!</h3>
-                <div className="go-back">
+            <div className="flex flex-col text-center text-yellow-700 bg-gray-900 w-full my-10 p-14">
+                <p className="text-4xl font-bold mb-4">You Deleted The Post!</p>
+                <div className="flex flex-col underline">
                     <NavLink to='/'>Go back to Home</NavLink>
                     <NavLink to={`/profiles/${userId}`}>Go back to Profile</NavLink>
                 </div>

@@ -26,7 +26,7 @@ const Profile = ({ match }) => {
                 <li className="p-10 bg-gray-900 m-10 text-yellow-600">
                     <div className="text-yellow-700">
                         <div className="flex">
-                            <Link to={`/profiles/${match.params.userId}/edit`} className="mr-2 ">
+                            <Link to={`/profiles/${match.params.userId}/edit`} className="mr-2">
                                 <img src={profile.imageUrl ||
                                     'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} alt="avatar" className="w-20 h-20 rounded-full object-cover" /></Link>
                             <section>

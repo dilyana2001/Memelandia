@@ -30,15 +30,15 @@ const SendMessage = ({ match, history }) => {
 
     return (
         <div className="main-container">
-            <div className="editForm">
-                <h2>Send Message</h2>
-                <form onSubmit={sendMessageHandler}>
+            <div className="flex flex-col text-center text-yellow-700 bg-gray-900 w-full my-10 p-14">
+                <p className="text-2xl font-bold mb-4">Send Message</p>
+                <form onSubmit={sendMessageHandler} className="flex flex-col">
                     <label htmlFor="title">Title</label>
-                    <input type="text" name="title" placeholder="Title" id="title" />
+                    <input type="text" name="title" placeholder="Title" id="title" className="rounded" />
                     <label htmlFor="description">Description:</label>
-                    <textarea type="text" name="description" placeholder="Description" id="description" onChange={onChangeHandler} />
+                    <textarea type="text" name="description" placeholder="Description" id="description" onChange={onChangeHandler} className="rounded" />
                     <InputError>{errorMessage}</InputError>
-                    <button>Send!</button>
+                    <button className="mt-2 bg-gray-700 text-yellow-700 py-1">Send!</button>
                 </form>
             </div>
         </div>

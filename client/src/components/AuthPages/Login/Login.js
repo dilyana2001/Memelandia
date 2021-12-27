@@ -2,8 +2,6 @@ import auth from "../../../Service/auth";
 import { useContext } from "react";
 import AuthContext from '../../../contexts/AuthContext';
 
-import './Login.css';
-
 const Login = ({ history }) => {
     const { login } = useContext(AuthContext);
 

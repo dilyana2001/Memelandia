@@ -49,7 +49,7 @@ const EditProfile = ({ match, history }) => {
         <div className="main-container">
             <div className="text-yellow-700 w-full text-center profile-picture my-8">
                 <p className="mb-6 font-bold text-2xl">{profile.username}</p>
-                <img className="w-140" src={profile.imageUrl} alt="" />
+                <img className="w-140 mb-5" src={profile.imageUrl} alt="" />
                 {userId === profile.userId ? profileOwner : ''}
             </div>
         </div>
