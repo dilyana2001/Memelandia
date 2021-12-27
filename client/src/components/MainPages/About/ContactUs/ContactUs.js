@@ -12,7 +12,7 @@ const ContactUs = ({ history }) => {
     return (
         <div className="main-container">
             <div className="editForm">
-                <h2>Send feedback</h2>
+            <p className="text-4xl font-bold mb-4">Send feedback</p>
                 <form onSubmit={sendFeedbackHandler}>
                     <label htmlFor="email">Your Email:</label>
                     <input type="email" placeholder="email" name="email" id="email" />

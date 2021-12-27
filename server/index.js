@@ -2,12 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-const config = require('./devConfig');
 const routes = require('./routes');
+const config = require('./devConfig');      
 const { auth } = require('./middlewares/auth');
-const errorHandler = require('./middlewares/errorHandler')
-
-
+const errorHandler = require('./middlewares/errorHandler');
 const app = express();
 
 mongoose.connect(config.DB_CONNECTION);

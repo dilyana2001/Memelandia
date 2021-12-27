@@ -29,7 +29,7 @@ const CreatePost = ({ history }) => {
     return (
         <div className="main-container">
             <div className="editForm">
-                <h2>Create Post</h2>
+            <p className="text-4xl font-bold mb-4">Create Post</p>
                 <form onSubmit={createPostHandler}>
                     <label htmlFor="imageURL">Image URL:</label>
                     <input type="text" placeholder="imageURL" name="imageUrl" id="imageURL" onChange={onChangeHandler} />

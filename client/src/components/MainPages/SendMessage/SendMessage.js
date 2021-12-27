@@ -17,16 +17,18 @@ const SendMessage = ({ match, history }) => {
     const sendMessageHandler = (e) => {
         e.preventDefault();
         const { title, description } = e.target;
+        if (!description.value) {
+            return setErrorMessage('Enter message');
+        }
         auth.sendMessage(title.value, description.value, receiverId, userId, username)
             .then(() => history.push(`/friends`))
     }
 
     const onChangeHandler = (e) => {
-        if (e.target.value.length < 1) {
-            setErrorMessage('Enter message');
-        } else {
-            setErrorMessage('');
+        if (!e.target.value) {
+            return setErrorMessage('Enter message'); // for check  remove that error
         }
+       return setErrorMessage('');
     }
 
     return (

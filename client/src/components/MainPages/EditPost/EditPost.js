@@ -40,7 +40,7 @@ const EditPost = ({ match, history }) => {
     return (
         <div className="main-container">
             <div className="editForm">
-                <h2>Edit Post</h2>
+                <p className="text-4xl font-bold mb-4">Edit Post</p>
                 <form onSubmit={editPostHandler}>
                     <label htmlFor="imageUrl">Image URL:</label>
                     <input type="text" defaultValue={post.imageUrl} name="imageUrl" id="imageUrl" onChange={onChangeHandler} />

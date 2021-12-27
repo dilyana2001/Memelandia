@@ -41,7 +41,7 @@ const Header = ({history}) => {
         </ul>;
 
     return (
-        <header className="site-header">
+        <header className="site-header z-10">
             <nav className="navbar">
                 {isAuthenticated ? navbarLoggedUser : navbarAnonymous}
             </nav>

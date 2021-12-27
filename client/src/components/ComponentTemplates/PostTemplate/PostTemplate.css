@@ -38,7 +38,8 @@
 }
 
 .meme-info {
-    text-align-last: center
+    text-align-last: center;
+    text-align: -webkit-center;
 }
 
 .meme-info p {

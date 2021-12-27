@@ -1,5 +1,4 @@
 const baseUrl = 'http://localhost:5000/api';
-const token = localStorage.getItem('token');
 
 function getAllPost() {
     return fetch(`${baseUrl}/posts`)
@@ -14,6 +13,7 @@ function getPost(id) {
 }
 
 function postPost(imageUrl, description, username, userId) {
+    const token = localStorage.getItem('token');
     const data = {
         imageUrl,
         description,
@@ -46,6 +46,7 @@ function postExistingPost(id, userId, username) {
 }
 
 function deletePost(id) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/posts/${id}`, {
         method: 'DELETE',
         headers: {
@@ -57,6 +58,7 @@ function deletePost(id) {
 }
 
 function editPost(id, imageUrl, description, username, userId) {
+    const token = localStorage.getItem('token');
     const data = {
         imageUrl,
         description,
@@ -88,6 +90,7 @@ function getAllComments(postId) {
 }
 
 function commentPost(postId, comment, username, userId) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/comments`, {
         method: 'POST',
         headers: {
@@ -113,6 +116,7 @@ function getLikes(postId) {
 
 
 function putLike(postId, userId) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/posts/likes`, {
         method: 'POST',
         headers: {
@@ -135,6 +139,7 @@ function isPostLikedByUser(postId, userId) {
 }
 
 function removeLike(postId, userId) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/posts/likes/postId/${postId}/userId/${userId}`, {
         method: 'DELETE',
         headers: {

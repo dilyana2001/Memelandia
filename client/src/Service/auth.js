@@ -1,5 +1,4 @@
 const baseUrl = 'http://localhost:5000/api';
-const token = localStorage.getItem('token');
 
 function login(username, password) {
     return fetch(`${baseUrl}/auth/login`, {
@@ -32,6 +31,7 @@ function register(username, password) {
 }
 
 function logout(history, login) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/auth/logout`, {
         method: 'GET',
         headers: {
@@ -49,6 +49,7 @@ function logout(history, login) {
 }
 
 function getAllProfiles() {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/profiles`, {
         method: 'GET',
         headers: {
@@ -67,6 +68,7 @@ function getProfileInfo(userId) {
 }
 
 function editProfileInfo(userId, profileId, data, username) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/profiles/${profileId}`, {
         method: 'PUT',
         headers: {
@@ -85,6 +87,7 @@ function editProfileInfo(userId, profileId, data, username) {
 }
 
 function postProfileInfo(username, userId) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/profiles/${userId}`, {
         method: 'POST',
         headers: {
@@ -101,6 +104,7 @@ function postProfileInfo(username, userId) {
 }
 
 function sendMessage(title, description, receiverId, senderId, senderUsername) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/messages/receiverId/${receiverId}/senderId/${senderId}`, {
         method: 'POST',
         headers: {
@@ -120,6 +124,7 @@ function sendMessage(title, description, receiverId, senderId, senderUsername) {
 }
 
 function getMyMessages(id) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/messages/receiverId/${id}`, {
         method: 'GET',
         headers: {
@@ -132,6 +137,7 @@ function getMyMessages(id) {
 }
 
 function getMyMessagesFromSender(receiverId, senderId) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/messages/receiverId/${receiverId}/senderId/${senderId}`, {
         method: 'GET',
         headers: {
@@ -144,6 +150,7 @@ function getMyMessagesFromSender(receiverId, senderId) {
 }
 
 function getMyMessagesToSender(receiverId, senderId) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/messages/senderId/${senderId}/receiverId/${receiverId}`, {
         method: 'GET',
         headers: {
@@ -156,6 +163,7 @@ function getMyMessagesToSender(receiverId, senderId) {
 }
 
 function deleteMessage(id) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/messages/${id}`, {
         method: 'DELETE',
         headers: {
@@ -173,6 +181,7 @@ function searchFriend(query) {
 }
 
 function deleteAccountProfile(userId) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/profiles/${userId}`, {
         method: 'DELETE',
         headers: {
@@ -184,6 +193,7 @@ function deleteAccountProfile(userId) {
 }
 
 function deleteAccoutUser(id) {
+    const token = localStorage.getItem('token');
     return fetch(`${baseUrl}/profiles/users/${id}`, {
         method: 'DELETE',
         headers: {
