@@ -26,7 +26,7 @@ const config = {
 The Client part is using Reactjs and Tailwincss. In the client folder you need to add .ENV file with this content:
 
 ----------------------------
-//client/.ENV
+// client/.ENV
 
 PORT=3000;
 
