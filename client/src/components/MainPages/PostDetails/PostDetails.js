@@ -65,14 +65,23 @@ const PostDetails = ({ match }) => {
 
     const loggedUserBtns =
         <div className="self-end">
+
+
+
             <NavLink onClick={putLikes} to='#'>
-                <button className="bg-gray-700 py-1 px-2 rounded mr-2" disabled={myLike} >
+                <button className="bg-gray-700 py-1 px-2 rounded mr-2 disabled:text-black" disabled={myLike} >
                     <i className="fas fa-thumbs-up"><span>{likes.length} likes</span></i>
                 </button></NavLink>
+
+
+
             <NavLink onClick={revokeLike} to='#'>
-                <button className="bg-gray-700 py-1 px-2 rounded mr-2" disabled={!myLike} >
+                <button className="bg-gray-700 py-1 px-2 rounded mr-2 disabled:text-black" disabled={!myLike}  >
                     <i className="fas fa-thumbs-down"></i>
                 </button></NavLink>
+
+
+
             <NavLink className="bg-gray-700 py-1 px-2 rounded mr-2" to={`/comments/${post._id}`}>Comment</NavLink>
             <NavLink className="bg-gray-700 py-1 px-2 rounded mr-2" to={`/share-post/${post._id}`}>Share</NavLink>
         </div>;

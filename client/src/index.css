@@ -17,9 +17,9 @@ code {
 
 .add-post {
     position: fixed;
-    font-size: 6rem;
-    bottom: 0;
-    right: 0;
+    font-size: 90px;
+    bottom: 13px;
+    right: 3px;
 }
 
 ul {
@@ -61,4 +61,8 @@ header .active {
 
 .profile-picture {
     text-align: -webkit-center;
+}
+
+.p-580 {
+    width: 580px;
 }

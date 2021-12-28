@@ -24,7 +24,7 @@ const MessageTemplate = ({ data, history }) => {
                 <section>
                     <div className="flex justify-between">
                         <div className="flex">
-                            <NavLink className="mr-2" to={`/profiles/${profile?.userId}`}><img 
+                            <NavLink className="mr-2 mb-3" to={`/profiles/${profile?.userId}`}><img 
                                 src={profile?.imageUrl || 'https://cdn3.vectorstock.com/i/thumb-large/53/52/person-private-userpic-business-character-profile-vector-23565352.jpg'} alt="avatar" className="w-10 h-10 rounded-full object-cover" />
                             </NavLink>
                             <p className="self-center">{profile?.username}:</p>
@@ -33,7 +33,7 @@ const MessageTemplate = ({ data, history }) => {
                     </div>
                     <div>
                         <h4>{data.title}</h4>
-                        <p> {data?.description}</p>
+                        <p className="bg-gray-800"> {data?.description}</p>
                     </div>
                 </section>
 

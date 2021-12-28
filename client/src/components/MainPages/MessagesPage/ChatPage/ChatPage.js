@@ -35,15 +35,19 @@ const ChatPage = ({ match, history }) => {
         e.preventDefault();
         const { description } = e.target;
         const title = '';
-        console.log(description)
         if (!description.value) {
-            return description.classList.add('border', 'border-red-400');
+            return description.classList.add('border-red-400');
         }
         auth.sendMessage(title, description.value, profile.userId, userId, username)
             .then(() => {
                 description.value = '';
                 history.push(`/chat/${senderId}`);
             })
+    }
+    const onChangeHandler = (e) => {
+        if (!e.target.value) {
+            return e.target.classList.add('border-red-700');
+        }
     }
 
     return (
@@ -56,8 +60,8 @@ const ChatPage = ({ match, history }) => {
                     />
                 )}
                 <form onSubmit={sendMessagehandler} className="flex mb-16">
-                    <textarea className="placeholder-gray-900 text-gray-900 w-full ml-1 rounded px-2 border border-blue-400" type="text" placeholder="Send message" name="description" id="description" />
-                    <button className="mx-2 bg-gray-900 px-2 rounded" >Send</button>
+                    <textarea className="placeholder-gray-900 text-gray-900 w-full ml-1 rounded px-2 border-2 border-gray-700" type="text" placeholder="Send message" name="description" id="description" onChange={onChangeHandler} />
+                    <button className="mx-2 bg-gray-900 px-2 rounded">Send</button>
                 </form>
             </ul>
 

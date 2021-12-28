@@ -23,7 +23,7 @@ const Profile = ({ match }) => {
     return (
         <div className="main-container">
             <ul>
-                <li className="p-10 bg-gray-900 m-10 text-yellow-600">
+                <li className="p-10 bg-gray-900 m-10 text-yellow-600 p-580">
                     <div className="text-yellow-700">
                         <div className="flex">
                             <Link to={`/profiles/${match.params.userId}/edit`} className="mr-2">
