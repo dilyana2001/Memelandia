@@ -5,7 +5,7 @@ import AuthContext from "../../../../contexts/AuthContext";
 
 const EditProfile = ({ match, history }) => {
 
-    const { username, userId } = useContext(AuthContext);
+    const { username, userId, login } = useContext(AuthContext);
 
     const [profile, setProfile] = useState({});
 
@@ -25,9 +25,9 @@ const EditProfile = ({ match, history }) => {
 
     const deleteAccHandler = () => {
         Promise.all([
+            auth.logout(history, login),
             auth.deleteAccountProfile(userId),
             auth.deleteAccoutUser(userId),
-            auth.logout()
         ])
             .then(history.push('/'));
     }

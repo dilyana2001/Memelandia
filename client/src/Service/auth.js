@@ -204,7 +204,7 @@ function deleteAccoutUser(id) {
         .catch((err) => console.log(err.message));
 }
 
-function sendFeedback(data,) {
+function sendFeedback(data) {
     return fetch(`${baseUrl}/messages/feedback`, {
         method: 'POST',
         headers: {
@@ -218,6 +218,19 @@ function sendFeedback(data,) {
         .then(res => res.json())
         .catch((err) => console.log(err.message));
 }
+
+// function getWeather() {
+//     // ceABmqrAHAOodoPUhBjWAp8fN7ybMAcu
+//     // xMZBKQMBlKyZU8c3ypegJAyoUOV6jCRh
+//     return fetch(`https://ipapi.co/json`)
+//         .then(response => response.json())
+//         .then(data => {
+//             return fetch(`https://dataservice.accuweather.com/locations/v1/cities/ipaddress?apikey=ceABmqrAHAOodoPUhBjWAp8fN7ybMAcu&q=${data.ip}`)
+//                 .then(weather => weather.json())
+//                 .catch(console.log)
+//         })
+//         .catch(console.log)
+// }
 
 const fetchFunctions = {
     login,
@@ -236,6 +249,7 @@ const fetchFunctions = {
     deleteAccountProfile,
     deleteAccoutUser,
     sendFeedback,
+    // getWeather,
 };
 
 export default fetchFunctions;
