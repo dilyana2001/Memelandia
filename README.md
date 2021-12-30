@@ -34,6 +34,7 @@ PORT=3000;
 After adding the special files you need to open two consoles in the folder of the project. In the first: cd client > npm start. In the second: cd server > npm start. 
 
 Happy hacking!
+
 by Dilyana Nedelcheva
 
 
