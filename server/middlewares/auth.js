@@ -17,7 +17,7 @@ function auth(req, res, next) {
 
 function isAuth(req, res, next) {
     if (!req.user) {
-        res.status(401).send({ errorData: { message: 'You cannot perform this action!' } }).end();
+       return res.status(401).send({ errorData: { message: 'You cannot perform this action!' } }).end();
     }
     next();
 }
